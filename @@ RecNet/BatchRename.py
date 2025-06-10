@@ -28,8 +28,7 @@ for file in glob.glob("*.meta"):
 
         file_name = file
 
-        file_name = file.removesuffix(".meta")
-        file_name = file.removesuffix(".prefab")
+        file_name = file.removesuffix(".meta").removesuffix(".prefab")
 
         real_path = list(file_name)
         new_path = list(file_name)
