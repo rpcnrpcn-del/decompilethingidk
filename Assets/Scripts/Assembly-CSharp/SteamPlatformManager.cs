@@ -108,7 +108,17 @@ internal class SteamPlatformManager : PlatformManager
 		return false;
 	}
 
-	public override IEnumerator Initialize(InitializeCallback callback)
+	// funny
+    ulong LongRandom(long min, long max, System.Random rand)
+    {
+        long result = rand.Next((Int32)(min >> 32), (Int32)(max >> 32));
+        result = (result << 32);
+        result = result | (long)rand.Next((Int32)min, (Int32)max);
+        return (ulong)result;
+    }
+
+
+    public override IEnumerator Initialize(InitializeCallback callback)
 	{
 		if (ShouldRestart())
 		{
@@ -125,10 +135,24 @@ internal class SteamPlatformManager : PlatformManager
 		SteamClient.SetWarningMessageHook(warningMessageHook);
 		gameRichPresenceJoinRequested = Callback<GameRichPresenceJoinRequested_t>.Create(OnGameRichPresenceJoinRequested);
 		PUNNetworkManager.Instance.OnRecRoomPlayerConnected += OnRecRoomPlayerConnected;
-		CSteamID steamID = SteamUser.GetSteamID();
+
+		/*CSteamID steamID = SteamUser.GetSteamID();
 		base.PlatformProfileId = (ulong)steamID;
-		base.PlatformProfileName = SteamFriends.GetPersonaName();
-		Player.SetPlatformPlayerId(CurrentPlatform, base.PlatformProfileId);
+		base.PlatformProfileName = SteamFriends.GetPersonaName();*/
+
+		// Steam ID workaround
+		ulong expectedId = ulong.Parse(PlayerPrefs.GetString("AssignedPlayerId", "0"));
+		if (!PlayerPrefs.HasKey("AssignedPlayerId"))
+		{
+			ulong newId = LongRandom(0, long.MaxValue, new System.Random());
+			expectedId = newId;
+			PlayerPrefs.SetString("AssignedPlayerId", newId.ToString());
+		}
+
+        base.PlatformProfileId = expectedId;
+        base.PlatformProfileName = "Guest " + expectedId.ToString();
+
+        Player.SetPlatformPlayerId(CurrentPlatform, base.PlatformProfileId);
 		callback(null);
 	}
 

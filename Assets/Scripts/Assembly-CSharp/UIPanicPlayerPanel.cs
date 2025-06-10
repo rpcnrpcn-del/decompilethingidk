@@ -138,7 +138,7 @@ public class UIPanicPlayerPanel : Selectable
 	{
 		this.player = player;
 		PlayerId = player.PlayerId;
-		SteamID = player.SteamID;
+		//SteamID = player.SteamID;
 		ShowLevelIndicator(true);
 	}
 

@@ -2,7 +2,7 @@ const fs = require('node:fs')
 // i got lazy.
 const configJson = {
     "debug": true,
-    "version": "20170125_EA",
+    "version": "20170118_EA",
     "messageOfTheDay": "Balls.",
     "DailyObjectives": null
 }

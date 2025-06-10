@@ -59,7 +59,7 @@ public class PlayerProfileView : MonoBehaviour
 		}
 		base.gameObject.SetActive(true);
 		PlayerName = player.PlayerName;
-		PlayerStatus = GetSteamUserStatus(player.SteamID);
+		//PlayerStatus = GetSteamUserStatus(player.SteamID);
 		RefreshPlayerIcon(player);
 		if (playerXp != null && player.isLocal)
 		{

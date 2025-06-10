@@ -259,7 +259,7 @@ namespace AmplitudeAnalytics
 
 		private IEnumerator WaitForFlushAndQuit()
 		{
-			float timeout = 3f;
+			/*float timeout = 3f;
 			quitState = QuitState.WaitingForFlush;
 			while (flushRunning && timeout > 0f)
 			{
@@ -269,7 +269,8 @@ namespace AmplitudeAnalytics
 			flushRunning = true;
 			yield return Flush(timeout);
 			quitState = QuitState.Flushed;
-			Application.Quit();
+			Application.Quit();*/
+			yield break;
 		}
 
 		public static long UTCMillisSinceEpoch()
@@ -279,28 +280,32 @@ namespace AmplitudeAnalytics
 
 		public static AmplitudeAnalyticsEvent Event(string event_type)
 		{
-			return new AmplitudeAnalyticsEvent(event_type, SessionId, SequenceNumber, userId);
+			//return new AmplitudeAnalyticsEvent(event_type, SessionId, SequenceNumber, userId);
+			return null;
 		}
 
 		public AmplitudeAnalyticsEvent InitializeEvent(string userId)
 		{
-			return InitializeEvent(userId, Constants.DefaultUnityDeviceInfo);
-		}
+			//return InitializeEvent(userId, Constants.DefaultUnityDeviceInfo);
+            return null;
+        }
 
 		public AmplitudeAnalyticsEvent InitializeEvent(string userId, Func<AmplitudeAnalyticsEvent.DeviceInfo> deviceInfoFunc)
 		{
-			AmplitudeAnalyticsClient.userId = userId;
-			return new AmplitudeAnalyticsEvent("session_start", SessionId, SequenceNumber, userId).WithDeviceInfo(deviceInfoFunc());
-		}
+			/*AmplitudeAnalyticsClient.userId = userId;
+			return new AmplitudeAnalyticsEvent("session_start", SessionId, SequenceNumber, userId).WithDeviceInfo(deviceInfoFunc());*/
+            return null;
+        }
 
 		private IEnumerator LogEventRoutine(AmplitudeAnalyticsEvent analyticsEvent)
 		{
-			return PostJson(settings.ApiURL, analyticsEvent.ToJsonDictionary(), OnLogSingleResponse);
+			yield break;
+			//return PostJson(settings.ApiURL, analyticsEvent.ToJsonDictionary(), OnLogSingleResponse);
 		}
 
 		public void LogEvent(AmplitudeAnalyticsEvent analyticsEvent)
 		{
-			if (!initialized)
+			/*if (!initialized)
 			{
 				throw new InvalidOperationException("You must initialize before you can log events");
 			}
@@ -313,31 +318,32 @@ namespace AmplitudeAnalytics
 			{
 				Debug.LogWarning("Too many analytics events being sent. Saving for later");
 				AnalyticsCache.SaveEvent(analyticsEvent);
-			}
+			}*/
 		}
 
 		public void LogEventAsync(AmplitudeAnalyticsEvent analyticsEvent)
 		{
-			if (!initialized)
+			/*if (!initialized)
 			{
 				throw new InvalidOperationException("You must initialize before you can log events");
 			}
-			AnalyticsCache.SaveEvent(analyticsEvent);
+			AnalyticsCache.SaveEvent(analyticsEvent);*/
 		}
 
 		private bool IsTimedOut(float startTime, float timeout)
 		{
-			if (timeout <= 0f)
+			/*if (timeout <= 0f)
 			{
 				return false;
 			}
 			float num = Time.realtimeSinceStartup - startTime;
-			return num > timeout;
+			return num > timeout;*/
+			return false;
 		}
 
 		private IEnumerator Flush(float timeout = -1f)
 		{
-			lastFlushTime = Time.realtimeSinceStartup;
+			/*lastFlushTime = Time.realtimeSinceStartup;
 			float startTime = Time.realtimeSinceStartup;
 			bool shouldSendBatch = true;
 			if (batchesThisSecond >= 100)
@@ -400,31 +406,33 @@ namespace AmplitudeAnalytics
 			{
 				Debug.Log(string.Format("[{0}] Flush complete: {1} event sent. Finished with error: {2}. TimedOut: {3}", string.Format("{0:s}", DateTime.Now), batchSize, erroredOut, timedOut));
 			}
-			flushRunning = false;
+			flushRunning = false;*/
+			yield break;
 		}
 
 		private IEnumerator PostJson<T>(string url, T eventParams, Action<long, string, T> onResponse)
 		{
-			WWWForm form = new WWWForm();
+			/*WWWForm form = new WWWForm();
 			form.AddField("api_key", settings.ApiKey);
 			string jsonString = Json.Serialize(eventParams);
 			form.AddField("event", jsonString);
 			UnityWebRequest request = UnityWebRequest.Post(url, form);
 			request.downloadHandler = new DownloadHandlerBuffer();
 			yield return request.Send();
-			onResponse(request.responseCode, request.downloadHandler.text, eventParams);
+			onResponse(request.responseCode, request.downloadHandler.text, eventParams);*/
+			yield break;
 		}
 
 		private void OnLogSingleResponse(long responseCode, string responseBody, Dictionary<string, object> eventParams)
 		{
-			if (responseCode >= 200 && responseCode < 300)
+			/*if (responseCode >= 200 && responseCode < 300)
 			{
 				AnalyticsCache.RemoveEvent(eventParams);
 			}
 			else if (responseCode != 413)
 			{
 				Debug.LogWarning("AnalyticsRequest failed: " + responseBody);
-			}
+			}*/
 		}
 
 		private void OnLogMultiResponse(long responseCode, string responseBody, List<Dictionary<string, object>> eventParams)

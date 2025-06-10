@@ -30,7 +30,7 @@ public class BootSequence : UnityEngine.MonoBehaviour
 		{
 			Object.DontDestroyOnLoad(target);
 		}
-		if (!CheckForVRDevice())
+		if (!CheckForVRDevice() && !SessionManager.IsDeveloper && !Application.isEditor)
 		{
 			SceneManager.LoadScene("vr_device_required");
 			yield break;
@@ -39,60 +39,32 @@ public class BootSequence : UnityEngine.MonoBehaviour
 		PhotonNetwork.SendMonoMessageTargetType = typeof(Photon.MonoBehaviour);
 		if (success)
 		{
+			// Test Connection
 			yield return Core.TestConnection(InitializeCallback);
-		}
-		if (success)
-		{
+			// Init Platform Manager
 			yield return PlatformManager.Instance.Initialize(InitializeCallback);
-		}
-		if (success)
-		{
 			LogPlatformInfo();
-		}
-		if (success)
-		{
+			// Init Profile Stuff
 			yield return Profiles.DownloadLocalProfile(InitializeCallback);
-		}
-		if (success)
-		{
-			yield return AnalyticsHelper.OnPlatformAndProfileInitialized();
+			//yield return AnalyticsHelper.OnPlatformAndProfileInitialized(); kys rec room
 			LogProfileInfo();
-		}
-		if (success)
-		{
+			// Config Stuff
 			yield return Config.DownloadConfigSettings(InitializeCallback);
-		}
-		if (success)
-		{
+			// Notif Stuff
 			yield return Core.InitializePushNotificationChannel(InitializeCallback);
-		}
-		if (success)
-		{
+			// Player Data :)
 			Images.RefreshCachedProfileImage(Profiles.LocalProfile.Id);
-		}
-		if (success)
-		{
+			// Avatar :)
 			yield return Avatars.DownloadLocalAvatar(InitializeCallback);
-		}
-		if (success)
-		{
+			// Player Configs :)
 			yield return RecroomPrefs.DowloadLocalPlayerPreferences(InitializeCallback);
-		}
-		if (success)
-		{
-			yield return OutfitManager.Instance.DownloadUnlockedAvatarItems(InitializeCallback);
-		}
-		if (success)
-		{
+            // Avatar :)
+            yield return OutfitManager.Instance.DownloadUnlockedAvatarItems(InitializeCallback);
 			yield return Avatars.DowloadGiftPackages(InitializeCallback);
-		}
-		if (success)
-		{
+			// Photon :)
 			yield return PUNNetworkManager.Instance.Initialize(InitializeCallback);
-		}
-		if (success)
-		{
 			yield return SingletonMonoBehaviour<SplashScreenManager>.Instance.WaitForMinimumSplashDuration();
+			// Core Systems :)
 			InitializeCoreSystems();
 			yield return LoadInitialScene();
 			Object.Destroy(base.gameObject);

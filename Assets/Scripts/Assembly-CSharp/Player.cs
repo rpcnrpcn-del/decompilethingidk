@@ -498,11 +498,19 @@ public class Player : PunBehaviour
 
 	public ulong PlatformId { get; private set; }
 
-	public CSteamID SteamID
+	/*public CSteamID SteamID
 	{
 		get
 		{
 			return (Platform != PlatformManager.PlatformType.STEAM) ? CSteamID.Nil : new CSteamID(PlatformId);
+		}
+	}*/
+
+	public ulong PatchedSteamID
+	{
+		get
+		{
+			return PlatformId;
 		}
 	}
 

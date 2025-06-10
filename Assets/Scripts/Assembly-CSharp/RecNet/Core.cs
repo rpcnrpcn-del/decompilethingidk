@@ -283,7 +283,7 @@ namespace RecNet
 
 		private static string _RecNetHost = null;
 
-		private static readonly string REC_NET_HTTP_URL = "https://" + REC_NET_HOST + "/";
+		private static readonly string REC_NET_HTTP_URL = "http://" + REC_NET_HOST + "/";
 
 		private static readonly string REC_NET_WEBSOCKET_URL = "wss://" + REC_NET_HOST + "/";
 
@@ -307,7 +307,7 @@ namespace RecNet
 		{
 			get
 			{
-				if (_RecNetHost == null)
+				/*if (_RecNetHost == null)
 				{
 					string[] commandLineArgs = Environment.GetCommandLineArgs();
 					foreach (string text in commandLineArgs)
@@ -323,7 +323,8 @@ namespace RecNet
 						_RecNetHost = "recroom.azurewebsites.net";
 					}
 				}
-				return _RecNetHost;
+				return _RecNetHost;*/
+				return "127.0.0.1:25565";
 			}
 		}
 
