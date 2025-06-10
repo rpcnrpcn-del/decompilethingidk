@@ -1,0 +1,12 @@
+public enum TeleportCooldownType
+{
+	DEFAULT = -1,
+	ACTIVITY_COOLDOWN_1 = 0,
+	ACTIVITY_COOLDOWN_2 = 1,
+	ACTIVITY_COOLDOWN_3 = 2,
+	COOLDOWN_4 = 3,
+	COOLDOWN_5 = 4,
+	COOLDOWN_6 = 5,
+	COOLDOWN_7 = 6,
+	COOLDOWN_8 = 7
+}

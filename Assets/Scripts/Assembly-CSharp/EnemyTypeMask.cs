@@ -1,0 +1,7 @@
+public enum EnemyTypeMask
+{
+	ANY_TYPE = 7,
+	ANY_QUEST_GROUND_TYPE = 5,
+	ANY_QUEST_FLYING_TYPE = 2,
+	ANY_QUEST_BOSS_TYPE = 8
+}

@@ -1,0 +1,28 @@
+public enum Layers
+{
+	Default = 0,
+	TransparentFX = 1,
+	IgnoreRaycast = 2,
+	Water = 4,
+	UI = 5,
+	HiddenInFirstPerson = 8,
+	LocalPlayerPhysics = 9,
+	DynamicPhysics = 10,
+	StaticPhysics = 11,
+	RemotePlayerPhysics = 12,
+	DynamicPhysicsIgnoreStaticPhysics = 13,
+	TeleportRegion = 14,
+	OutfitTrigger = 15,
+	CameraMesh = 16,
+	DynamicPhysicsIgnoreDynamicPhysics = 17,
+	DynamicPhysicsIgnorePlayerPhysics = 18,
+	KillZone = 19,
+	PlayerTrigger = 20,
+	PersonalSpace = 21,
+	OverlayNotifications = 22,
+	DynamicPhysicsIgnoreDynamicAndPlayerPhysics = 23,
+	DynamicPhysicsIgnoreEnemyAndPlayerPhysics = 24,
+	TriggerCollider = 25,
+	EnemyPhysics = 26,
+	DynamicPhysicsIgnoreEnemyPhysics = 27
+}

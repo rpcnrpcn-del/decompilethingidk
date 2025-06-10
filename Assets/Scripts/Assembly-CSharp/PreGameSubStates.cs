@@ -1,0 +1,8 @@
+public enum PreGameSubStates
+{
+	WAITING_FOR_PLAYERS = 0,
+	WAITING_FOR_START_GAME = 1,
+	GAME_LOADING = 2,
+	GAME_ON = 3,
+	INVALID = 65535
+}

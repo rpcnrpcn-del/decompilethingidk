@@ -1,0 +1,11 @@
+public enum GameUIState
+{
+	PRE_GAME = 0,
+	WAITING_FOR_PLAYERS = 1,
+	GAME_STARTING = 2,
+	GAME_ON = 3,
+	GAME_RUNNING = 4,
+	GAME_OVER = 5,
+	RESULTS_LOCKED = 6,
+	RESULTS = 7
+}
