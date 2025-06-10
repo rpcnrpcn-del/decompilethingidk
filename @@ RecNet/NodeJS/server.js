@@ -11,6 +11,10 @@ const apiPlayers = require("./api/players")
 const apiAvatar = require("./api/avatar")
 const apiConfig = require("./api/rr_config")
 
+var activeSession = {
+    "Presence": {}
+}
+
 app.use(bodyParser.urlencoded({extended:true}))
 
 app.listen(25565, () => {
@@ -126,4 +130,37 @@ app.get("/api/settings/v2/set", async (req, res) => {
 })
 app.get("/api/settings/v2/remove", async (req, res) => {
     res.send("done")
+})
+// Presence
+app.get("/api/presence/v1/list", async (req, res) => {
+    var presences = []
+    req.body.forEach(element => {
+        presences.push(activeSession["Presence"][element])
+    });
+    res.send(presences)
+})
+app.get("/api/presence/v1/:profileId", async (req, res) => {
+    var ProfileId = req.params["profileId"]
+    res.send(activeSession["Presence"][ProfileId])
+})
+app.post("/api/presence/v2", async (req, res) => {
+    var PlayerId = req.fields["PlayerId"]
+    var GameSessionId = req.fields["GameSessionId"]
+    var AppVersion = req.fields["AppVersion"]
+    var LastUpdateTime = req.fields["LastUpdateTime"]
+    var Activity = req.fields["Activity"]
+    var Private = req.fields["Private"]
+    var AvailableSpace = req.fields["AvailableSpace"]
+    var GameInProgress = req.fields["GameInProgress"]
+    activeSession["Presence"][PlayerId] = {
+        "PlayerId": PlayerId,
+        "GameSessionId": GameSessionId,
+        "AppVersion": AppVersion,
+        "LastUpdateTime": LastUpdateTime,
+        "Activity": Activity,
+        "Private": Private,
+        "AvailableSpace": AvailableSpace,
+        "GameInProgress": GameInProgress
+    }
+    res.send("OK")
 })

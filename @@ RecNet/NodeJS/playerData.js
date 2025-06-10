@@ -108,3 +108,6 @@ export async function DoesProfileExist(PlayerId) {
         return false;
     }
 }
+export async function PlayerPresence(PlayerId) {
+    
+}
