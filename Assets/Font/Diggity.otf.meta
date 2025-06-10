@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: 02bd4ffe0f69ea04c938bf801a998238
+timeCreated: 1749568031
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  name:
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Diggity
+  fontNames:
+  - Diggity
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 8acf57847fba8e843843b124a156951f, type: 3}
+  customCharacters:
+  fontRenderingMode: 0
+  output:
+    hasEmptyFontData: 0
+  ascentCalculationMode: 1
+  userData:
+  assetBundleName:
+  assetBundleVariant:

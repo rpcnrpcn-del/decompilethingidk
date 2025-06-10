@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 880da041dc40d214e99671e42dd57fc9
+timeCreated: 1749568048
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  name:
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Futura-ExtraBold
+  fontNames:
+  - Futura-ExtraBold
+  fallbackFontReferences: []
+  customCharacters:
+  fontRenderingMode: 0
+  output:
+    hasEmptyFontData: 0
+  ascentCalculationMode: 1
+  userData:
+  assetBundleName:
+  assetBundleVariant:

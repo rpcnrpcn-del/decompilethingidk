@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1726705614703942}
+  m_IsPrefabParent: 1
+--- !u!1 &1726705614703942
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4638688643165004}
+  - component: {fileID: 114136343482035907}
+  m_Layer: 10
+  m_Name: _KioskPlayerCamera_
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4638688643165004
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1726705614703942}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114136343482035907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1726705614703942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8248b2b9dd058415c17b03a59fb07a80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lensTransform: {fileID: 4638688643165004}
+  Resolution: {x: 1080, y: 1080}
+  fieldOfView: 45
+  nearClip: 0.05
+  farClip: 50
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4290707423
+  positionSmoothingTime: 0.05
+  currentFollowMode: 1
+  emptyTexture: {fileID: 2800000, guid: 27f03dbdc4a6a314d918caf14c27891b, type: 3}
