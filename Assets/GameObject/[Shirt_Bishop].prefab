@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 4211310179838592}
   - component: {fileID: 114998115980453497}
   m_Layer: 10
-  m_Name: _Shirt_Bishop_
+  m_Name: '[Shirt_Bishop]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

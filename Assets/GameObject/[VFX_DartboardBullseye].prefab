@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 199495036074276580}
   - component: {fileID: 114764111038418825}
   m_Layer: 0
-  m_Name: _VFX_DartboardBullseye_
+  m_Name: '[VFX_DartboardBullseye]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

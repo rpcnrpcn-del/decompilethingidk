@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: 95342380999881695}
   - component: {fileID: 114552300014250883}
   m_Layer: 0
-  m_Name: _Hair_Bob_Bangs_
+  m_Name: '[Hair_Bob_Bangs]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

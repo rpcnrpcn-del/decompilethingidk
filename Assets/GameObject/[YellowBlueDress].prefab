@@ -82,7 +82,7 @@ GameObject:
   - component: {fileID: 4315928918904697}
   - component: {fileID: 114917970698125210}
   m_Layer: 10
-  m_Name: _YellowBlueDress_
+  m_Name: '[YellowBlueDress]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

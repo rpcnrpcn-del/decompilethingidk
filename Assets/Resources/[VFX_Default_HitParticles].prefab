@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 199942496562059760}
   - component: {fileID: 114909988414469126}
   m_Layer: 0
-  m_Name: _VFX_Default_HitParticles_
+  m_Name: '[VFX_Default_HitParticles]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

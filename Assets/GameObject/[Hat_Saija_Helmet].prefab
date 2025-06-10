@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4691732653210077}
   - component: {fileID: 114369169403604168}
   m_Layer: 10
-  m_Name: _Hat_Saija_Helmet_
+  m_Name: '[Hat_Saija_Helmet]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

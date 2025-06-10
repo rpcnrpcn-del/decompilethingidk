@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 114345484825723082}
   - component: {fileID: 114873777482049447}
   m_Layer: 10
-  m_Name: _PartyBand_
+  m_Name: '[PartyBand]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

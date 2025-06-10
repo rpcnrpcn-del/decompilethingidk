@@ -36,7 +36,7 @@ GameObject:
   - component: {fileID: 4945946532179822}
   - component: {fileID: 114814405226612721}
   m_Layer: 10
-  m_Name: _CollarShirt_
+  m_Name: '[CollarShirt]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

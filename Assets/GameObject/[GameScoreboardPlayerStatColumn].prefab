@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114222395240136294}
   - component: {fileID: 114616669349627294}
   m_Layer: 5
-  m_Name: _GameScoreboardPlayerStatColumn_
+  m_Name: '[GameScoreboardPlayerStatColumn]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

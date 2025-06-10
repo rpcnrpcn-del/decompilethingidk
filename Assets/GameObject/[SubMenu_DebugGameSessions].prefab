@@ -350,7 +350,7 @@ GameObject:
   - component: {fileID: 114903371757679526}
   - component: {fileID: 114144055384261468}
   m_Layer: 5
-  m_Name: _SubMenu_DebugGameSessions_
+  m_Name: '[SubMenu_DebugGameSessions]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

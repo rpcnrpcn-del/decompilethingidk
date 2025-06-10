@@ -67,7 +67,7 @@ GameObject:
   - component: {fileID: 95130687736780346}
   - component: {fileID: 114058179539694423}
   m_Layer: 0
-  m_Name: _Hair_Buzz_
+  m_Name: '[Hair_Buzz]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

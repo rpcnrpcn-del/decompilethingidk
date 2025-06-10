@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 114903314049953931}
   - component: {fileID: 114854724745915977}
   m_Layer: 26
-  m_Name: _FlyingEnemy_
+  m_Name: '[FlyingEnemy]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

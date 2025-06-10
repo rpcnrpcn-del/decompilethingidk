@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 4416280620742622}
   - component: {fileID: 114491240509303950}
   m_Layer: 10
-  m_Name: _Hat_FootBall_
+  m_Name: '[Hat_FootBall]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

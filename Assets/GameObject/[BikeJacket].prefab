@@ -36,7 +36,7 @@ GameObject:
   - component: {fileID: 4782599267114548}
   - component: {fileID: 114639334010004941}
   m_Layer: 10
-  m_Name: _BikeJacket_
+  m_Name: '[BikeJacket]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

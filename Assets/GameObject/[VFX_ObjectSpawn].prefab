@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 199378980918293527}
   - component: {fileID: 198473997973964615}
   m_Layer: 0
-  m_Name: _VFX_ObjectSpawn_
+  m_Name: '[VFX_ObjectSpawn]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

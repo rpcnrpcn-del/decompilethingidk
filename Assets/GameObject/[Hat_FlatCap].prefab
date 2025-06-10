@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 4819205421916645}
   - component: {fileID: 114780468422235302}
   m_Layer: 10
-  m_Name: _Hat_FlatCap_
+  m_Name: '[Hat_FlatCap]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

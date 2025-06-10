@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 4917920636560095}
   - component: {fileID: 114693716395796295}
   m_Layer: 10
-  m_Name: _Hat_Beret_
+  m_Name: '[Hat_Beret]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

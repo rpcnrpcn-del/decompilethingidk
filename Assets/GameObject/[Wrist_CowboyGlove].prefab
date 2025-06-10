@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 4219104870075863}
   - component: {fileID: 114321075787106460}
   m_Layer: 10
-  m_Name: _Wrist_CowboyGlove_
+  m_Name: '[Wrist_CowboyGlove]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

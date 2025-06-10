@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 4396006522207121}
   - component: {fileID: 114589325906566152}
   m_Layer: 10
-  m_Name: _TennisSkirt_
+  m_Name: '[TennisSkirt]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

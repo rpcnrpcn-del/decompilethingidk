@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4423626603343350}
   - component: {fileID: 114628300055622952}
   m_Layer: 10
-  m_Name: _GoldMedal_
+  m_Name: '[GoldMedal]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -52,7 +52,7 @@ GameObject:
   - component: {fileID: 95745064097063637}
   - component: {fileID: 114321106723650059}
   m_Layer: 0
-  m_Name: _Hair_PulpFiction_
+  m_Name: '[Hair_PulpFiction]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

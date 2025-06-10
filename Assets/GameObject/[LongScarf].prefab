@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 4315520572399867}
   - component: {fileID: 114266878225023451}
   m_Layer: 10
-  m_Name: _LongScarf_
+  m_Name: '[LongScarf]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

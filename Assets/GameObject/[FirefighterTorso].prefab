@@ -52,7 +52,7 @@ GameObject:
   - component: {fileID: 4975534725437513}
   - component: {fileID: 114313714857361791}
   m_Layer: 10
-  m_Name: _FirefighterTorso_
+  m_Name: '[FirefighterTorso]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

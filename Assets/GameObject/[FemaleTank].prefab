@@ -82,7 +82,7 @@ GameObject:
   - component: {fileID: 4483017840206402}
   - component: {fileID: 114026990342660639}
   m_Layer: 10
-  m_Name: _FemaleTank_
+  m_Name: '[FemaleTank]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 198865584507518403}
   - component: {fileID: 199589679814878663}
   m_Layer: 0
-  m_Name: _VFX_Handshake_
+  m_Name: '[VFX_Handshake]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

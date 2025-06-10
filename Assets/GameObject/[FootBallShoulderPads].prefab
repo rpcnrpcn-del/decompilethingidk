@@ -82,7 +82,7 @@ GameObject:
   - component: {fileID: 4182854299945154}
   - component: {fileID: 114188516442959934}
   m_Layer: 10
-  m_Name: _FootBallShoulderPads_
+  m_Name: '[FootBallShoulderPads]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -705,7 +705,7 @@ GameObject:
   - component: {fileID: 114201326648994437}
   - component: {fileID: 114235569560829880}
   m_Layer: 5
-  m_Name: _SubMenu_Play_
+  m_Name: '[SubMenu_Play]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

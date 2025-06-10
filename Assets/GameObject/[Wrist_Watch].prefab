@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 4082731866461413}
   - component: {fileID: 114467921423970109}
   m_Layer: 10
-  m_Name: _Wrist_Watch_
+  m_Name: '[Wrist_Watch]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

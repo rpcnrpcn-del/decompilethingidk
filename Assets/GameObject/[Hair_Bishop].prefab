@@ -52,7 +52,7 @@ GameObject:
   - component: {fileID: 95182590550778632}
   - component: {fileID: 114896444914458368}
   m_Layer: 0
-  m_Name: _Hair_Bishop_
+  m_Name: '[Hair_Bishop]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

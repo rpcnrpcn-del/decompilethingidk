@@ -653,7 +653,7 @@ GameObject:
   - component: {fileID: 114412737885906289}
   - component: {fileID: 114509551941054141}
   m_Layer: 10
-  m_Name: _GiftBox_
+  m_Name: '[GiftBox]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

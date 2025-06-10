@@ -82,7 +82,7 @@ GameObject:
   - component: {fileID: 4236651469754050}
   - component: {fileID: 114973478322293476}
   m_Layer: 10
-  m_Name: _Jazzercise_
+  m_Name: '[Jazzercise]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

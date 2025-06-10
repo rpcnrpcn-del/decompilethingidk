@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 114204487721045848}
   - component: {fileID: 114965313253157029}
   m_Layer: 10
-  m_Name: _PlayingCardGroup_
+  m_Name: '[PlayingCardGroup]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

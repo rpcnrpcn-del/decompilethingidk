@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 199451822825166387}
   - component: {fileID: 114176128297196268}
   m_Layer: 0
-  m_Name: _VFX_GoldDrop_
+  m_Name: '[VFX_GoldDrop]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

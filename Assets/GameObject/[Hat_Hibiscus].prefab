@@ -82,7 +82,7 @@ GameObject:
   - component: {fileID: 4670016668867825}
   - component: {fileID: 114730277105418515}
   m_Layer: 10
-  m_Name: _Hat_Hibiscus_
+  m_Name: '[Hat_Hibiscus]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

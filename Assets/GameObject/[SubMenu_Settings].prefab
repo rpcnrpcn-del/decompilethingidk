@@ -2079,7 +2079,7 @@ GameObject:
   - component: {fileID: 114278735033016800}
   - component: {fileID: 114022885377588219}
   m_Layer: 5
-  m_Name: _SubMenu_Settings_
+  m_Name: '[SubMenu_Settings]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

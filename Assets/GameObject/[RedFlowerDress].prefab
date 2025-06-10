@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 4335001120959788}
   - component: {fileID: 114920044523483434}
   m_Layer: 10
-  m_Name: _RedFlowerDress_
+  m_Name: '[RedFlowerDress]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

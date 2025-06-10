@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 4558666010804590}
   - component: {fileID: 114693600328482150}
   m_Layer: 5
-  m_Name: _OutfitToolUI_
+  m_Name: '[OutfitToolUI]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

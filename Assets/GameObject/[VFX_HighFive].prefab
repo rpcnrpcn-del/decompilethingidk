@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 198940266168082913}
   - component: {fileID: 199478447163071860}
   m_Layer: 0
-  m_Name: _VFX_HighFive_
+  m_Name: '[VFX_HighFive]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

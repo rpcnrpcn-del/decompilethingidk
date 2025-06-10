@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 4022083311103861}
   - component: {fileID: 114312357395727938}
   m_Layer: 10
-  m_Name: _Hat_SmallBrim_
+  m_Name: '[Hat_SmallBrim]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

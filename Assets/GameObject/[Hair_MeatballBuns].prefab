@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 95413521649641932}
   - component: {fileID: 114968033928801130}
   m_Layer: 0
-  m_Name: _Hair_MeatballBuns_
+  m_Name: '[Hair_MeatballBuns]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

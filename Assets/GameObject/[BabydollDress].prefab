@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 4905691682479237}
   - component: {fileID: 114399603392730570}
   m_Layer: 10
-  m_Name: _BabydollDress_
+  m_Name: '[BabydollDress]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

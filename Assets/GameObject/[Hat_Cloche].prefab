@@ -36,7 +36,7 @@ GameObject:
   - component: {fileID: 4757280911050603}
   - component: {fileID: 114886801135610461}
   m_Layer: 10
-  m_Name: _Hat_Cloche_
+  m_Name: '[Hat_Cloche]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

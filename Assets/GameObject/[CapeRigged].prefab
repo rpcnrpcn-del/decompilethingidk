@@ -67,7 +67,7 @@ GameObject:
   - component: {fileID: 4512475244349152}
   - component: {fileID: 114050272222192432}
   m_Layer: 10
-  m_Name: _CapeRigged_
+  m_Name: '[CapeRigged]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

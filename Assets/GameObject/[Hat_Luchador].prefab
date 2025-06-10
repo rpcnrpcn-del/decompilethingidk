@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 4485172701393669}
   - component: {fileID: 114037606223225581}
   m_Layer: 10
-  m_Name: _Hat_Luchador_
+  m_Name: '[Hat_Luchador]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -67,7 +67,7 @@ GameObject:
   - component: {fileID: 4574954721445278}
   - component: {fileID: 114952397430378818}
   m_Layer: 10
-  m_Name: _CowboyTorso_
+  m_Name: '[CowboyTorso]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 4320805955331839}
   - component: {fileID: 114574847561283641}
   m_Layer: 10
-  m_Name: _PinkStollDress_
+  m_Name: '[PinkStollDress]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

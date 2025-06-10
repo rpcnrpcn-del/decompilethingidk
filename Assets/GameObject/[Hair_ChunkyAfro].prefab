@@ -67,7 +67,7 @@ GameObject:
   - component: {fileID: 95967697271328371}
   - component: {fileID: 114190095558220921}
   m_Layer: 0
-  m_Name: _Hair_ChunkyAfro_
+  m_Name: '[Hair_ChunkyAfro]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

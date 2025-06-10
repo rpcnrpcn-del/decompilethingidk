@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 95917479882392228}
   - component: {fileID: 114877442361440039}
   m_Layer: 0
-  m_Name: _Hair_PunkGirl_
+  m_Name: '[Hair_PunkGirl]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

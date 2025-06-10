@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4503887717601552}
   - component: {fileID: 114041008445779068}
   m_Layer: 10
-  m_Name: _Shirt_Saija_
+  m_Name: '[Shirt_Saija]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

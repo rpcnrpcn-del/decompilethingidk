@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 95870157325539082}
   - component: {fileID: 114406751693293359}
   m_Layer: 0
-  m_Name: _Hair_PigTails_
+  m_Name: '[Hair_PigTails]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

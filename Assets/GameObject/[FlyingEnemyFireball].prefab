@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4656173582811360}
   - component: {fileID: 114679451212080825}
   m_Layer: 10
-  m_Name: _FlyingEnemyFireball_
+  m_Name: '[FlyingEnemyFireball]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

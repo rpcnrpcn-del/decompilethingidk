@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4312321196260696}
   m_Layer: 10
-  m_Name: _SituationRing_
+  m_Name: '[SituationRing]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

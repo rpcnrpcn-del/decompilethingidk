@@ -36,7 +36,7 @@ GameObject:
   - component: {fileID: 4091868387003968}
   - component: {fileID: 114352053548785539}
   m_Layer: 10
-  m_Name: _FurCoat_
+  m_Name: '[FurCoat]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

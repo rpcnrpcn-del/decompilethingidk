@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4545343027213410}
   - component: {fileID: 114633499870391156}
   m_Layer: 10
-  m_Name: _Hat_Visor_
+  m_Name: '[Hat_Visor]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114892521308315377}
   - component: {fileID: 114413252976117871}
   m_Layer: 5
-  m_Name: _GameScoreboardTeamRow_
+  m_Name: '[GameScoreboardTeamRow]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

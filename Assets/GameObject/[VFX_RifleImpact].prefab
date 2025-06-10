@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 199548334314822133}
   - component: {fileID: 114821668972244257}
   m_Layer: 0
-  m_Name: _VFX_RifleImpact_
+  m_Name: '[VFX_RifleImpact]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

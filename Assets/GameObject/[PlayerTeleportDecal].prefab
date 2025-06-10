@@ -324,7 +324,7 @@ GameObject:
   - component: {fileID: 4910568397355180}
   - component: {fileID: 114223881524505112}
   m_Layer: 0
-  m_Name: _PlayerTeleportDecal_
+  m_Name: '[PlayerTeleportDecal]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

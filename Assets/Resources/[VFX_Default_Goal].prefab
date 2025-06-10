@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 199990472725169309}
   - component: {fileID: 114332933429553346}
   m_Layer: 0
-  m_Name: _VFX_Default_Goal_
+  m_Name: '[VFX_Default_Goal]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

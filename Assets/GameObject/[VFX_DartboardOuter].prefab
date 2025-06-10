@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 199985388505660222}
   - component: {fileID: 114149256966357885}
   m_Layer: 0
-  m_Name: _VFX_DartboardOuter_
+  m_Name: '[VFX_DartboardOuter]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

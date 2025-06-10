@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 199238030199723639}
   - component: {fileID: 114672416964640537}
   m_Layer: 0
-  m_Name: _VFX_Gift_Exp_
+  m_Name: '[VFX_Gift_Exp]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

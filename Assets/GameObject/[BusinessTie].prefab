@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 4553793953984112}
   - component: {fileID: 114096759195897809}
   m_Layer: 10
-  m_Name: _BusinessTie_
+  m_Name: '[BusinessTie]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

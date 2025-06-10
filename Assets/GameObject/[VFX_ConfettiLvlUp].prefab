@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 114503398943263642}
   - component: {fileID: 114286642763596261}
   m_Layer: 0
-  m_Name: _VFX_ConfettiLvlUp_
+  m_Name: '[VFX_ConfettiLvlUp]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

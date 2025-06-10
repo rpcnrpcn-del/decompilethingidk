@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4726798081784141}
   - component: {fileID: 114896946002372493}
   m_Layer: 10
-  m_Name: _FlowerSwimsuit_
+  m_Name: '[FlowerSwimsuit]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

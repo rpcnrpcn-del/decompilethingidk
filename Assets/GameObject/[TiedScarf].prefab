@@ -36,7 +36,7 @@ GameObject:
   - component: {fileID: 4067638968383710}
   - component: {fileID: 114225492215393933}
   m_Layer: 10
-  m_Name: _TiedScarf_
+  m_Name: '[TiedScarf]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

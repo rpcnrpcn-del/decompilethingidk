@@ -66,7 +66,7 @@ GameObject:
   - component: {fileID: 4651507270401361}
   - component: {fileID: 114656587682150566}
   m_Layer: 10
-  m_Name: _Bowtie_
+  m_Name: '[Bowtie]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

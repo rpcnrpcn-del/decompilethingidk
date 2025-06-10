@@ -83,7 +83,7 @@ GameObject:
   - component: {fileID: 95838251427130915}
   - component: {fileID: 114749369358456609}
   m_Layer: 0
-  m_Name: _Hair_Spiky_
+  m_Name: '[Hair_Spiky]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

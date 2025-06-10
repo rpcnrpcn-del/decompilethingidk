@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4458369606790399}
   - component: {fileID: 114353313584561873}
   m_Layer: 10
-  m_Name: _Neck_MaleCheerSash_
+  m_Name: '[Neck_MaleCheerSash]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

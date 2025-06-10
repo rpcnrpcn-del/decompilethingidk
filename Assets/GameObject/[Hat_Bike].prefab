@@ -52,7 +52,7 @@ GameObject:
   - component: {fileID: 4428218155528749}
   - component: {fileID: 114310183242493357}
   m_Layer: 10
-  m_Name: _Hat_Bike_
+  m_Name: '[Hat_Bike]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 114472333569356382}
   - component: {fileID: 114642969596570929}
   m_Layer: 10
-  m_Name: _PokerChipGroup_
+  m_Name: '[PokerChipGroup]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

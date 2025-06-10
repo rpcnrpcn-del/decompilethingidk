@@ -67,7 +67,7 @@ GameObject:
   - component: {fileID: 4491872120881241}
   - component: {fileID: 114887378398858101}
   m_Layer: 10
-  m_Name: _Hat_SeaCaptain_
+  m_Name: '[Hat_SeaCaptain]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

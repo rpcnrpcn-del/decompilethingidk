@@ -81,7 +81,7 @@ GameObject:
   - component: {fileID: 4931565844572492}
   - component: {fileID: 114791107978087575}
   m_Layer: 10
-  m_Name: _Wrist_PaintballGlove_
+  m_Name: '[Wrist_PaintballGlove]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

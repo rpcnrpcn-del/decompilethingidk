@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4855841764336814}
   - component: {fileID: 114156121315747048}
   m_Layer: 10
-  m_Name: _RedBeltDress_
+  m_Name: '[RedBeltDress]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

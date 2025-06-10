@@ -68,7 +68,7 @@ GameObject:
   - component: {fileID: 95396610098709365}
   - component: {fileID: 114477089015252380}
   m_Layer: 0
-  m_Name: _Beard_Thick_
+  m_Name: '[Beard_Thick]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

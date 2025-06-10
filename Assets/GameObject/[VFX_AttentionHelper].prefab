@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 199242814126913075}
   - component: {fileID: 114357851284552645}
   m_Layer: 0
-  m_Name: _VFX_AttentionHelper_
+  m_Name: '[VFX_AttentionHelper]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

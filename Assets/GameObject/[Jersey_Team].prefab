@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 4121777610344467}
   - component: {fileID: 114425328933744429}
   m_Layer: 10
-  m_Name: _Jersey_Team_
+  m_Name: '[Jersey_Team]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

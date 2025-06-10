@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 114279749846428040}
   - component: {fileID: 114580137025348216}
   m_Layer: 5
-  m_Name: _GameScoreboardPlayerRow_
+  m_Name: '[GameScoreboardPlayerRow]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

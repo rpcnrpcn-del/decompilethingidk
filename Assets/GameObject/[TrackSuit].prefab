@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4574862124143211}
   - component: {fileID: 114993885909472242}
   m_Layer: 10
-  m_Name: _TrackSuit_
+  m_Name: '[TrackSuit]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

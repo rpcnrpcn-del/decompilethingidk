@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 199129662994398037}
   - component: {fileID: 114161470559598110}
   m_Layer: 0
-  m_Name: _VFX_Basketball_PassedRim_
+  m_Name: '[VFX_Basketball_PassedRim]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -36,7 +36,7 @@ GameObject:
   - component: {fileID: 4198384854736380}
   - component: {fileID: 114301016326399413}
   m_Layer: 10
-  m_Name: _Hat_Firefighter_
+  m_Name: '[Hat_Firefighter]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

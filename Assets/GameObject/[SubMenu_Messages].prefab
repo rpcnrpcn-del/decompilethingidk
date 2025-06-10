@@ -1790,7 +1790,7 @@ GameObject:
   - component: {fileID: 114880128240258184}
   - component: {fileID: 114413805529851896}
   m_Layer: 5
-  m_Name: _SubMenu_Messages_
+  m_Name: '[SubMenu_Messages]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

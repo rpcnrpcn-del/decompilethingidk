@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4863415885794754}
   - component: {fileID: 114481955024364464}
   m_Layer: 10
-  m_Name: _FemaleCheerTorso_
+  m_Name: '[FemaleCheerTorso]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

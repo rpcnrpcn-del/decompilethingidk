@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 198483683563497747}
   - component: {fileID: 199459063593722729}
   m_Layer: 0
-  m_Name: _VFX_HandshakeBurst_
+  m_Name: '[VFX_HandshakeBurst]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

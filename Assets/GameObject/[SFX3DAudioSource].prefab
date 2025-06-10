@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 82042393561777192}
   - component: {fileID: 114137057746079947}
   m_Layer: 0
-  m_Name: _SFX3DAudioSource_
+  m_Name: '[SFX3DAudioSource]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -51,7 +51,7 @@ GameObject:
   - component: {fileID: 4688491109829652}
   - component: {fileID: 114152252836468094}
   m_Layer: 10
-  m_Name: _Hat_Viking_
+  m_Name: '[Hat_Viking]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

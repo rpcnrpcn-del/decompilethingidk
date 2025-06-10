@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 198299134218920499}
   - component: {fileID: 114258182902415260}
   m_Layer: 0
-  m_Name: _VFX_PaintBall_Shoot_
+  m_Name: '[VFX_PaintBall_Shoot]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

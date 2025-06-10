@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 95413694800149805}
   - component: {fileID: 114580790719217789}
   m_Layer: 0
-  m_Name: _Hair_Part_
+  m_Name: '[Hair_Part]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

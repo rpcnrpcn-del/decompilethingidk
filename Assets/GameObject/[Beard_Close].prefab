@@ -52,7 +52,7 @@ GameObject:
   - component: {fileID: 95376988231111331}
   - component: {fileID: 114496558911799316}
   m_Layer: 0
-  m_Name: _Beard_Close_
+  m_Name: '[Beard_Close]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

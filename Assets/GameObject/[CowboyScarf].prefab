@@ -67,7 +67,7 @@ GameObject:
   - component: {fileID: 4174567741933175}
   - component: {fileID: 114831126296834093}
   m_Layer: 10
-  m_Name: _CowboyScarf_
+  m_Name: '[CowboyScarf]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

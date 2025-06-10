@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 95955501907422197}
   - component: {fileID: 114954351889518441}
   m_Layer: 0
-  m_Name: _CopStache_
+  m_Name: '[CopStache]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

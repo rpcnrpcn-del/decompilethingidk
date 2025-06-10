@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 222841708329234199}
   - component: {fileID: 114852492980950112}
   m_Layer: 16
-  m_Name: _HealthChunk_
+  m_Name: '[HealthChunk]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

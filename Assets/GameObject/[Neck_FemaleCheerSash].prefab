@@ -66,7 +66,7 @@ GameObject:
   - component: {fileID: 4285174490431458}
   - component: {fileID: 114707857463859335}
   m_Layer: 10
-  m_Name: _Neck_FemaleCheerSash_
+  m_Name: '[Neck_FemaleCheerSash]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

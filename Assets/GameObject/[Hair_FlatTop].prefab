@@ -83,7 +83,7 @@ GameObject:
   - component: {fileID: 95191666656624551}
   - component: {fileID: 114393700206268817}
   m_Layer: 0
-  m_Name: _Hair_FlatTop_
+  m_Name: '[Hair_FlatTop]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

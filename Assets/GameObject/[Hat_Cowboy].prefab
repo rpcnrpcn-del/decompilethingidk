@@ -51,7 +51,7 @@ GameObject:
   - component: {fileID: 4967660505343151}
   - component: {fileID: 114309137909038961}
   m_Layer: 10
-  m_Name: _Hat_Cowboy_
+  m_Name: '[Hat_Cowboy]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 114186881917122489}
   - component: {fileID: 114832781618994776}
   m_Layer: 10
-  m_Name: _PlayerHandRemote_
+  m_Name: '[PlayerHandRemote]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

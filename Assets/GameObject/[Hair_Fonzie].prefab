@@ -82,7 +82,7 @@ GameObject:
   - component: {fileID: 95681564820814428}
   - component: {fileID: 114322129552640516}
   m_Layer: 0
-  m_Name: _Hair_Fonzie_
+  m_Name: '[Hair_Fonzie]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

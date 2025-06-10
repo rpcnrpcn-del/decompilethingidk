@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 4839283773715251}
   - component: {fileID: 114614209372676656}
   m_Layer: 10
-  m_Name: _Wrist_Saija_Glove_
+  m_Name: '[Wrist_Saija_Glove]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

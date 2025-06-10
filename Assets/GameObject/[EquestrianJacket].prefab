@@ -81,7 +81,7 @@ GameObject:
   - component: {fileID: 4151645530991691}
   - component: {fileID: 114782980913808158}
   m_Layer: 10
-  m_Name: _EquestrianJacket_
+  m_Name: '[EquestrianJacket]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23529416139359543}
   - component: {fileID: 114354394268279599}
   m_Layer: 0
-  m_Name: _PaintballImpactDecal_
+  m_Name: '[PaintballImpactDecal]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 114982815636040273}
   - component: {fileID: 114399370182602058}
   m_Layer: 26
-  m_Name: _QuestKnightEnemy_
+  m_Name: '[QuestKnightEnemy]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -81,7 +81,7 @@ GameObject:
   - component: {fileID: 4662223700317053}
   - component: {fileID: 114371825472110374}
   m_Layer: 10
-  m_Name: _Wrist_WristBand_
+  m_Name: '[Wrist_WristBand]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -82,7 +82,7 @@ GameObject:
   - component: {fileID: 95285017384280598}
   - component: {fileID: 114495815309134445}
   m_Layer: 0
-  m_Name: _Hair_Mohawk_
+  m_Name: '[Hair_Mohawk]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

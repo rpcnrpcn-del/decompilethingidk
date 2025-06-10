@@ -82,7 +82,7 @@ GameObject:
   - component: {fileID: 95800495772445229}
   - component: {fileID: 114693581054054249}
   m_Layer: 0
-  m_Name: _Hair_GordonGekko_
+  m_Name: '[Hair_GordonGekko]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

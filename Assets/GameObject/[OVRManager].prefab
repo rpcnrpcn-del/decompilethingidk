@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114168604754032704}
   - component: {fileID: 114752885067794461}
   m_Layer: 0
-  m_Name: _OVRManager_
+  m_Name: '[OVRManager]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

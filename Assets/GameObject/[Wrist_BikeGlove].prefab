@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 4101229128223707}
   - component: {fileID: 114077151129686101}
   m_Layer: 10
-  m_Name: _Wrist_BikeGlove_
+  m_Name: '[Wrist_BikeGlove]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

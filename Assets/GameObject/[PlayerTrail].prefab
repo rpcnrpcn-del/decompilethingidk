@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4416835412520844}
   - component: {fileID: 114374175571903503}
   m_Layer: 10
-  m_Name: _PlayerTrail_
+  m_Name: '[PlayerTrail]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

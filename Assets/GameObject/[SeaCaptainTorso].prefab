@@ -82,7 +82,7 @@ GameObject:
   - component: {fileID: 4090539767581360}
   - component: {fileID: 114639737771064598}
   m_Layer: 10
-  m_Name: _SeaCaptainTorso_
+  m_Name: '[SeaCaptainTorso]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

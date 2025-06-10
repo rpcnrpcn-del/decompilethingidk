@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114364613929649719}
   - component: {fileID: 114281296421644547}
   m_Layer: 0
-  m_Name: _SteamVRManager_
+  m_Name: '[SteamVRManager]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

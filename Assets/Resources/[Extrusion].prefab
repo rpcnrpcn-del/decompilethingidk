@@ -33,7 +33,7 @@ GameObject:
   - component: {fileID: 114789501788733286}
   - component: {fileID: 114301327898176828}
   m_Layer: 10
-  m_Name: _Extrusion_
+  m_Name: '[Extrusion]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

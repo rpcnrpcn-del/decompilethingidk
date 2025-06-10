@@ -68,7 +68,7 @@ GameObject:
   - component: {fileID: 95452951999273504}
   - component: {fileID: 114792466294786977}
   m_Layer: 0
-  m_Name: _SeaCaptainBeard_
+  m_Name: '[SeaCaptainBeard]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

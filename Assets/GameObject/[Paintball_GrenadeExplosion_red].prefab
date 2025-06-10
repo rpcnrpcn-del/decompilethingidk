@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 199203274626801895}
   - component: {fileID: 114361687799212405}
   m_Layer: 0
-  m_Name: _Paintball_GrenadeExplosion_red_
+  m_Name: '[Paintball_GrenadeExplosion_red]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

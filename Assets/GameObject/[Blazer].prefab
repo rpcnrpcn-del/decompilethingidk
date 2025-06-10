@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4849501768799439}
   - component: {fileID: 114733907457025042}
   m_Layer: 10
-  m_Name: _Blazer_
+  m_Name: '[Blazer]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

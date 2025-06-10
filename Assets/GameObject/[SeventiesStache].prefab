@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 95909411165948803}
   - component: {fileID: 114455441842767229}
   m_Layer: 0
-  m_Name: _SeventiesStache_
+  m_Name: '[SeventiesStache]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

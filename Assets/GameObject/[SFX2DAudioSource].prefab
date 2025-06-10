@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 82064505381050636}
   - component: {fileID: 114338267215126459}
   m_Layer: 0
-  m_Name: _SFX2DAudioSource_
+  m_Name: '[SFX2DAudioSource]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

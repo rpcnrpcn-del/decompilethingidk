@@ -82,7 +82,7 @@ GameObject:
   - component: {fileID: 95299383703398929}
   - component: {fileID: 114037550514588909}
   m_Layer: 0
-  m_Name: _CowboyStache_
+  m_Name: '[CowboyStache]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

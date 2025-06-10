@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 4935686583843899}
   - component: {fileID: 114984544326059901}
   m_Layer: 10
-  m_Name: _Wrist_WristTape_
+  m_Name: '[Wrist_WristTape]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

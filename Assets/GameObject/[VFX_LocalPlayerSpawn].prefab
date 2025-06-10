@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 198876359583146490}
   - component: {fileID: 199604168115290001}
   m_Layer: 0
-  m_Name: _VFX_LocalPlayerSpawn_
+  m_Name: '[VFX_LocalPlayerSpawn]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

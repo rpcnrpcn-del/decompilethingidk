@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 199696705835701572}
   - component: {fileID: 114463156962627182}
   m_Layer: 0
-  m_Name: _VFX_Leaf_
+  m_Name: '[VFX_Leaf]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1058,7 +1058,7 @@ GameObject:
   - component: {fileID: 114198361311558477}
   - component: {fileID: 114331823620199421}
   m_Layer: 5
-  m_Name: _SubMenu_Panic_
+  m_Name: '[SubMenu_Panic]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

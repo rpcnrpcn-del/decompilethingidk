@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4864371637319893}
   - component: {fileID: 114561085811005626}
   m_Layer: 10
-  m_Name: _Jersey_Dev_
+  m_Name: '[Jersey_Dev]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4149770681956370}
   - component: {fileID: 114842662840618054}
   m_Layer: 10
-  m_Name: _OrangeCollarDress_
+  m_Name: '[OrangeCollarDress]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

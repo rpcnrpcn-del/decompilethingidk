@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 4040536678810231}
   - component: {fileID: 114519926862168398}
   m_Layer: 10
-  m_Name: _HockeyShirt_
+  m_Name: '[HockeyShirt]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

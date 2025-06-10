@@ -51,7 +51,7 @@ GameObject:
   - component: {fileID: 4916424721558862}
   - component: {fileID: 114407162683360608}
   m_Layer: 10
-  m_Name: _LuchadorCape_
+  m_Name: '[LuchadorCape]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

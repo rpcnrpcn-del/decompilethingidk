@@ -52,7 +52,7 @@ GameObject:
   - component: {fileID: 95857323190399477}
   - component: {fileID: 114180984622629615}
   m_Layer: 0
-  m_Name: _Hair_Shagg_
+  m_Name: '[Hair_Shagg]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

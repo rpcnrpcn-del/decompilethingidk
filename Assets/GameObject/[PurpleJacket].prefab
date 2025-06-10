@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4155110691167452}
   - component: {fileID: 114170708980744095}
   m_Layer: 10
-  m_Name: _PurpleJacket_
+  m_Name: '[PurpleJacket]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

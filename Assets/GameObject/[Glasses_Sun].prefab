@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 95677279470880980}
   - component: {fileID: 114991395196594282}
   m_Layer: 0
-  m_Name: _Glasses_Sun_
+  m_Name: '[Glasses_Sun]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

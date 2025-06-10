@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 198463033835745659}
   - component: {fileID: 199629539926759450}
   m_Layer: 0
-  m_Name: _VFX_FistBump_
+  m_Name: '[VFX_FistBump]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

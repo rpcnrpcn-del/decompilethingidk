@@ -67,7 +67,7 @@ GameObject:
   - component: {fileID: 4770132613856348}
   - component: {fileID: 114868941367450306}
   m_Layer: 10
-  m_Name: _BaseballTorso_
+  m_Name: '[BaseballTorso]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 199341784769535984}
   - component: {fileID: 114007587059178364}
   m_Layer: 0
-  m_Name: _VFX_Charades_Goal_
+  m_Name: '[VFX_Charades_Goal]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 199321577290251189}
   - component: {fileID: 114174385473762667}
   m_Layer: 0
-  m_Name: _Paintball_ShotgunBurst01_
+  m_Name: '[Paintball_ShotgunBurst01]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4534714106332888}
   - component: {fileID: 114532306339070168}
   m_Layer: 10
-  m_Name: _LuchadorTorso_
+  m_Name: '[LuchadorTorso]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

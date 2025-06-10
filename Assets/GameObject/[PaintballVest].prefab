@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 4304690205611665}
   - component: {fileID: 114883854449394069}
   m_Layer: 10
-  m_Name: _PaintballVest_
+  m_Name: '[PaintballVest]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

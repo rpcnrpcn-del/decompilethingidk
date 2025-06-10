@@ -67,7 +67,7 @@ GameObject:
   - component: {fileID: 4387114540100032}
   - component: {fileID: 114828757078515362}
   m_Layer: 10
-  m_Name: _Hat_BaseballHelmet_
+  m_Name: '[Hat_BaseballHelmet]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

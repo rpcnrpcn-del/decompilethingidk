@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4894477030350141}
   - component: {fileID: 114210524026605326}
   m_Layer: 10
-  m_Name: _BlackCheerDress_
+  m_Name: '[BlackCheerDress]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

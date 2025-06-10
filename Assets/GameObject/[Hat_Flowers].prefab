@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4040495587441535}
   - component: {fileID: 114925561037645593}
   m_Layer: 10
-  m_Name: _Hat_Flowers_
+  m_Name: '[Hat_Flowers]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

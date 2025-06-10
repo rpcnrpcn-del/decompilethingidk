@@ -36,7 +36,7 @@ GameObject:
   - component: {fileID: 4967045522983341}
   - component: {fileID: 114091642828260953}
   m_Layer: 10
-  m_Name: _Hat_Equestrian_
+  m_Name: '[Hat_Equestrian]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

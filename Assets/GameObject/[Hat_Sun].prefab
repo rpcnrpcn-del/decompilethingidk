@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 4936711976958371}
   - component: {fileID: 114873393582854738}
   m_Layer: 10
-  m_Name: _Hat_Sun_
+  m_Name: '[Hat_Sun]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

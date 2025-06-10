@@ -83,7 +83,7 @@ GameObject:
   - component: {fileID: 95873761237764935}
   - component: {fileID: 114448336782777921}
   m_Layer: 0
-  m_Name: _Hair_Emo_
+  m_Name: '[Hair_Emo]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

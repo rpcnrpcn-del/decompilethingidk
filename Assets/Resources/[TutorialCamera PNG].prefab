@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 4498461735829980}
   - component: {fileID: 114176703551190076}
   m_Layer: 0
-  m_Name: _TutorialCamera PNG_
+  m_Name: '[TutorialCamera PNG]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 4048035054359113}
   - component: {fileID: 114237345392608739}
   m_Layer: 10
-  m_Name: _Glasses_Paintball_
+  m_Name: '[Glasses_Paintball]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

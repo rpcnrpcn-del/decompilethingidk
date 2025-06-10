@@ -82,7 +82,7 @@ GameObject:
   - component: {fileID: 4814933717531802}
   - component: {fileID: 114691915623868094}
   m_Layer: 10
-  m_Name: _Hat_TopHat_
+  m_Name: '[Hat_TopHat]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

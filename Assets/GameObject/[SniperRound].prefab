@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 4360246353803085}
   - component: {fileID: 114394595704794375}
   m_Layer: 10
-  m_Name: _SniperRound_
+  m_Name: '[SniperRound]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

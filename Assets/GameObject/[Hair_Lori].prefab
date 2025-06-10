@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 95883627700133633}
   - component: {fileID: 114241683645414286}
   m_Layer: 0
-  m_Name: _Hair_Lori_
+  m_Name: '[Hair_Lori]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

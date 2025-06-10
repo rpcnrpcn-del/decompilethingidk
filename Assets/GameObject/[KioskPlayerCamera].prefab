@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4638688643165004}
   - component: {fileID: 114136343482035907}
   m_Layer: 10
-  m_Name: _KioskPlayerCamera_
+  m_Name: '[KioskPlayerCamera]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 114175356430401267}
   - component: {fileID: 114600806939941438}
   m_Layer: 16
-  m_Name: _HealthBar_
+  m_Name: '[HealthBar]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

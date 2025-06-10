@@ -67,7 +67,7 @@ GameObject:
   - component: {fileID: 95538840640643340}
   - component: {fileID: 114919255549105142}
   m_Layer: 0
-  m_Name: _Glasses_Pointy_
+  m_Name: '[Glasses_Pointy]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4826622461098580}
   - component: {fileID: 114881285171985916}
   m_Layer: 10
-  m_Name: _FemaleTShirt_
+  m_Name: '[FemaleTShirt]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4958578262201075}
   - component: {fileID: 114239940937291857}
   m_Layer: 10
-  m_Name: _Hat_CatEars_
+  m_Name: '[Hat_CatEars]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -52,7 +52,7 @@ GameObject:
   - component: {fileID: 95419026586999285}
   - component: {fileID: 114046193219444072}
   m_Layer: 0
-  m_Name: _Glasses_Square_
+  m_Name: '[Glasses_Square]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

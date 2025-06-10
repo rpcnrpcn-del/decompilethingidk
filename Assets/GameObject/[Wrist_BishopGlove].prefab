@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 4366788204423100}
   - component: {fileID: 114143723517615049}
   m_Layer: 10
-  m_Name: _Wrist_BishopGlove_
+  m_Name: '[Wrist_BishopGlove]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

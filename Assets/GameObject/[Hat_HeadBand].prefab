@@ -82,7 +82,7 @@ GameObject:
   - component: {fileID: 4365148960067038}
   - component: {fileID: 114381932386904679}
   m_Layer: 10
-  m_Name: _Hat_HeadBand_
+  m_Name: '[Hat_HeadBand]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
