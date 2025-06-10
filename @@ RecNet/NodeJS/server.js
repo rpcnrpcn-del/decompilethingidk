@@ -110,3 +110,20 @@ app.get("/api/config/v2", async (req, res) => {
     var rrConfig = await apiConfig.RRConfig()
     res.send(rrConfig)
 })
+app.get("/api/settings/v2/", async (req, res) => {
+    console.log("Getting Preferences.")
+    var PlayerId = req.headers["x-rec-room-profile"]
+    var Settings = await apiPlayers.DownloadPreferences(PlayerId)
+    if (Settings == null || Settings == 0) {
+        res.send(404)
+    } else {
+        res.send(Settings)
+    }
+})
+// placeholders
+app.get("/api/settings/v2/set", async (req, res) => {
+    res.send("done")
+})
+app.get("/api/settings/v2/remove", async (req, res) => {
+    res.send("done")
+})

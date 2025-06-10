@@ -4,6 +4,36 @@ import path from 'path'
 
 const rootDir = process.cwd()
 
+const SettingsTemplate = [
+    {
+        "Key": "QualitySettings",
+        "Value": "Fantastic"
+    },
+    {
+        "Key": "VoiceChat",
+        "Value": 0
+    },
+    {
+        "Key": "ShowNames",
+        "Value": 1
+    },
+    {
+        "Key": "ShowRoomCenter",
+        "Value": 0
+    },
+    {
+        "Key": "ROTATION_INCREMENT",
+        "Value": 0
+    },
+    {
+        "Key": "MOTION_TELEPORT_ENABLED",
+        "Value": 1
+    },
+    {
+        "Key": "CONTINUOUS_ROTATION_MODE",
+        "Value": 1
+    }
+]
 const ProfileTemplate = {
     "Id": -1,
     "Username": "Username",
@@ -26,7 +56,8 @@ const GiftTemplate = {
 }
 const PlayerTemplate = {
     "Profile": ProfileTemplate,
-    "Avatar": AvatarTemplate
+    "Avatar": AvatarTemplate,
+    "Settings": SettingsTemplate
 }
 
 export async function CreateProfile(PlayerId, Name) {
@@ -41,9 +72,11 @@ export async function CreateProfile(PlayerId, Name) {
     // Create Profile :)
     console.log("Creating Profile for Player " + PlayerId + "...")
     var PlayerJson = JSON.parse(JSON.stringify(profileTemplate))
+
     PlayerJson.Profile.Id = PlayerId
     PlayerJson.Profile.Username = Name
     PlayerJson.Profile.DisplayName = Name
+
     await writeFile(ProfilePath, JSON.stringify(PlayerJson))
 }
 export async function GetProfile(PlayerId) {

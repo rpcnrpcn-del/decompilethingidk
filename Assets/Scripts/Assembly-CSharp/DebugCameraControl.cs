@@ -36,14 +36,16 @@ public class DebugCameraControl : MonoBehaviour
 
 	private void Awake()
 	{
-		if (false)
+		/*if (false)
 		{
 			GameViewFocused = false;
 		}
 		else
 		{
 			Object.Destroy(this);
-		}
+		}*/
+		if (!Application.isEditor)
+			Destroy(this);
 	}
 
 	private void Update()

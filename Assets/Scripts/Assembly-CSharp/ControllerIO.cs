@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.VR;
 using Valve.VR;
 
 public class ControllerIO : MonoBehaviour
@@ -362,6 +363,10 @@ public class ControllerIO : MonoBehaviour
 			if (PlatformManager.Instance != null && PlatformManager.Instance.CurrentHardwareType == PlatformManager.HardwareType.OCULUS)
 			{
 				return InputMode.SteamVR_Oculus;
+			}
+			if (SessionManager.IsDeveloper && Application.isEditor && !VRDevice.isPresent)
+			{
+				return InputMode.Debug;
 			}
 			return InputMode.SteamVR_Vive;
 		}

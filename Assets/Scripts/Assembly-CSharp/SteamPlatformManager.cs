@@ -59,31 +59,31 @@ internal class SteamPlatformManager : PlatformManager
 
 	private void OnDestroy()
 	{
-		if (initialized)
+		/*if (initialized)
 		{
 			SteamAPI.Shutdown();
-		}
+		}*/
 	}
 
 	private void Update()
 	{
-		if (initialized)
+		/*if (initialized)
 		{
 			SteamAPI.RunCallbacks();
-		}
+		}*/
 	}
 
 	private void OnRecRoomPlayerConnected(Player player)
 	{
-		if (!player.isLocal && player.Platform == PlatformType.STEAM)
+		/*if (!player.isLocal && player.Platform == PlatformType.STEAM)
 		{
 			SteamFriends.SetPlayedWith(new CSteamID(player.PlatformId));
-		}
+		}*/
 	}
 
 	private bool ShouldRestart()
 	{
-		if (!Packsize.Test())
+		/*if (!Packsize.Test())
 		{
 			Debug.LogError("[Steamworks.NET] Packsize Test returned false, the wrong version of Steamworks.NET is being run in this platform.", this);
 			return true;
@@ -104,23 +104,29 @@ internal class SteamPlatformManager : PlatformManager
 		{
 			Debug.LogError("[Steamworks.NET] Could not load [lib]steam_api.dll/so/dylib. It's likely not in the correct location. Refer to the README for more details.\n" + ex, this);
 			return true;
-		}
+		}*/
 		return false;
 	}
 
 	// funny
-    ulong LongRandom(long min, long max, System.Random rand)
+    ulong LongRandom()
     {
-        long result = rand.Next((Int32)(min >> 32), (Int32)(max >> 32));
+		/*long result = rand.Next((Int32)(min >> 32), (Int32)(max >> 32));
         result = (result << 32);
-        result = result | (long)rand.Next((Int32)min, (Int32)max);
-        return (ulong)result;
+        result = result | (long)rand.Next((Int32)min, (Int32)max);*/
+
+		string result = "";
+
+		result += UnityEngine.Random.Range(0, int.MaxValue).ToString();
+		result += UnityEngine.Random.Range(0, int.MaxValue).ToString();
+
+        return ulong.Parse(result);
     }
 
 
     public override IEnumerator Initialize(InitializeCallback callback)
 	{
-		if (ShouldRestart())
+		/*if (ShouldRestart())
 		{
 			Application.Quit();
 			yield break;
@@ -129,11 +135,11 @@ internal class SteamPlatformManager : PlatformManager
 		{
 			callback("Failed to initialize Steam Platform");
 			yield break;
-		}
+		}*/
 		initialized = true;
-		warningMessageHook = SteamAPIDebugTextHook;
+		/*warningMessageHook = SteamAPIDebugTextHook;
 		SteamClient.SetWarningMessageHook(warningMessageHook);
-		gameRichPresenceJoinRequested = Callback<GameRichPresenceJoinRequested_t>.Create(OnGameRichPresenceJoinRequested);
+		gameRichPresenceJoinRequested = Callback<GameRichPresenceJoinRequested_t>.Create(OnGameRichPresenceJoinRequested);*/
 		PUNNetworkManager.Instance.OnRecRoomPlayerConnected += OnRecRoomPlayerConnected;
 
 		/*CSteamID steamID = SteamUser.GetSteamID();
@@ -144,21 +150,26 @@ internal class SteamPlatformManager : PlatformManager
 		ulong expectedId = ulong.Parse(PlayerPrefs.GetString("AssignedPlayerId", "0"));
 		if (!PlayerPrefs.HasKey("AssignedPlayerId"))
 		{
-			ulong newId = LongRandom(0, long.MaxValue, new System.Random());
+			ulong newId = LongRandom();
 			expectedId = newId;
 			PlayerPrefs.SetString("AssignedPlayerId", newId.ToString());
-		}
+		} else
+		{
+			expectedId = ulong.Parse(PlayerPrefs.GetString("AssignedPlayerId", "0"));
+        }
 
         base.PlatformProfileId = expectedId;
         base.PlatformProfileName = "Guest " + expectedId.ToString();
 
         Player.SetPlatformPlayerId(CurrentPlatform, base.PlatformProfileId);
 		callback(null);
+
+		yield break;
 	}
 
 	public Texture2D LoadAvatarForPlayer(CSteamID steamID)
 	{
-		int mediumFriendAvatar = SteamFriends.GetMediumFriendAvatar(steamID);
+		/*int mediumFriendAvatar = SteamFriends.GetMediumFriendAvatar(steamID);
 		uint pnWidth;
 		uint pnHeight;
 		if (mediumFriendAvatar != 0 && SteamUtils.GetImageSize(mediumFriendAvatar, out pnWidth, out pnHeight) && pnWidth != 0 && pnHeight != 0)
@@ -180,17 +191,17 @@ internal class SteamPlatformManager : PlatformManager
 				texture2D.LoadRawTextureData(array);
 				return texture2D;
 			}
-		}
+		}*/
 		return null;
 	}
 
 	public override void SetRichPresenceStatus(string statusText)
 	{
-		SteamFriends.SetRichPresence("status", statusText);
+		//SteamFriends.SetRichPresence("status", statusText);
 	}
 
 	private void OnGameRichPresenceJoinRequested(GameRichPresenceJoinRequested_t param)
 	{
-		PUNNetworkManager.Instance.ProcessRichJoinCommand(param.m_rgchConnect);
+		//PUNNetworkManager.Instance.ProcessRichJoinCommand(param.m_rgchConnect);
 	}
 }

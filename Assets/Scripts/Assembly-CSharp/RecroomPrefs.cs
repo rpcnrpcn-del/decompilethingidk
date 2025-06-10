@@ -41,7 +41,7 @@ public static class RecroomPrefs
 	{
 		if (!downloadedFromRecnet)
 		{
-			throw new RecnetPreferencesMissingException();
+			//throw new RecnetPreferencesMissingException();
 		}
 	}
 
