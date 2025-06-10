@@ -24,7 +24,7 @@ for file in glob.glob("*.prefab"):
         os.rename(real_path, new_path)
 
 for file in glob.glob("*.meta"):
-    if not file.startswith("["):
+    if not file.startswith("[") and ".prefab" in file:
 
         file_name = file
 
