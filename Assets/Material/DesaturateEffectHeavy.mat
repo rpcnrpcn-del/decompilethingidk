@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: DesaturateEffectHeavy
-  m_Shader: {fileID: 4800000, guid: e442797adfb748b4a88ace4bd703ccab, type: 3}
+  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _EMISSION
   m_LightmapFlags: 1
   m_CustomRenderQueue: -1
@@ -16,12 +16,21 @@ Material:
     serializedVersion: 2
     m_TexEnvs:
     - first:
+        name: _MainTex
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
         name: _Mask
       second:
         m_Texture: {fileID: 2800000, guid: 8176189d00ef4fa49aa24689c8803660, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - first:
+        name: PixelSnap
+      second: 0
     - first:
         name: _BumpScale
       second: 1
@@ -88,7 +97,7 @@ Material:
     m_Colors:
     - first:
         name: _Color
-      second: {r: 1, g: 1, b: 1, a: 1}
+      second: {r: 0, g: 0, b: 0, a: 0.19607843}
     - first:
         name: _ColorMappingParams
       second: {r: 1, g: 0, b: 1, a: 0}
