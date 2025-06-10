@@ -364,7 +364,7 @@ public class ControllerIO : MonoBehaviour
 			{
 				return InputMode.SteamVR_Oculus;
 			}
-			if (SessionManager.IsDeveloper && Application.isEditor && !VRDevice.isPresent)
+			if (Application.isEditor && !VRDevice.isPresent)
 			{
 				return InputMode.Debug;
 			}
