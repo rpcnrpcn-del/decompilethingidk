@@ -1,0 +1,175 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Paintball_RiverMud_Mat
+  m_Shader: {fileID: 4800000, guid: d5732391ef23b1f4d9991db41549c15e, type: 3}
+  m_ShaderKeywords: _EMISSION _NORMALMAP _SPECGLOSSMAP
+  m_LightmapFlags: 0
+  m_CustomRenderQueue: 2999
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+    - first:
+        name: _Color_Tex
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 10, y: 10}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Refraction
+      second:
+        m_Texture: {fileID: 2800000, guid: 4e66bd09c546a9e44bef6f20190ed8c7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 1, y: 1}
+    m_Floats:
+    - first:
+        name: _Base
+      second: 0.2
+    - first:
+        name: _BumpAmt
+      second: 26.5
+    - first:
+        name: _BumpScale
+      second: 1
+    - first:
+        name: _Cutoff
+      second: 0.5
+    - first:
+        name: _Depth
+      second: 0.23
+    - first:
+        name: _DepthDistance
+      second: 0.26
+    - first:
+        name: _DetailNormalMapScale
+      second: 1
+    - first:
+        name: _Distortion
+      second: 0.06
+    - first:
+        name: _DstBlend
+      second: 0
+    - first:
+        name: _EdgeDistance
+      second: 0.31
+    - first:
+        name: _EdgeMultiply
+      second: 1
+    - first:
+        name: _Gloss
+      second: 0.05
+    - first:
+        name: _GlossMapScale
+      second: 1
+    - first:
+        name: _Glossiness
+      second: 0.5
+    - first:
+        name: _GlossyReflections
+      second: 1
+    - first:
+        name: _InvFade
+      second: 1
+    - first:
+        name: _LightWrap
+      second: 0
+    - first:
+        name: _Metallic
+      second: 0
+    - first:
+        name: _Mode
+      second: 0
+    - first:
+        name: _OcclusionStrength
+      second: 1
+    - first:
+        name: _Opacity
+      second: 1
+    - first:
+        name: _Parallax
+      second: 0.02
+    - first:
+        name: _RefractionPower
+      second: 0.44
+    - first:
+        name: _Roughness
+      second: 0.34
+    - first:
+        name: _SmoothnessTextureChannel
+      second: 0
+    - first:
+        name: _Specular
+      second: 0
+    - first:
+        name: _SpecularHighlights
+      second: 1
+    - first:
+        name: _SrcBlend
+      second: 1
+    - first:
+        name: _UVScale
+      second: 10
+    - first:
+        name: _UVSec
+      second: 0
+    - first:
+        name: _UV_Scale
+      second: 0.95
+    - first:
+        name: _ZWrite
+      second: 1
+    - first:
+        name: _node_1408
+      second: 0
+    - first:
+        name: _node_5060
+      second: 10
+    - first:
+        name: _node_9187
+      second: 0.11
+    - first:
+        name: _node_9187_copy
+      second: 4.18
+    m_Colors:
+    - first:
+        name: _Color
+      second: {r: 0, g: 0.59345514, b: 0.647, a: 1}
+    - first:
+        name: _Color1
+      second: {r: 0.53400004, g: 0.7112627, b: 1, a: 1}
+    - first:
+        name: _Color2
+      second: {r: 0, g: 0.37931037, b: 1, a: 1}
+    - first:
+        name: _Color_Tint
+      second: {r: 1, g: 1, b: 1, a: 1}
+    - first:
+        name: _DepthColor
+      second: {r: 0.578, g: 0.52178407, b: 0.37049797, a: 1}
+    - first:
+        name: _EmissionColor
+      second: {r: 0.1693671, g: 0.223, b: 0.20968424, a: 1}
+    - first:
+        name: _FoamColor
+      second: {r: 0.72, g: 0.6537424, b: 0.4638037, a: 0.391}
+    - first:
+        name: _SpecColor
+      second: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - first:
+        name: _SurfaceColor
+      second: {r: 0.784, g: 0.7114714, b: 0.50424665, a: 0.162}
+    - first:
+        name: _TintColor
+      second: {r: 1, g: 1, b: 1, a: 0.5882353}
+    - first:
+        name: _node_6455
+      second: {r: 0.14868078, g: 0.15399408, b: 0.9191176, a: 1}
+    - first:
+        name: _node_7114
+      second: {r: 0.06179715, g: 0.17606258, b: 0.9338235, a: 1}

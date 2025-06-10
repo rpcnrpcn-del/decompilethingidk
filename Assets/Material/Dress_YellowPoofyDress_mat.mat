@@ -1,0 +1,139 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Dress_YellowPoofyDress_mat
+  m_Shader: {fileID: 4800000, guid: f210cb7abbc498940b633635dc933b14, type: 3}
+  m_ShaderKeywords: _EMISSION
+  m_LightmapFlags: 1
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+    - first:
+        name: _Decal_Tex
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _MainTex
+      second:
+        m_Texture: {fileID: 2800000, guid: cba1ec3a59ec2b749951008243fac6e7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Norm_Tex
+      second:
+        m_Texture: {fileID: 2800000, guid: 398cd170dc4f7e745b3f0e106cc29b3b, type: 3}
+        m_Scale: {x: 3, y: 3}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Spec_Tex
+      second:
+        m_Texture: {fileID: 2800000, guid: 284a0f6cd98272448b62876f3657e815, type: 3}
+        m_Scale: {x: 3, y: 3}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - first:
+        name: _BumpScale
+      second: 1
+    - first:
+        name: _Cutoff
+      second: 0.5
+    - first:
+        name: _DetailNormalMapScale
+      second: 1
+    - first:
+        name: _Dirt_Add
+      second: 0
+    - first:
+        name: _DstBlend
+      second: 0
+    - first:
+        name: _Fresnel
+      second: 1.75
+    - first:
+        name: _Gloss
+      second: 0.083
+    - first:
+        name: _GlossMapScale
+      second: 1
+    - first:
+        name: _Glossiness
+      second: 0.5
+    - first:
+        name: _GlossyReflections
+      second: 1
+    - first:
+        name: _Highlight
+      second: 0
+    - first:
+        name: _Metallic
+      second: 0
+    - first:
+        name: _Mode
+      second: 0
+    - first:
+        name: _Norm_Mult
+      second: 0.56
+    - first:
+        name: _OcclusionStrength
+      second: 1
+    - first:
+        name: _Outline
+      second: 0.012
+    - first:
+        name: _Parallax
+      second: 0.02
+    - first:
+        name: _SmoothnessTextureChannel
+      second: 0
+    - first:
+        name: _Spec
+      second: 0
+    - first:
+        name: _SpecularHighlights
+      second: 1
+    - first:
+        name: _SrcBlend
+      second: 1
+    - first:
+        name: _UVSec
+      second: 0
+    - first:
+        name: _ZWrite
+      second: 1
+    m_Colors:
+    - first:
+        name: _Base_Col
+      second: {r: 0.8862746, g: 0.6509804, b: 0.07450981, a: 1}
+    - first:
+        name: _Blue_Col
+      second: {r: 0.854902, g: 0.854902, b: 0.854902, a: 1}
+    - first:
+        name: _Color
+      second: {r: 1, g: 1, b: 1, a: 1}
+    - first:
+        name: _Decal_Col
+      second: {r: 0, g: 1, b: 1, a: 1}
+    - first:
+        name: _Dirt_Col
+      second: {r: 1, g: 0.9724137, b: 0, a: 1}
+    - first:
+        name: _EmissionColor
+      second: {r: 0, g: 0, b: 0, a: 1}
+    - first:
+        name: _Green_Col
+      second: {r: 0.85294116, g: 0.85294116, b: 0.85294116, a: 1}
+    - first:
+        name: _Outline_Col
+      second: {r: 0.43921566, g: 0.9254903, b: 0.30196077, a: 1}
+    - first:
+        name: _Red_Col
+      second: {r: 0.885, g: 0.65277743, b: 0.07611002, a: 1}

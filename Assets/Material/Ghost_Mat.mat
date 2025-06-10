@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Ghost_Mat
+  m_Shader: {fileID: 4800000, guid: 4928dbdec0b1ebd418aae3c61761afd4, type: 3}
+  m_ShaderKeywords:
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+    - first:
+        name: _Texture
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - first:
+        name: _Amplitude
+      second: 0.03
+    - first:
+        name: _Cutoff
+      second: 0.5
+    - first:
+        name: _Fresnel
+      second: 0.21
+    - first:
+        name: _Glossiness
+      second: 0.5
+    - first:
+        name: _Metallic
+      second: 0
+    - first:
+        name: _Softness
+      second: 0.513
+    - first:
+        name: _Speed
+      second: 2.8
+    - first:
+        name: _Wavelength
+      second: 50.26548
+    m_Colors:
+    - first:
+        name: _Color
+      second: {r: 1, g: 1, b: 1, a: 0.666}
