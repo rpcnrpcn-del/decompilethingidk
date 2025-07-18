@@ -26,6 +26,9 @@ Material:
         name: _Br
       second: 11
     - first:
+        name: _Brightness
+      second: 1
+    - first:
         name: _BumpScale
       second: 1
     - first:
@@ -74,11 +77,17 @@ Material:
         name: _PixelEffect
       second: 0.18
     - first:
+        name: _PixelSize
+      second: 1
+    - first:
         name: _ScanSpeed
       second: 5.9
     - first:
         name: _ScanlineEffect
       second: 0.326
+    - first:
+        name: _ScanlineIntensity
+      second: 0.5
     - first:
         name: _SmoothnessTextureChannel
       second: 0
