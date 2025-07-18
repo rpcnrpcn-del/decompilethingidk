@@ -2,50 +2,57 @@ Shader "AG/VideoBlit" {
 	Properties {
 		_MainTex ("Render Input", 2D) = "white" {}
 	}
-	//DummyShaderTextExporter
-	SubShader{
-		Tags { "RenderType"="Opaque" }
-		LOD 200
-
-		Pass
-		{
-			HLSLPROGRAM
+	SubShader {
+		Pass {
+			ZClip Off
+			ZTest Always
+			ZWrite Off
+			Cull Off
+			GpuProgramID 18645
+			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
-
-			float4x4 unity_MatrixMVP;
-
-			struct Vertex_Stage_Input
+			
+			#include "UnityCG.cginc"
+			struct v2f
 			{
-				float3 pos : POSITION;
+				float4 position : SV_POSITION0;
+				float2 texcoord : TEXCOORD0;
 			};
-
-			struct Vertex_Stage_Output
+			struct fout
 			{
-				float4 pos : SV_POSITION;
+				float4 sv_target : SV_Target0;
 			};
-
-			Vertex_Stage_Output vert(Vertex_Stage_Input input)
+			// $Globals ConstantBuffers for Vertex Shader
+			// $Globals ConstantBuffers for Fragment Shader
+			// Custom ConstantBuffers for Vertex Shader
+			// Custom ConstantBuffers for Fragment Shader
+			// Texture params for Vertex Shader
+			// Texture params for Fragment Shader
+			sampler2D _MainTex;
+			
+			// Keywords: 
+			v2f vert(appdata_full v)
 			{
-				Vertex_Stage_Output output;
-				output.pos = mul(unity_MatrixMVP, float4(input.pos, 1.0));
-				return output;
+                v2f o;
+                float4 tmp0;
+                tmp0 = v.vertex.yyyy * glstate_matrix_mvp._m01_m11_m21_m31;
+                tmp0 = glstate_matrix_mvp._m00_m10_m20_m30 * v.vertex.xxxx + tmp0;
+                tmp0 = glstate_matrix_mvp._m02_m12_m22_m32 * v.vertex.zzzz + tmp0;
+                o.position = tmp0 + glstate_matrix_mvp._m03_m13_m23_m33;
+                o.texcoord.xy = v.texcoord.xy;
+                return o;
 			}
-
-			Texture2D<float4> _MainTex;
-			SamplerState sampler_MainTex;
-
-			struct Fragment_Stage_Input
+			// Keywords: 
+			fout frag(v2f inp)
 			{
-				float2 uv : TEXCOORD0;
-			};
-
-			float4 frag(Fragment_Stage_Input input) : SV_TARGET
-			{
-				return _MainTex.Sample(sampler_MainTex, float2(input.uv.x, input.uv.y));
+                fout o;
+                float4 tmp0;
+                tmp0.xy = inp.texcoord.xy * float2(1.0, -1.0) + float2(0.0, 1.0);
+                o.sv_target = tex2D(_MainTex, tmp0.xy);
+                return o;
 			}
-
-			ENDHLSL
+			ENDCG
 		}
 	}
 }

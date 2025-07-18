@@ -1,53 +1,68 @@
 Shader "AG/3D Text Shader - Cull Back" {
 	Properties {
 		_MainTex ("Font Texture", 2D) = "white" {}
-		_Color ("Text Color", Vector) = (1,1,1,1)
+		_Color ("Text Color", Color) = (1,1,1,1)
 	}
-	//DummyShaderTextExporter
-	SubShader{
-		Tags { "RenderType"="Opaque" }
-		LOD 200
-
-		Pass
-		{
-			HLSLPROGRAM
+	SubShader {
+		Tags { "IGNOREPROJECTOR" = "true" "QUEUE" = "Transparent" "RenderType" = "Transparent" }
+		Pass {
+			Tags { "IGNOREPROJECTOR" = "true" "QUEUE" = "Transparent" "RenderType" = "Transparent" }
+			Blend SrcAlpha OneMinusSrcAlpha, SrcAlpha OneMinusSrcAlpha
+			ZClip Off
+			ZWrite Off
+			Fog {
+				Mode 0
+			}
+			GpuProgramID 62687
+			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
-
-			float4x4 unity_MatrixMVP;
-
-			struct Vertex_Stage_Input
+			
+			#include "UnityCG.cginc"
+			struct v2f
 			{
-				float3 pos : POSITION;
+				float4 color : COLOR0;
+				float2 texcoord : TEXCOORD0;
+				float4 position : SV_POSITION0;
 			};
-
-			struct Vertex_Stage_Output
+			struct fout
 			{
-				float4 pos : SV_POSITION;
+				float4 sv_target : SV_Target0;
 			};
-
-			Vertex_Stage_Output vert(Vertex_Stage_Input input)
-			{
-				Vertex_Stage_Output output;
-				output.pos = mul(unity_MatrixMVP, float4(input.pos, 1.0));
-				return output;
-			}
-
-			Texture2D<float4> _MainTex;
-			SamplerState sampler_MainTex;
+			// $Globals ConstantBuffers for Vertex Shader
 			float4 _Color;
-
-			struct Fragment_Stage_Input
+			float4 _MainTex_ST;
+			// $Globals ConstantBuffers for Fragment Shader
+			// Custom ConstantBuffers for Vertex Shader
+			// Custom ConstantBuffers for Fragment Shader
+			// Texture params for Vertex Shader
+			// Texture params for Fragment Shader
+			sampler2D _MainTex;
+			
+			// Keywords: 
+			v2f vert(appdata_full v)
 			{
-				float2 uv : TEXCOORD0;
-			};
-
-			float4 frag(Fragment_Stage_Input input) : SV_TARGET
-			{
-				return _MainTex.Sample(sampler_MainTex, float2(input.uv.x, input.uv.y)) * _Color;
+                v2f o;
+                float4 tmp0;
+                o.color = saturate(_Color);
+                o.texcoord.xy = v.texcoord.xy * _MainTex_ST.xy + _MainTex_ST.zw;
+                tmp0 = v.vertex.yyyy * glstate_matrix_mvp._m01_m11_m21_m31;
+                tmp0 = glstate_matrix_mvp._m00_m10_m20_m30 * v.vertex.xxxx + tmp0;
+                tmp0 = glstate_matrix_mvp._m02_m12_m22_m32 * v.vertex.zzzz + tmp0;
+                o.position = tmp0 + glstate_matrix_mvp._m03_m13_m23_m33;
+                return o;
 			}
-
-			ENDHLSL
+			// Keywords: 
+			fout frag(v2f inp)
+			{
+                fout o;
+                float4 tmp0;
+                tmp0 = tex2D(_MainTex, inp.texcoord.xy);
+                o.sv_target.w = tmp0.w * inp.color.w;
+                o.sv_target.xyz = inp.color.xyz;
+                return o;
+			}
+			ENDCG
 		}
 	}
 }

@@ -1,44 +1,69 @@
 Shader "AG/DesaturateEffect" {
 	Properties {
 		_Mask ("Texture", 2D) = "white" {}
-		_Tint ("Tint Color", Vector) = (0,0,0,1)
+		_Tint ("Tint Color", Color) = (0,0,0,1)
 	}
-	//DummyShaderTextExporter
-	SubShader{
-		Tags { "RenderType" = "Opaque" }
-		LOD 200
-
-		Pass
-		{
-			HLSLPROGRAM
+	SubShader {
+		Tags { "QUEUE" = "Overlay" "RenderType" = "Transparent" }
+		Pass {
+			Tags { "QUEUE" = "Overlay" "RenderType" = "Transparent" }
+			Blend SrcAlpha OneMinusSrcAlpha, SrcAlpha OneMinusSrcAlpha
+			ZClip Off
+			ZTest Always
+			ZWrite Off
+			Cull Off
+			Fog {
+				Mode 0
+			}
+			GpuProgramID 28035
+			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
-
-			float4x4 unity_MatrixMVP;
-
-			struct Vertex_Stage_Input
+			
+			#include "UnityCG.cginc"
+			struct v2f
 			{
-				float3 pos : POSITION;
+				float4 position : SV_POSITION0;
+				float2 texcoord : TEXCOORD0;
 			};
-
-			struct Vertex_Stage_Output
+			struct fout
 			{
-				float4 pos : SV_POSITION;
+				float4 sv_target : SV_Target0;
 			};
-
-			Vertex_Stage_Output vert(Vertex_Stage_Input input)
+			// $Globals ConstantBuffers for Vertex Shader
+			// $Globals ConstantBuffers for Fragment Shader
+			float4 _Tint;
+			float _DesaturationAmount;
+			// Custom ConstantBuffers for Vertex Shader
+			// Custom ConstantBuffers for Fragment Shader
+			// Texture params for Vertex Shader
+			// Texture params for Fragment Shader
+			sampler2D _Mask;
+			
+			// Keywords: 
+			v2f vert(appdata_full v)
 			{
-				Vertex_Stage_Output output;
-				output.pos = mul(unity_MatrixMVP, float4(input.pos, 1.0));
-				return output;
+                v2f o;
+                float4 tmp0;
+                tmp0 = v.vertex.yyyy * glstate_matrix_mvp._m01_m11_m21_m31;
+                tmp0 = glstate_matrix_mvp._m00_m10_m20_m30 * v.vertex.xxxx + tmp0;
+                tmp0 = glstate_matrix_mvp._m02_m12_m22_m32 * v.vertex.zzzz + tmp0;
+                o.position = tmp0 + glstate_matrix_mvp._m03_m13_m23_m33;
+                o.texcoord.xy = v.texcoord.xy;
+                return o;
 			}
-
-			float4 frag(Vertex_Stage_Output input) : SV_TARGET
+			// Keywords: 
+			fout frag(v2f inp)
 			{
-				return float4(1.0, 1.0, 1.0, 1.0); // RGBA
+                fout o;
+                float4 tmp0;
+                tmp0 = tex2D(_Mask, inp.texcoord.xy);
+                tmp0 = tmp0 * _Tint;
+                o.sv_target.w = tmp0.w * _DesaturationAmount;
+                o.sv_target.xyz = tmp0.xyz;
+                return o;
 			}
-
-			ENDHLSL
+			ENDCG
 		}
 	}
 }

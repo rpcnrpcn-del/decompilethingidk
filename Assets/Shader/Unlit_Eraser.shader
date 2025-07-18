@@ -1,42 +1,51 @@
 Shader "Unlit/Eraser" {
 	Properties {
 	}
-	//DummyShaderTextExporter
-	SubShader{
+	SubShader {
+		LOD 100
 		Tags { "RenderType" = "Opaque" }
-		LOD 200
-
-		Pass
-		{
-			HLSLPROGRAM
+		Pass {
+			LOD 100
+			Tags { "RenderType" = "Opaque" }
+			ZClip Off
+			GpuProgramID 30343
+			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
-
-			float4x4 unity_MatrixMVP;
-
-			struct Vertex_Stage_Input
+			
+			#include "UnityCG.cginc"
+			struct v2f
 			{
-				float3 pos : POSITION;
+				float2 texcoord : TEXCOORD0;
+				float4 position : SV_POSITION0;
 			};
-
-			struct Vertex_Stage_Output
+			struct fout
 			{
-				float4 pos : SV_POSITION;
+				float4 sv_target : SV_Target0;
 			};
-
-			Vertex_Stage_Output vert(Vertex_Stage_Input input)
+			// $Globals ConstantBuffers for Vertex Shader
+			// $Globals ConstantBuffers for Fragment Shader
+			// Custom ConstantBuffers for Vertex Shader
+			// Custom ConstantBuffers for Fragment Shader
+			// Texture params for Vertex Shader
+			// Texture params for Fragment Shader
+			
+			// Keywords: 
+			v2f vert(appdata_full v)
 			{
-				Vertex_Stage_Output output;
-				output.pos = mul(unity_MatrixMVP, float4(input.pos, 1.0));
-				return output;
+                v2f o;
+                o.texcoord.xy = v.texcoord.xy;
+                o.position = v.vertex;
+                return o;
 			}
-
-			float4 frag(Vertex_Stage_Output input) : SV_TARGET
+			// Keywords: 
+			fout frag(v2f inp)
 			{
-				return float4(1.0, 1.0, 1.0, 1.0); // RGBA
+                fout o;
+                o.sv_target = float4(0.0, 0.0, 0.0, 0.0);
+                return o;
 			}
-
-			ENDHLSL
+			ENDCG
 		}
 	}
 }

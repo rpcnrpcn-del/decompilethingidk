@@ -1,42 +1,55 @@
 Shader "ProBuilder/UnlitVertexColor" {
 	Properties {
 	}
-	//DummyShaderTextExporter
-	SubShader{
-		Tags { "RenderType" = "Opaque" }
-		LOD 200
-
-		Pass
-		{
-			HLSLPROGRAM
+	SubShader {
+		Tags { "IGNOREPROJECTOR" = "true" "QUEUE" = "AlphaTest" "RenderType" = "Transparent" }
+		Pass {
+			Tags { "IGNOREPROJECTOR" = "true" "QUEUE" = "AlphaTest" "RenderType" = "Transparent" }
+			Blend SrcAlpha OneMinusSrcAlpha, SrcAlpha OneMinusSrcAlpha
+			ZClip Off
+			Cull Off
+			GpuProgramID 36666
+			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
-
-			float4x4 unity_MatrixMVP;
-
-			struct Vertex_Stage_Input
+			
+			#include "UnityCG.cginc"
+			struct v2f
 			{
-				float3 pos : POSITION;
+				float4 position : SV_POSITION0;
+				float4 color : COLOR0;
 			};
-
-			struct Vertex_Stage_Output
+			struct fout
 			{
-				float4 pos : SV_POSITION;
+				float4 sv_target : SV_Target0;
 			};
-
-			Vertex_Stage_Output vert(Vertex_Stage_Input input)
+			// $Globals ConstantBuffers for Vertex Shader
+			// $Globals ConstantBuffers for Fragment Shader
+			// Custom ConstantBuffers for Vertex Shader
+			// Custom ConstantBuffers for Fragment Shader
+			// Texture params for Vertex Shader
+			// Texture params for Fragment Shader
+			
+			// Keywords: 
+			v2f vert(appdata_full v)
 			{
-				Vertex_Stage_Output output;
-				output.pos = mul(unity_MatrixMVP, float4(input.pos, 1.0));
-				return output;
+                v2f o;
+                float4 tmp0;
+                tmp0 = v.vertex.yyyy * glstate_matrix_mvp._m01_m11_m21_m31;
+                tmp0 = glstate_matrix_mvp._m00_m10_m20_m30 * v.vertex.xxxx + tmp0;
+                tmp0 = glstate_matrix_mvp._m02_m12_m22_m32 * v.vertex.zzzz + tmp0;
+                o.position = glstate_matrix_mvp._m03_m13_m23_m33 * v.vertex.wwww + tmp0;
+                o.color = v.color;
+                return o;
 			}
-
-			float4 frag(Vertex_Stage_Output input) : SV_TARGET
+			// Keywords: 
+			fout frag(v2f inp)
 			{
-				return float4(1.0, 1.0, 1.0, 1.0); // RGBA
+                fout o;
+                o.sv_target = inp.color;
+                return o;
 			}
-
-			ENDHLSL
+			ENDCG
 		}
 	}
 }
