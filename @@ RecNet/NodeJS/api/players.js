@@ -21,6 +21,6 @@ export async function DownloadProfile(PlayerId) {
 }
 export async function DownloadPreferences(PlayerId) {
     if (PlayerId == null) return 0;
-    var gottenJson = PlayerJSON(PlayerId)
+    var gottenJson = await PlayerJSON(PlayerId)
     return gottenJson["Settings"]
 }

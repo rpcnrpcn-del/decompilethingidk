@@ -1,37 +1,46 @@
 import {readFile, writeFile} from "node:fs/promises"
 import {existsSync} from "node:fs"
 import path from 'path'
+import { GetConfig, GetDefaultAv, GetAvatarItems } from "./config.js"
 
 const rootDir = process.cwd()
 
 const SettingsTemplate = [
     {
         "Key": "QualitySettings",
-        "Value": "Fantastic"
+        "Value": "3"
     },
     {
         "Key": "VoiceChat",
-        "Value": 0
+        "Value": "0"
     },
     {
         "Key": "ShowNames",
-        "Value": 1
+        "Value": "1"
     },
     {
         "Key": "ShowRoomCenter",
-        "Value": 0
+        "Value": "0"
     },
     {
         "Key": "ROTATION_INCREMENT",
-        "Value": 0
+        "Value": "0"
     },
     {
         "Key": "MOTION_TELEPORT_ENABLED",
-        "Value": 1
+        "Value": "1"
     },
     {
         "Key": "CONTINUOUS_ROTATION_MODE",
-        "Value": 1
+        "Value": "1"
+    },
+    {
+        "Key": "MOD_BLOCKED_TIME",
+        "Value": "0"
+    },
+    {
+        "Key": "MOD_BLOCKED_DURATION",
+        "Value": "0"
     }
 ]
 const ProfileTemplate = {
@@ -76,8 +85,9 @@ export async function CreateProfile(PlayerId, Name) {
     PlayerJson.Profile.Id = PlayerId
     PlayerJson.Profile.Username = Name
     PlayerJson.Profile.DisplayName = Name
+    PlayerJson.Avatar = await GetDefaultAv();
 
-    await writeFile(ProfilePath, JSON.stringify(PlayerJson))
+    await writeFile(ProfilePath, JSON.stringify(PlayerJson, null, 3))
 }
 export async function GetProfile(PlayerId) {
     if (PlayerId == null) return;

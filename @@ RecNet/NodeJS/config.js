@@ -1,11 +1,32 @@
-const fs = require('node:fs')
+import { readFile } from 'node:fs'
 // i got lazy.
-const configJson = {
+var configJson = {
     "debug": true,
     "version": "20170118_EA",
     "messageOfTheDay": "Balls.",
-    "DailyObjectives": null
+    "DailyObjectives": null,
 }
+var defaultAvatar = null
+var avatarItems = null
+
+// Default Avatar
+readFile("./config/DefaultAvatar.json", function(err, data) {
+    if (err) {
+        console.log("Unable to read Default Avatar JSON!")
+        return;
+    }
+    defaultAvatar = JSON.parse(data)
+    console.log("Got Default Avatar!")
+})
+// Avatar Items
+readFile("./config/AvatarItems.json", function(err, data) {
+    if (err) {
+        console.log("Unable to read Avatar Items JSON!")
+        return;
+    }
+    avatarItems = JSON.parse(data)
+    console.log("Got Avatar Items!")
+})
 
 /*fs.readFile("./data/config.json", function(err, data) {
     if (err) throw err
@@ -21,8 +42,24 @@ console.log("//////////////////// Config")
 console.log(configJson)
 console.log("////////////////////\n\n")
 
-module.exports = {
+/*module.exports = {
     GetConfig : async function() {
         return configJson
+    },
+    GetDefaultAv: async function() {
+        return defaultAvatar
+    },
+    GetAvatarItems: async function() {
+        return avatarItems
     }
+}*/
+
+export async function GetConfig() {
+    return configJson
+}
+export async function GetDefaultAv() {
+    return defaultAvatar
+}
+export async function GetAvatarItems() {
+    return avatarItems
 }

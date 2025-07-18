@@ -1,4 +1,17 @@
-import { GetConfig } from "../config.js";
+import { GetConfig, GetDefaultAv, GetAvatarItems } from "../config.js"
+
+export async function DefaultAvatar() {
+    var GottenData = await GetDefaultAv()
+    return GottenData
+}
+export async function DummyAvatarItems() {
+    var GottenData = await GetAvatarItems()
+    return GottenData
+}
+export async function MainConfig() {
+    var GottenData = await GetConfig()
+    return GottenData
+}
 
 export async function MessageOfTheDay() {
     var conf = await GetConfig()

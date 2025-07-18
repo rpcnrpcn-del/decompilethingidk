@@ -41,32 +41,42 @@ public class BootSequence : UnityEngine.MonoBehaviour
 		{
 			// Test Connection
 			yield return Core.TestConnection(InitializeCallback);
-			// Init Platform Manager
-			yield return PlatformManager.Instance.Initialize(InitializeCallback);
+            // Init Platform Manager
+            Debug.Log("[BootSequence] Platform Init");
+            yield return PlatformManager.Instance.Initialize(InitializeCallback);
 			LogPlatformInfo();
-			// Init Profile Stuff
-			yield return Profiles.DownloadLocalProfile(InitializeCallback);
+            // Init Profile Stuff
+            Debug.Log("[BootSequence] Profile (1) Init");
+            yield return Profiles.DownloadLocalProfile(InitializeCallback);
 			//yield return AnalyticsHelper.OnPlatformAndProfileInitialized(); kys rec room
 			LogProfileInfo();
 			// Config Stuff
 			yield return Config.DownloadConfigSettings(InitializeCallback);
-			// Notif Stuff
-			yield return Core.InitializePushNotificationChannel(InitializeCallback);
-			// Player Data :)
-			Images.RefreshCachedProfileImage(Profiles.LocalProfile.Id);
-			// Avatar :)
-			yield return Avatars.DownloadLocalAvatar(InitializeCallback);
-			// Player Configs :)
-			yield return RecroomPrefs.DowloadLocalPlayerPreferences(InitializeCallback);
+            // Notif Stuff
+            Debug.Log("[BootSequence] Notif Init");
+            // yield return Core.InitializePushNotificationChannel(InitializeCallback);
+            // Player Data :)
+            Debug.Log("[BootSequence] Profile (2) Init");
+            Images.RefreshCachedProfileImage(Profiles.LocalProfile.Id);
             // Avatar :)
+            Debug.Log("[BootSequence] Avatar (1) Init");
+            yield return Avatars.DownloadLocalAvatar(InitializeCallback);
+            // Player Configs :)
+            Debug.Log("[BootSequence] Player Config Init");
+            yield return RecroomPrefs.DowloadLocalPlayerPreferences(InitializeCallback);
+            // Avatar :)
+            Debug.Log("[BootSequence] Avatar (2) Init");
             yield return OutfitManager.Instance.DownloadUnlockedAvatarItems(InitializeCallback);
 			yield return Avatars.DowloadGiftPackages(InitializeCallback);
 			// Photon :)
+			Debug.Log("[BootSequence] Photon Init");
 			yield return PUNNetworkManager.Instance.Initialize(InitializeCallback);
 			yield return SingletonMonoBehaviour<SplashScreenManager>.Instance.WaitForMinimumSplashDuration();
-			// Core Systems :)
-			InitializeCoreSystems();
-			yield return LoadInitialScene();
+            // Core Systems :)
+            Debug.Log("[BootSequence] Core Systems Init");
+            InitializeCoreSystems();
+            Debug.Log("[BootSequence] Finished Init");
+            yield return LoadInitialScene();
 			Object.Destroy(base.gameObject);
 		}
 		else
@@ -92,18 +102,25 @@ public class BootSequence : UnityEngine.MonoBehaviour
 	}
 
 	private void InitializeCoreSystems()
-	{
-		SingletonMonoBehaviour<PlayerInputManager>.Instance.Initialize();
-		SingletonMonoBehaviour<SettingsManager>.Instance.Initialize();
-		SingletonMonoBehaviour<TutorialManager>.Instance.Initialize();
-		SingletonMonoBehaviour<AudioManager>.Instance.Initialize();
-		SingletonMonoBehaviour<GiftManager>.Instance.Initialize();
+    {
+        Debug.Log("[Core Systems Init] PlayerInputManager");
+        SingletonMonoBehaviour<PlayerInputManager>.Instance.Initialize();
+        Debug.Log("[Core Systems Init] SettingsManager");
+        SingletonMonoBehaviour<SettingsManager>.Instance.Initialize();
+        Debug.Log("[Core Systems Init] TutorialManager");
+        SingletonMonoBehaviour<TutorialManager>.Instance.Initialize();
+        Debug.Log("[Core Systems Init] AudioManager");
+        SingletonMonoBehaviour<AudioManager>.Instance.Initialize();
+        Debug.Log("[Core Systems Init] GiftManager");
+        SingletonMonoBehaviour<GiftManager>.Instance.Initialize();
 		if (SessionManager.IsDeveloper)
 		{
 			GoogleAnalytics.Client.UpdateHeaders();
-		}
-		SingletonMonoBehaviour<ProgressionManager>.Instance.Initialize();
-		SingletonMonoBehaviour<ChildControlManager>.Instance.Initialize();
+        }
+        Debug.Log("[Core Systems Init] ProgressionManager");
+        SingletonMonoBehaviour<ProgressionManager>.Instance.Initialize();
+        Debug.Log("[Core Systems Init] ChildControlManager");
+        SingletonMonoBehaviour<ChildControlManager>.Instance.Initialize();
 		AACCompilerCrashWorkAround();
 	}
 

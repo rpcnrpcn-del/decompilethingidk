@@ -37,8 +37,9 @@ public class SplashScreenManager : SingletonMonoBehaviour<SplashScreenManager>
 		float elapsed = Time.time - startTime;
 		float remaining = minSplashDuration - elapsed;
 		if (remaining > 0f)
-		{
-			yield return new WaitForSeconds(remaining);
+        {
+            Debug.Log("[SplashScreenManager] " + remaining.ToString());
+            yield return new WaitForSeconds(remaining);
 		}
 	}
 }

@@ -26,13 +26,13 @@ app.post('/api/test', async (req, res) => {
 })
 // Analytics
 app.post('/api/analytics/v1/session/event', async (req, res) => {
-    //console.log("Sending Event...")
+    console.log("Sending Event...")
     var returnVal = await apiAnalytics.SessionEvent(req.fields["SessionId"], req.fields["Category"], req.fields["Action"])
     res.send(returnVal)
 })
 // Version
 app.get('/api/versioncheck/v1', async (req, res) => {
-    //console.log("Checking Version...")
+    console.log("Checking Version...")
     var returnVal = await apiVersion.VersionCheck(req.headers["X-Rec-Room-Version"])
     if (returnVal == 1) {
         res.sendStatus(200)
@@ -42,7 +42,7 @@ app.get('/api/versioncheck/v1', async (req, res) => {
 })
 // Player
 app.post("/api/players/v1/getorcreate", async (req, res) => {
-    //console.log("Getting/Creating Player...")
+    console.log("Getting/Creating Player...")
     // Fields
     var Platform = req.body["Platform"]
     var PlatformId = req.body["PlatformId"]
@@ -85,7 +85,7 @@ app.post("/api/players/v1/getorcreate", async (req, res) => {
     res.send("Error.")
 })
 app.get("/api/players/v1/:PlayerId", async (req, res) => {
-    //console.log("Getting Player...")
+    console.log("Getting Player...")
     var PlayerId = req.params["PlayerId"]
     var GottenProfile = await apiPlayers.DownloadProfile(PlayerId)
     // error :(
@@ -101,13 +101,21 @@ app.get("/api/players/v1/:PlayerId", async (req, res) => {
 })
 // Avatar
 app.get("/api/avatar/v2", async (req, res) => {
-    //console.log("Getting Avatar...")
+    console.log("Getting Avatar...")
     var PlayerId = req.headers["x-rec-room-profile"]
-    var GottenAvatar = apiAvatar.GetAvatar(PlayerId)
+    var GottenAvatar = await apiAvatar.GetAvatar(PlayerId)
     if (GottenAvatar != null)
         res.send(GottenAvatar)
     else
         res.status(500)
+})
+app.get("/api/avatar/v3/items", async (req, res) => {
+    var unlockedItems = [] /*await apiConfig.DummyAvatarItems()*/
+    res.send(unlockedItems)
+})
+app.get("/api/avatar/v2/gifts", async (req, res) => {
+    var dummyGifts = []
+    res.send(dummyGifts)
 })
 // Config
 app.get("/api/config/v2", async (req, res) => {
