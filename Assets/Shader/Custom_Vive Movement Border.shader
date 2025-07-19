@@ -10,7 +10,6 @@ Shader "Custom/Vive Movement Border" {
 		Pass {
 			Tags { "IGNOREPROJECTOR" = "true" "QUEUE" = "Overlay" "RenderType" = "Transparent" }
 			Blend SrcAlpha OneMinusSrcAlpha, SrcAlpha OneMinusSrcAlpha
-			ZClip Off
 			ZWrite Off
 			GpuProgramID 44666
 			CGPROGRAM

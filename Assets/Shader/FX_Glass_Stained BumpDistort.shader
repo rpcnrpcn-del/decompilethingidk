@@ -11,7 +11,6 @@ Shader "FX/Glass/Stained BumpDistort" {
 		Pass {
 			Name "BASE"
 			Tags { "LIGHTMODE" = "Always" "QUEUE" = "Transparent" "RenderType" = "Opaque" }
-			ZClip Off
 			GpuProgramID 41578
 			CGPROGRAM
 			#pragma vertex vert
@@ -90,9 +89,8 @@ Shader "FX/Glass/Stained BumpDistort" {
 			Name "BASE"
 			Tags { "QUEUE" = "Transparent" "RenderType" = "Opaque" }
 			Blend DstColor Zero, DstColor Zero
-			ZClip Off
 			Fog {
-				Mode 0
+				Mode Off
 			}
 			GpuProgramID 93607
 			CGPROGRAM
