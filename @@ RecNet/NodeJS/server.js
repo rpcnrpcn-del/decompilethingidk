@@ -1,6 +1,8 @@
 // Packages
 const express = require('express')
 const bodyParser = require('body-parser')
+const multer = require('multer')
+const upload = multer()
 const app = express()
 const api = express.Router()
 const cors = require('cors')
@@ -10,18 +12,21 @@ const apiVersion = require('./api/version')
 const apiPlayers = require("./api/players")
 const apiAvatar = require("./api/avatar")
 const apiConfig = require("./api/rr_config")
+const { RemovePreference, SetPreference } = require('./playerData')
 
 var activeSession = {
     "Presence": {}
 }
 
-app.use(bodyParser.urlencoded({extended:true}))
+/*app.use(bodyParser.json({extended:true}))
+app.use(bodyParser.urlencoded({extended:true}))*/
+app.use(express.json({ type: ['application/json', 'text/json'] }))
 
 app.listen(25565, () => {
     console.log("Listening on port 25565...")
 })
 // Test
-app.post('/api/test', async (req, res) => {
+app.post('/api/test', upload.none(), async (req, res) => {
     res.send(req.body)
 })
 // Analytics
@@ -41,7 +46,7 @@ app.get('/api/versioncheck/v1', async (req, res) => {
     }
 })
 // Player
-app.post("/api/players/v1/getorcreate", async (req, res) => {
+app.post("/api/players/v1/getorcreate", bodyParser.urlencoded({extended:true}), async (req, res) => {
     console.log("Getting/Creating Player...")
     // Fields
     var Platform = req.body["Platform"]
@@ -122,7 +127,7 @@ app.get("/api/config/v2", async (req, res) => {
     var rrConfig = await apiConfig.RRConfig()
     res.send(rrConfig)
 })
-app.get("/api/settings/v2/", async (req, res) => {
+app.get("/api/settings/v2/", upload.none(), async (req, res) => {
     console.log("Getting Preferences.")
     var PlayerId = req.headers["x-rec-room-profile"]
     var Settings = await apiPlayers.DownloadPreferences(PlayerId)
@@ -133,10 +138,26 @@ app.get("/api/settings/v2/", async (req, res) => {
     }
 })
 // placeholders
-app.get("/api/settings/v2/set", async (req, res) => {
+app.post("/api/settings/v2/set", upload.none(), async (req, res) => {
+    console.log("Setting Preference...")
+    // vars
+    var PlayerId = req.headers["x-rec-room-profile"]
+    var DidWeSucceed = await SetPreference(PlayerId, req.body["Key"], req.body["Value"])
+    // error handling idfk
+    if (DidWeSucceed == null || DidWeSucceed == false) {
+        res.status(500)
+    }
     res.send("done")
 })
-app.get("/api/settings/v2/remove", async (req, res) => {
+app.post("/api/settings/v2/remove", upload.none(), async (req, res) => {
+    console.log("Removing Preference...")
+    // vars
+    var PlayerId = req.headers["x-rec-room-profile"]
+    var DidWeSucceed = await RemovePreference(PlayerId, req.body["Key"])
+    // error handling idfk
+    if (DidWeSucceed == null || DidWeSucceed == false) {
+        res.status(500)
+    }
     res.send("done")
 })
 // Presence

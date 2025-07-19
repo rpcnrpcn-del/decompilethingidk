@@ -34,5 +34,17 @@
    {
       "Key": "MOD_BLOCKED_DURATION",
       "Value": "0"
+   },
+   {
+      "Key": "google_analytics_clientid_pref_key",
+      "Value": "DAFOOCBTca650229e1f4a03fde783aed3ac5fa38296e3f21"
+   },
+   {
+      "Key": "PlayerSessionCount",
+      "Value": "1"
+   },
+   {
+      "Key": "DAILY_LOGIN_DATE",
+      "Value": "200"
    }
 ]

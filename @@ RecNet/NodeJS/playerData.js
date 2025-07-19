@@ -20,7 +20,7 @@ const SettingsTemplate = [
     },
     {
         "Key": "ShowRoomCenter",
-        "Value": "0"
+        "Value": "1"
     },
     {
         "Key": "ROTATION_INCREMENT",
@@ -134,6 +134,15 @@ export async function PlayerJSON(PlayerId) {
 
     return jsonProfile
 }
+export async function PlayerSettings(PlayerId) {
+    if (PlayerId == null) return;
+    const ProfilePath = path.join(rootDir, 'data', 'players', `${PlayerId}`, 'Settings.json');
+    if (!existsSync(ProfilePath)) return;
+    // Read settings & return it.
+    var settingsData = await readFile(ProfilePath, 'utf8')
+    settingsData = JSON.parse(settingsData)
+    return settingsData
+}
 export async function DoesProfileExist(PlayerId) {
     if (PlayerId == null) return;
     const ProfilePath = path.join(rootDir, 'data', 'players', `${PlayerId}`, 'Profile.json');
@@ -146,4 +155,44 @@ export async function DoesProfileExist(PlayerId) {
 }
 export async function PlayerPresence(PlayerId) {
     
+}
+export async function RemovePreference(PlayerId, Key) {
+    if (PlayerId == null || Key == null || Value == null) return;
+    // get path
+    const ProfilePath = path.join(rootDir, 'data', 'players', `${PlayerId}`, "Settings.json");
+    // get settings & set setting
+    var Settings = await PlayerSettings(PlayerId)
+
+    for (var i = 0; i < Settings.length; i++) {
+        if (Settings[i]["Key"] != Key)
+            continue;
+        Settings[i]["Value"] = null
+        break;
+    }
+
+    // write settings file
+    await writeFile(ProfilePath, JSON.stringify(Settings, null, 3))
+    return true
+}
+export async function SetPreference(PlayerId, Key, Value) {
+    if (PlayerId == null || Key == null || Value == null) return;
+    // get path
+    const ProfilePath = path.join(rootDir, 'data', 'players', `${PlayerId}`, "Settings.json");
+    // get settings & set setting
+    var Settings = await PlayerSettings(PlayerId)
+
+    var couldFindSetting = false
+    for (var i = 0; i < Settings.length; i++) {
+        if (Settings[i]["Key"] != Key)
+            continue;
+        Settings[i]["Value"] = Value
+        couldFindSetting = true
+        break;
+    }
+    if (!couldFindSetting)
+        Settings.push({"Key":Key,"Value":Value})
+
+    // write settings file
+    await writeFile(ProfilePath, JSON.stringify(Settings, null, 3))
+    return true
 }
