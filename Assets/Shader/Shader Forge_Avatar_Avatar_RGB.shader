@@ -17,7 +17,7 @@ Shader "Shader Forge/Avatar/Avatar_RGB" {
 		Pass {
 			Name "FORWARD"
 			Tags { "CanUseSpriteAtlas" = "true" "LIGHTMODE" = "ForwardBase" "RenderType" = "Opaque" "SHADOWSUPPORT" = "true" }
-			ZClip Off
+
 			Cull Off
 			GpuProgramID 28800
 			CGPROGRAM
@@ -314,7 +314,7 @@ Shader "Shader Forge/Avatar/Avatar_RGB" {
 			Name "FORWARD_DELTA"
 			Tags { "CanUseSpriteAtlas" = "true" "LIGHTMODE" = "ForwardAdd" "RenderType" = "Opaque" "SHADOWSUPPORT" = "true" }
 			Blend One One, One One
-			ZClip Off
+
 			Cull Off
 			GpuProgramID 123712
 			CGPROGRAM
@@ -518,7 +518,7 @@ Shader "Shader Forge/Avatar/Avatar_RGB" {
 		Pass {
 			Name "META"
 			Tags { "CanUseSpriteAtlas" = "true" "LIGHTMODE" = "Meta" "RenderType" = "Opaque" "SHADOWSUPPORT" = "true" }
-			ZClip Off
+
 			Cull Off
 			GpuProgramID 181409
 			CGPROGRAM

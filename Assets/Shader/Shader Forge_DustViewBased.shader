@@ -10,7 +10,6 @@ Shader "Shader Forge/DustViewBased" {
 			Name "FORWARD"
 			Tags { "IGNOREPROJECTOR" = "true" "LIGHTMODE" = "ForwardBase" "QUEUE" = "Transparent" "RenderType" = "Transparent" "SHADOWSUPPORT" = "true" }
 			Blend SrcAlpha OneMinusSrcAlpha, SrcAlpha OneMinusSrcAlpha
-			ZClip Off
 			ZWrite Off
 			GpuProgramID 63079
 			CGPROGRAM

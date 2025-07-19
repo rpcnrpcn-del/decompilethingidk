@@ -18,7 +18,6 @@ Shader "Nature/Terrain/Advanced Bumped (Lite)" {
 		Pass {
 			Name "FORWARD"
 			Tags { "LIGHTMODE" = "ForwardBase" "QUEUE" = "Geometry-100" "RenderType" = "Opaque" "SHADOWSUPPORT" = "true" "SplatCount" = "4" }
-			ZClip Off
 			GpuProgramID 4443
 			CGPROGRAM
 			#pragma vertex vert
@@ -222,7 +221,6 @@ Shader "Nature/Terrain/Advanced Bumped (Lite)" {
 			Name "FORWARD"
 			Tags { "LIGHTMODE" = "ForwardAdd" "QUEUE" = "Geometry-100" "RenderType" = "Opaque" "SplatCount" = "4" }
 			Blend One One, One One
-			ZClip Off
 			ZWrite Off
 			GpuProgramID 80752
 			CGPROGRAM
@@ -392,7 +390,6 @@ Shader "Nature/Terrain/Advanced Bumped (Lite)" {
 		Pass {
 			Name "PREPASS"
 			Tags { "LIGHTMODE" = "PrePassBase" "QUEUE" = "Geometry-100" "RenderType" = "Opaque" "SplatCount" = "4" }
-			ZClip Off
 			GpuProgramID 137522
 			CGPROGRAM
 			#pragma vertex vert
@@ -539,7 +536,6 @@ Shader "Nature/Terrain/Advanced Bumped (Lite)" {
 		Pass {
 			Name "PREPASS"
 			Tags { "LIGHTMODE" = "PrePassFinal" "QUEUE" = "Geometry-100" "RenderType" = "Opaque" "SplatCount" = "4" }
-			ZClip Off
 			ZWrite Off
 			GpuProgramID 209687
 			CGPROGRAM
@@ -674,7 +670,6 @@ Shader "Nature/Terrain/Advanced Bumped (Lite)" {
 		Pass {
 			Name "DEFERRED"
 			Tags { "LIGHTMODE" = "Deferred" "QUEUE" = "Geometry-100" "RenderType" = "Opaque" "SplatCount" = "4" }
-			ZClip Off
 			GpuProgramID 286400
 			CGPROGRAM
 			#pragma vertex vert
@@ -882,7 +877,6 @@ Shader "Nature/Terrain/Advanced Bumped (Lite)" {
 		Pass {
 			Name "META"
 			Tags { "LIGHTMODE" = "Meta" "QUEUE" = "Geometry-100" "RenderType" = "Opaque" "SplatCount" = "4" }
-			ZClip Off
 			Cull Off
 			GpuProgramID 343128
 			CGPROGRAM

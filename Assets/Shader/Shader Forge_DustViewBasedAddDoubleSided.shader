@@ -10,7 +10,6 @@ Shader "Shader Forge/DustViewBasedAddDoubleSided" {
 			Name "FORWARD"
 			Tags { "IGNOREPROJECTOR" = "true" "LIGHTMODE" = "ForwardBase" "QUEUE" = "Transparent" "RenderType" = "Transparent" "SHADOWSUPPORT" = "true" }
 			Blend One One, One One
-			ZClip Off
 			ZWrite Off
 			Cull Off
 			GpuProgramID 30807
