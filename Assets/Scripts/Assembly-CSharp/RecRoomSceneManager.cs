@@ -162,6 +162,10 @@ public class RecRoomSceneManager : Photon.MonoBehaviour
 
 	protected virtual void Start()
 	{
+		foreach (Light light in FindObjectsOfType<Light>())
+		{
+			light.renderMode = LightRenderMode.ForcePixel;
+		}
 		for (int i = 0; i < recRoomSceneComponents.Count; i++)
 		{
 			recRoomSceneComponents[i].OnStart(this);

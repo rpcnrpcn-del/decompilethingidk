@@ -1,0 +1,38 @@
+[
+   {
+      "Key": "QualitySettings",
+      "Value": "3"
+   },
+   {
+      "Key": "VoiceChat",
+      "Value": "0"
+   },
+   {
+      "Key": "ShowNames",
+      "Value": "1"
+   },
+   {
+      "Key": "ShowRoomCenter",
+      "Value": "0"
+   },
+   {
+      "Key": "ROTATION_INCREMENT",
+      "Value": "0"
+   },
+   {
+      "Key": "MOTION_TELEPORT_ENABLED",
+      "Value": "1"
+   },
+   {
+      "Key": "CONTINUOUS_ROTATION_MODE",
+      "Value": "1"
+   },
+   {
+      "Key": "MOD_BLOCKED_TIME",
+      "Value": "0"
+   },
+   {
+      "Key": "MOD_BLOCKED_DURATION",
+      "Value": "0"
+   }
+]

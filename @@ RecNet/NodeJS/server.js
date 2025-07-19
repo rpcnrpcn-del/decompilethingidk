@@ -110,7 +110,7 @@ app.get("/api/avatar/v2", async (req, res) => {
         res.status(500)
 })
 app.get("/api/avatar/v3/items", async (req, res) => {
-    var unlockedItems = [] /*await apiConfig.DummyAvatarItems()*/
+    var unlockedItems = await apiConfig.DummyAvatarItems()
     res.send(unlockedItems)
 })
 app.get("/api/avatar/v2/gifts", async (req, res) => {

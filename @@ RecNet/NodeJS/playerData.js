@@ -1,4 +1,4 @@
-import {readFile, writeFile} from "node:fs/promises"
+import {readFile, writeFile, mkdir} from "node:fs/promises"
 import {existsSync} from "node:fs"
 import path from 'path'
 import { GetConfig, GetDefaultAv, GetAvatarItems } from "./config.js"
@@ -68,10 +68,13 @@ const PlayerTemplate = {
     "Avatar": AvatarTemplate,
     "Settings": SettingsTemplate
 }
+const MiscTemplate = {
+    "ProfilePicture": "default"
+}
 
 export async function CreateProfile(PlayerId, Name) {
     if (PlayerId == null || Name == null) return;
-    const ProfilePath = rootDir + "\\data\\players\\" + PlayerId + ".json"
+    const ProfilePath = rootDir + "\\data\\players\\" + PlayerId + "\\"
     var profileTemplate = PlayerTemplate
     // Does the profile already exist?
     if (existsSync(ProfilePath)) {
@@ -86,31 +89,54 @@ export async function CreateProfile(PlayerId, Name) {
     PlayerJson.Profile.Username = Name
     PlayerJson.Profile.DisplayName = Name
     PlayerJson.Avatar = await GetDefaultAv();
+    PlayerJson.Misc = MiscTemplate
 
-    await writeFile(ProfilePath, JSON.stringify(PlayerJson, null, 3))
+    mkdir(ProfilePath)
+
+    await writeFile(ProfilePath + "Profile.json", JSON.stringify(PlayerJson["Profile"], null, 3))
+    await writeFile(ProfilePath + "Avatar.json", JSON.stringify(PlayerJson["Avatar"], null, 3))
+    await writeFile(ProfilePath + "Settings.json", JSON.stringify(PlayerJson["Settings"], null, 3))
+    await writeFile(ProfilePath + "Misc.json", JSON.stringify(PlayerJson["Misc"], null, 3))
 }
 export async function GetProfile(PlayerId) {
     if (PlayerId == null) return;
-    const ProfilePath = path.join(rootDir, 'data', 'players', `${PlayerId}.json`);
+    const ProfilePath = path.join(rootDir, 'data', 'players', `${PlayerId}`, 'Profile.json');
     if (!existsSync(ProfilePath)) return;
     // Read profile & return it.
     var profileData = await readFile(ProfilePath, 'utf8')
-    var jsonProfile = JSON.parse(profileData)["Profile"]
+    var jsonProfile = JSON.parse(profileData)
     var textProfile = JSON.stringify(jsonProfile)
     return textProfile
 }
 export async function PlayerJSON(PlayerId) {
     if (PlayerId == null) return;
-    const ProfilePath = path.join(rootDir, 'data', 'players', `${PlayerId}.json`);
+    const ProfilePath = path.join(rootDir, 'data', 'players', `${PlayerId}`);
+
+    const ProfileJson = path.join(ProfilePath, 'Profile.json');
+    const AvatarJson = path.join(ProfilePath, 'Avatar.json');
+    const SettingsJson = path.join(ProfilePath, 'Settings.json');
+    const MiscJson = path.join(ProfilePath, 'Misc.json');
+
     if (!existsSync(ProfilePath)) return;
     // Read profile & return it.
-    var profileData = await readFile(ProfilePath, 'utf8')
-    var jsonProfile = JSON.parse(profileData)
+
+    var profileData = await readFile(ProfileJson, 'utf8')
+    var avatarData = await readFile(AvatarJson, 'utf8')
+    var settingsData = await readFile(SettingsJson, 'utf8')
+    var miscData = await readFile(MiscJson, 'utf8')
+
+    profileData = JSON.parse(profileData)
+    avatarData = JSON.parse(avatarData)
+    settingsData = JSON.parse(settingsData)
+    miscData = JSON.parse(miscData)
+
+    var jsonProfile = {"Profile":profileData,"Avatar":avatarData,"Settings":settingsData,"Misc":miscData}
+
     return jsonProfile
 }
 export async function DoesProfileExist(PlayerId) {
     if (PlayerId == null) return;
-    const ProfilePath = path.join(rootDir, 'data', 'players', `${PlayerId}.json`);
+    const ProfilePath = path.join(rootDir, 'data', 'players', `${PlayerId}`, 'Profile.json');
     // Does the profile already exist?
     if (existsSync(ProfilePath)) {
         return true;

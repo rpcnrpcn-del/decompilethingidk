@@ -8,10 +8,9 @@ Shader "AG/3D Text Shader - Fog" {
 		Pass {
 			Tags { "IGNOREPROJECTOR" = "true" "QUEUE" = "Transparent" "RenderType" = "Transparent" }
 			Blend SrcAlpha OneMinusSrcAlpha, SrcAlpha OneMinusSrcAlpha
-			ZClip Off
 			ZWrite Off
 			Fog {
-				Mode 0
+				Mode Off
 			}
 			GpuProgramID 53870
 			CGPROGRAM

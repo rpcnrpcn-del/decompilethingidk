@@ -8,12 +8,11 @@ Shader "AG/DesaturateEffect" {
 		Pass {
 			Tags { "QUEUE" = "Overlay" "RenderType" = "Transparent" }
 			Blend SrcAlpha OneMinusSrcAlpha, SrcAlpha OneMinusSrcAlpha
-			ZClip Off
 			ZTest Always
 			ZWrite Off
 			Cull Off
 			Fog {
-				Mode 0
+				Mode Off
 			}
 			GpuProgramID 28035
 			CGPROGRAM

@@ -84,7 +84,7 @@ Material:
       second: 5.9
     - first:
         name: _ScanlineEffect
-      second: 0.326
+      second: 0.163
     - first:
         name: _ScanlineIntensity
       second: 0.5

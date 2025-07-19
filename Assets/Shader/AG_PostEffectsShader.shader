@@ -6,7 +6,6 @@ Shader "AG/PostEffectsShader" {
 		Pass {
 			Tags { "QUEUE" = "Overlay+100" }
 			Blend DstColor Zero, DstColor Zero
-			ZClip Off
 			ZTest Always
 			ZWrite Off
 			GpuProgramID 15695

@@ -1,4 +1,4 @@
-Shader "AG/InvisibleWall" {
+/*Shader "AG/InvisibleWall" {
 	Properties {
 		_ImpactColor ("Impact Color", Color) = (0,0,1,1)
 	}
@@ -130,4 +130,80 @@ Shader "AG/InvisibleWall" {
 		}
 	}
 	Fallback "Diffuse"
+}*/
+Shader "AG/InvisibleWall" {
+    Properties {
+        _ImpactColor ("Impact Color", Color) = (0,0,1,1)
+    }
+    SubShader {
+        Tags { "QUEUE"="Transparent" "RenderType"="Transparent" }
+        Pass {
+            LOD 200
+            Blend One One
+            ZWrite Off
+            ZTest LEqual
+            Cull Off
+            
+            CGPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+            #include "UnityCG.cginc"
+
+            struct appdata {
+                float4 vertex : POSITION;
+            };
+
+            struct v2f {
+                float4 pos : SV_POSITION;
+                float3 worldPos : TEXCOORD0;
+            };
+
+            float4 _ImpactColor;
+            float4 _ImpactPoint0;
+            float4 _ImpactPoint1;
+            float4 _ImpactPoint2;
+            float4 _ImpactPoint3;
+            float4 _ImpactPoint4;
+            float4 _ImpactPoint5;
+            float4 _ImpactPoint6;
+            float4 _ImpactPoint7;
+            float _ImpactPointAlpha0;
+            float _ImpactPointAlpha1;
+            float _ImpactPointAlpha2;
+            float _ImpactPointAlpha3;
+            float _ImpactPointAlpha4;
+            float _ImpactPointAlpha5;
+            float _ImpactPointAlpha6;
+            float _ImpactPointAlpha7;
+
+            v2f vert (appdata v) {
+                v2f o;
+                float4 world = mul(unity_ObjectToWorld, v.vertex);
+                o.worldPos = world.xyz;
+                o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+                return o;
+            }
+
+            float4 ComputeImpact(float3 wPos, float4 impactPoint, float alpha) {
+                float d = distance(wPos, impactPoint.xyz);
+                float intensity = saturate(1.0 - (d / impactPoint.w));
+                return _ImpactColor * intensity * alpha;
+            }
+
+            float4 frag (v2f i) : SV_Target {
+                float4 col = 0;
+                col += ComputeImpact(i.worldPos, _ImpactPoint0, _ImpactPointAlpha0);
+                col += ComputeImpact(i.worldPos, _ImpactPoint1, _ImpactPointAlpha1);
+                col += ComputeImpact(i.worldPos, _ImpactPoint2, _ImpactPointAlpha2);
+                col += ComputeImpact(i.worldPos, _ImpactPoint3, _ImpactPointAlpha3);
+                col += ComputeImpact(i.worldPos, _ImpactPoint4, _ImpactPointAlpha4);
+                col += ComputeImpact(i.worldPos, _ImpactPoint5, _ImpactPointAlpha5);
+                col += ComputeImpact(i.worldPos, _ImpactPoint6, _ImpactPointAlpha6);
+                col += ComputeImpact(i.worldPos, _ImpactPoint7, _ImpactPointAlpha7);
+                return col;
+            }
+            ENDCG
+        }
+    }
+    FallBack "Diffuse"
 }
