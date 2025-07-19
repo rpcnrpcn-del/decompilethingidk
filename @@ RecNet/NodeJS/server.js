@@ -160,6 +160,17 @@ app.post("/api/settings/v2/remove", upload.none(), async (req, res) => {
     }
     res.send("done")
 })
+// Objectives
+app.post("/api/players/v2/objective", upload.none(), async (req, res) => {
+    console.log("Completing Objective...")
+    // vars
+    var PlayerId = req.headers["x-rec-room-profile"]
+    var objectiveType = req.body["objectiveType"]
+    var additionalXp = req.body["additionalXp"]
+    var inParty = req.body["inParty"]
+    // bleh
+    res.send("placeholder, implement later.")
+})
 // Presence
 app.get("/api/presence/v1/list", async (req, res) => {
     var presences = []

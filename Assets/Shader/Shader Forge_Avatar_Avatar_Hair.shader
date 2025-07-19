@@ -19,7 +19,7 @@ Shader "Shader Forge/Avatar_Hair" {
         Tags { "Queue" = "Geometry" "RenderType" = "Opaque" }
         Blend SrcAlpha OneMinusSrcAlpha
         ZWrite On
-        Cull Off
+        Cull Back
 
         Pass {
             Name "FORWARD"
