@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using Photon;
 using UnityEngine;
@@ -279,7 +280,15 @@ public abstract class GameManager : Photon.MonoBehaviour
 		{
 			OnRecRoomPlayerCreated(Player.LocalPlayer);
 		}
+		StartCoroutine(PlayerCreated_Workaround());
 	}
+
+	private IEnumerator PlayerCreated_Workaround()
+    {
+        Debug.Log("[GameManager] Attempting workaround...");
+        yield return new WaitUntil(() => Player.LocalPlayer != null);
+        OnRecRoomPlayerCreated(Player.LocalPlayer);
+    }
 
 	private void OnRecRoomPlayerCreated(Player player)
 	{
@@ -287,6 +296,8 @@ public abstract class GameManager : Photon.MonoBehaviour
 		{
 			isInitialized = true;
 			Initialize();
+
+			Debug.Log("[GameManager] Initializing...");
 		}
 	}
 

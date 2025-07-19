@@ -17,6 +17,12 @@ Material:
     serializedVersion: 2
     m_TexEnvs:
     - first:
+        name: _MainTex
+      second:
+        m_Texture: {fileID: 2800000, guid: 0f293bc4514e7b64e8e30768ca49dd83, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
         name: _Texture
       second:
         m_Texture: {fileID: 2800000, guid: 0f293bc4514e7b64e8e30768ca49dd83, type: 3}

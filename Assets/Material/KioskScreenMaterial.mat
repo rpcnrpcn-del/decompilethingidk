@@ -66,7 +66,7 @@ Material:
       second: 128
     - first:
         name: _NumPixelsY
-      second: 9.53
+      second: 128
     - first:
         name: _OcclusionStrength
       second: 1
@@ -75,7 +75,7 @@ Material:
       second: 0.02
     - first:
         name: _PixelEffect
-      second: 0.18
+      second: 0.05
     - first:
         name: _PixelSize
       second: 1

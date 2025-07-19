@@ -1,71 +1,59 @@
 Shader "Shader Forge/LightPanner" {
-	Properties {
-		_MainTex ("MainTex", 2D) = "white" {}
-		_TintColor ("Color", Color) = (0.5,0.5,0.5,1)
-	}
-	SubShader {
-		Tags { "IGNOREPROJECTOR" = "true" "QUEUE" = "Transparent" "RenderType" = "Transparent" }
-		Pass {
-			Name "FORWARD"
-			Tags { "IGNOREPROJECTOR" = "true" "LIGHTMODE" = "ForwardBase" "QUEUE" = "Transparent" "RenderType" = "Transparent" "SHADOWSUPPORT" = "true" }
-			Blend One One, One One
-			ZClip Off
-			ZWrite Off
-			GpuProgramID 16684
-			CGPROGRAM
-			#pragma vertex vert
-			#pragma fragment frag
-			
-			#include "UnityCG.cginc"
-			struct v2f
-			{
-				float4 position : SV_POSITION0;
-				float4 color : COLOR0;
-			};
-			struct fout
-			{
-				float4 sv_target : SV_Target0;
-			};
-			// $Globals ConstantBuffers for Vertex Shader
-			// $Globals ConstantBuffers for Fragment Shader
-			float4 _TimeEditor;
-			float4 _MainTex_ST;
-			float4 _TintColor;
-			// Custom ConstantBuffers for Vertex Shader
-			// Custom ConstantBuffers for Fragment Shader
-			// Texture params for Vertex Shader
-			// Texture params for Fragment Shader
-			sampler2D _MainTex;
-			
-			// Keywords: DIRECTIONAL
-			v2f vert(appdata_full v)
-			{
+    Properties {
+        _MainTex ("MainTex", 2D) = "white" {}
+        _TintColor ("Color", Color) = (0.5,0.5,0.5,1)
+    }
+    SubShader {
+        Tags { "IGNOREPROJECTOR" = "true" "QUEUE" = "Transparent" "RenderType" = "Transparent" }
+        Pass {
+            Name "FORWARD"
+            Tags { "IGNOREPROJECTOR" = "true" "LIGHTMODE" = "ForwardBase" "QUEUE" = "Transparent" "RenderType" = "Transparent" "SHADOWSUPPORT" = "true" }
+            Blend One One
+            ZWrite Off
+            Cull Off
+            Fog { Mode Off }
+            CGPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+            #include "UnityCG.cginc"
+
+            sampler2D _MainTex;
+            float4 _MainTex_ST;
+            float4 _TintColor;
+            float4 _TimeEditor;
+
+            struct appdata {
+                float4 vertex : POSITION;
+                float4 color : COLOR;
+                float2 uv : TEXCOORD0;
+            };
+
+            struct v2f {
+                float4 position : SV_POSITION;
+                float4 color : COLOR0;
+            };
+
+            v2f vert(appdata v) {
                 v2f o;
-                float4 tmp0;
-                tmp0 = v.vertex.yyyy * glstate_matrix_mvp._m01_m11_m21_m31;
-                tmp0 = glstate_matrix_mvp._m00_m10_m20_m30 * v.vertex.xxxx + tmp0;
-                tmp0 = glstate_matrix_mvp._m02_m12_m22_m32 * v.vertex.zzzz + tmp0;
-                o.position = glstate_matrix_mvp._m03_m13_m23_m33 * v.vertex.wwww + tmp0;
+                o.position = mul(UNITY_MATRIX_MVP, v.vertex);
                 o.color = v.color;
                 return o;
-			}
-			// Keywords: DIRECTIONAL
-			fout frag(v2f inp)
-			{
-                fout o;
-                float4 tmp0;
-                tmp0.x = _TimeEditor.y + _Time.y;
-                tmp0.xy = tmp0.xx * float2(0.02, 0.0) + unity_ObjectToWorld._m03_m13;
-                tmp0.xy = tmp0.xy * _MainTex_ST.xy + _MainTex_ST.zw;
-                tmp0 = tex2D(_MainTex, tmp0.xy);
-                tmp0.xyz = tmp0.xyz * inp.color.xyz;
-                tmp0.xyz = tmp0.xyz * _TintColor.xyz;
-                o.sv_target.xyz = tmp0.xyz + tmp0.xyz;
-                o.sv_target.w = 1.0;
-                return o;
-			}
-			ENDCG
-		}
-	}
-	CustomEditor "ShaderForgeMaterialInspector"
+            }
+
+            fixed4 frag(v2f inp) : SV_Target {
+                float t = _TimeEditor.y + _Time.y;
+                float2 uv = float2(t * 0.02, 0.0);
+                uv = uv * _MainTex_ST.xy + _MainTex_ST.zw;
+                fixed4 col = tex2D(_MainTex, uv);
+                col.rgb = col.rgb * inp.color.rgb;
+                col.rgb = col.rgb * _TintColor.rgb;
+                fixed4 result;
+                result.rgb = col.rgb * 2.0;
+                result.a = 1.0;
+                return result;
+            }
+            ENDCG
+        }
+    }
+    CustomEditor "ShaderForgeMaterialInspector"
 }

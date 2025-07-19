@@ -1,10 +1,10 @@
-Shader "Fixed/GrenadeTool"
+Shader "Fixed/GrenadeToolFinal"
 {
     Properties
     {
-        _MainTex ("Base Color", 2D) = "white" {}
+        _MainTex ("Decal (RGBA)", 2D) = "white" {}
         _BumpMap ("Normal Map", 2D) = "bump" {}
-        _Color ("Color Tint", Color) = (1,0,0,1)
+        _Color ("Base Color Tint", Color) = (1,0,0,1)
         _Metallic ("Metallic", Range(0,1)) = 1
         _Gloss ("Gloss", Range(0,1)) = 0.8
         _EmissionColor ("Emission Color", Color) = (0,0,0,1)
@@ -12,8 +12,12 @@ Shader "Fixed/GrenadeTool"
 
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags { "Queue"="Geometry" "RenderType"="Opaque" }
         LOD 200
+
+        Cull Back      // ? normal frontface culling
+        ZWrite On      // ? depth writes, proper lighting
+        Blend One Zero // ? fully opaque
 
         CGPROGRAM
         #pragma surface surf Standard fullforwardshadows
@@ -33,16 +37,21 @@ Shader "Fixed/GrenadeTool"
 
         void surf (Input IN, inout SurfaceOutputStandard o)
         {
-            fixed4 tex = tex2D(_MainTex, IN.uv_MainTex) * _Color;
+            fixed4 decal = tex2D(_MainTex, IN.uv_MainTex);
             fixed4 normal = tex2D(_BumpMap, IN.uv_BumpMap);
 
-            o.Albedo = tex.rgb;
+            // Blend decal color with base tint
+            fixed3 finalColor = lerp(_Color.rgb, decal.rgb, decal.a);
+
+            o.Albedo = finalColor;
             o.Normal = UnpackNormal(normal);
             o.Metallic = _Metallic;
             o.Smoothness = _Gloss;
             o.Emission = _EmissionColor.rgb;
+            o.Alpha = 1; // fully opaque
         }
         ENDCG
     }
+
     FallBack "Diffuse"
 }
