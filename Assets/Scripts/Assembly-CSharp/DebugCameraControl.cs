@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.VR;
 
 public class DebugCameraControl : MonoBehaviour
 {
@@ -44,7 +45,7 @@ public class DebugCameraControl : MonoBehaviour
 		{
 			Object.Destroy(this);
 		}*/
-		if (!Application.isEditor)
+		if (!Application.isEditor || VRDevice.isPresent)
 			Destroy(this);
 	}
 
