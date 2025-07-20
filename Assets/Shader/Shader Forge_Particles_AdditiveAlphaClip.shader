@@ -10,7 +10,6 @@ Shader "Shader Forge/Particles/AdditiveAlphaClip" {
 			Name "FORWARD"
 			Tags { "LIGHTMODE" = "ForwardBase" "QUEUE" = "AlphaTest" "RenderType" = "TransparentCutout" "SHADOWSUPPORT" = "true" }
 			Blend One One, One One
-			ZClip Off
 			GpuProgramID 47116
 			CGPROGRAM
 			#pragma vertex vert
