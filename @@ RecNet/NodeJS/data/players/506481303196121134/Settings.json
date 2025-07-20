@@ -5,7 +5,7 @@
    },
    {
       "Key": "VoiceChat",
-      "Value": "0"
+      "Value": "2"
    },
    {
       "Key": "ShowNames",
@@ -41,10 +41,50 @@
    },
    {
       "Key": "PlayerSessionCount",
-      "Value": "1"
+      "Value": "5"
    },
    {
       "Key": "DAILY_LOGIN_DATE",
       "Value": "201"
+   },
+   {
+      "Key": "OBJECTIVE_DATE",
+      "Value": "201"
+   },
+   {
+      "Key": "OBJECTIVE_PROGRESS0",
+      "Value": "0"
+   },
+   {
+      "Key": "OBJECTIVE_COMPLETED0",
+      "Value": "0"
+   },
+   {
+      "Key": "OBJECTIVE_PROGRESS1",
+      "Value": "1"
+   },
+   {
+      "Key": "OBJECTIVE_COMPLETED1",
+      "Value": "1"
+   },
+   {
+      "Key": "OBJECTIVE_PROGRESS2",
+      "Value": "0"
+   },
+   {
+      "Key": "OBJECTIVE_COMPLETED2",
+      "Value": "0"
+   },
+   {
+      "Key": "Recroom.OOBE",
+      "Value": "20"
+   },
+   {
+      "Key": "MUSIC_VOLUME_PERCENT_PREF",
+      "Value": "0.8248016"
+   },
+   {
+      "Key": "SFX_VOLUME_PERCENT_PREF",
+      "Value": "0.6340097"
    }
 ]
