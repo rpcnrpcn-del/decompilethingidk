@@ -58,7 +58,7 @@ public class BootSequence : UnityEngine.MonoBehaviour
 			yield return Config.DownloadConfigSettings(InitializeCallback);
             // Notif Stuff
             Debug.Log("[BootSequence] Notif Init");
-            // yield return Core.InitializePushNotificationChannel(InitializeCallback);
+            yield return Core.InitializePushNotificationChannel(InitializeCallback);
             // Player Data :)
             Debug.Log("[BootSequence] Profile (2) Init");
             Images.RefreshCachedProfileImage(Profiles.LocalProfile.Id);

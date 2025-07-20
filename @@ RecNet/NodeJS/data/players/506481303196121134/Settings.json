@@ -41,7 +41,7 @@
    },
    {
       "Key": "PlayerSessionCount",
-      "Value": "9"
+      "Value": "13"
    },
    {
       "Key": "DAILY_LOGIN_DATE",
@@ -81,10 +81,10 @@
    },
    {
       "Key": "MUSIC_VOLUME_PERCENT_PREF",
-      "Value": "0.8248016"
+      "Value": "0.5694177"
    },
    {
       "Key": "SFX_VOLUME_PERCENT_PREF",
-      "Value": "0.6340097"
+      "Value": "0.5394391"
    }
 ]

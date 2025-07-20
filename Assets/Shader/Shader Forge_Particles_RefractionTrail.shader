@@ -13,7 +13,6 @@ Shader "Shader Forge/Particles/RefractionTrail" {
 			Name "FORWARD"
 			Tags { "LIGHTMODE" = "ForwardBase" "QUEUE" = "Transparent" "RenderType" = "Transparent" "SHADOWSUPPORT" = "true" }
 			Blend One One, One One
-			ZClip Off
 			ZWrite Off
 			Cull Off
 			GpuProgramID 55625
@@ -139,7 +138,6 @@ Shader "Shader Forge/Particles/RefractionTrail" {
 			Name "FORWARD_DELTA"
 			Tags { "LIGHTMODE" = "ForwardAdd" "QUEUE" = "Transparent" "RenderType" = "Transparent" "SHADOWSUPPORT" = "true" }
 			Blend One One, One One
-			ZClip Off
 			ZWrite Off
 			Cull Off
 			GpuProgramID 68536

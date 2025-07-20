@@ -49,6 +49,7 @@ const ProfileTemplate = {
     "DisplayName": "DisplayName",
     "XP": 0,
     "Level": 1,
+    "XpRequiredToLevelUp": 100,
     "Reputation": 0,
     "Verified": true,
     "Developer": false
@@ -63,15 +64,19 @@ const GiftTemplate = {
     "AvatarItemDesc": "",
     "Xp": -1
 }
-const PlayerTemplate = {
-    "Profile": ProfileTemplate,
-    "Avatar": AvatarTemplate,
-    "Settings": SettingsTemplate
-}
 const MiscTemplate = {
     "ProfilePicture": "default"
 }
+const RelationshipTemplate = []
 
+const PlayerTemplate = {
+    "Profile": ProfileTemplate,
+    "Avatar": AvatarTemplate,
+    "Settings": SettingsTemplate,
+    "Misc": MiscTemplate,
+    "Relationship": RelationshipTemplate
+}
+// Profile Creation n stuff
 export async function CreateProfile(PlayerId, Name) {
     if (PlayerId == null || Name == null) return;
     const ProfilePath = rootDir + "\\data\\players\\" + PlayerId + "\\"
@@ -90,6 +95,7 @@ export async function CreateProfile(PlayerId, Name) {
     PlayerJson.Profile.DisplayName = Name
     PlayerJson.Avatar = await GetDefaultAv();
     PlayerJson.Misc = MiscTemplate
+    PlayerJson.Relationship = RelationshipTemplate
 
     mkdir(ProfilePath)
 
@@ -108,6 +114,7 @@ export async function GetProfile(PlayerId) {
     var textProfile = JSON.stringify(jsonProfile)
     return textProfile
 }
+// JSON Utils
 export async function PlayerJSON(PlayerId) {
     if (PlayerId == null) return;
     const ProfilePath = path.join(rootDir, 'data', 'players', `${PlayerId}`);
@@ -116,6 +123,7 @@ export async function PlayerJSON(PlayerId) {
     const AvatarJson = path.join(ProfilePath, 'Avatar.json');
     const SettingsJson = path.join(ProfilePath, 'Settings.json');
     const MiscJson = path.join(ProfilePath, 'Misc.json');
+    const RelationshipJson = path.join(ProfilePath, 'Relationship.json');
 
     if (!existsSync(ProfilePath)) return;
     // Read profile & return it.
@@ -124,13 +132,15 @@ export async function PlayerJSON(PlayerId) {
     var avatarData = await readFile(AvatarJson, 'utf8')
     var settingsData = await readFile(SettingsJson, 'utf8')
     var miscData = await readFile(MiscJson, 'utf8')
+    var relationshipData = await readFile(RelationshipJson, 'utf8')
 
     profileData = JSON.parse(profileData)
     avatarData = JSON.parse(avatarData)
     settingsData = JSON.parse(settingsData)
     miscData = JSON.parse(miscData)
+    relationshipData = JSON.parse(relationshipData)
 
-    var jsonProfile = {"Profile":profileData,"Avatar":avatarData,"Settings":settingsData,"Misc":miscData}
+    var jsonProfile = {"Profile":profileData,"Avatar":avatarData,"Settings":settingsData,"Misc":miscData,"Relationship":relationshipData}
 
     return jsonProfile
 }
@@ -146,6 +156,15 @@ export async function PlayerSettings(PlayerId) {
 export async function PlayerAvatar(PlayerId) {
     if (PlayerId == null) return;
     const ProfilePath = path.join(rootDir, 'data', 'players', `${PlayerId}`, 'Avatar.json');
+    if (!existsSync(ProfilePath)) return;
+    // Read settings & return it.
+    var gottenData = await readFile(ProfilePath, 'utf8')
+    gottenData = JSON.parse(gottenData)
+    return gottenData
+}
+export async function PlayerRelationship(PlayerId) {
+    if (PlayerId == null) return;
+    const ProfilePath = path.join(rootDir, 'data', 'players', `${PlayerId}`, 'Relationship.json');
     if (!existsSync(ProfilePath)) return;
     // Read settings & return it.
     var gottenData = await readFile(ProfilePath, 'utf8')
@@ -255,4 +274,60 @@ export async function SetPFP(PlayerId, Image) {
     // write pfp file
     await writeFile(ProfilePath, Image.buffer)
     return true
+}
+// relationship
+/*
+			None = 0,
+			FriendRequestSent = 1,
+			FriendRequestReceived = 2,
+			Friend = 3,
+			BlockedLocal = 4,
+			BlockedRemote = 5,
+			BlockedMutual = 6
+*/
+export async function SetRelationship(PlayerId, OtherPlayer, RelationshipType) {
+    if (PlayerId == null || OtherPlayer == null || RelationshipType == null) return false;
+    // get path
+    const ProfilePath = path.join(rootDir, 'data', 'players', `${PlayerId}`, "Relationship.json");
+    // get relationship & set relationship
+    var Relationship = await PlayerRelationship(PlayerId)
+
+    var couldFindPlayer = false
+    for (var i = 0; i < Relationship.length; i++) {
+        if (Relationship[i]["PlayerID"] != OtherPlayer)
+            continue;
+        Relationship[i]["Relationship"] = RelationshipType
+        couldFindPlayer = true
+        break;
+    }
+    if (!couldFindPlayer)
+        Relationship.push({"PlayerID":OtherPlayer,"RelationshipType":RelationshipType})
+
+    // write settings file
+    await writeFile(ProfilePath, JSON.stringify(Relationship, null, 3))
+    return true
+}
+export async function RemoveRelationship(PlayerId, OtherPlayer) {
+    if (PlayerId == null || OtherPlayer == null) return;
+    // get path
+    const ProfilePath = path.join(rootDir, 'data', 'players', `${PlayerId}`, "Relationship.json");
+    // get settings & set setting
+    var Relationship = await PlayerRelationship(PlayerId)
+
+    for (var i = 0; i < Relationship.length; i++) {
+        if (Relationship[i]["PlayerID"] != OtherPlayer)
+            continue;
+        Relationship[i] = null
+        break;
+    }
+
+    // write settings file
+    await writeFile(ProfilePath, JSON.stringify(Relationship, null, 3))
+    return true
+}
+export async function GetRelationship(PlayerId) {
+    if (PlayerId == null) return;
+    // get relationship stuff
+    var Relationship = await PlayerRelationship(PlayerId)
+    return Relationship
 }

@@ -3,12 +3,14 @@ import { readFile } from 'node:fs'
 var configJson = {
     "debug": true,
     "version": "20170118_EA",
-    "serverversion": "Build: January 18th 2017 | Server: 200720252314",
+    "serverversion": "Build: January 18th 2017 | Server: 200720250134",
     "messageOfTheDay": "This is running on PingNet 200720252236. Yipee!",
     "DailyObjectives": null,
 }
 var defaultAvatar = null
 var avatarItems = null
+var levelMapping = null
+var xpMapping = null
 
 // Default Avatar
 readFile("./config/DefaultAvatar.json", function(err, data) {
@@ -27,6 +29,24 @@ readFile("./config/AvatarItems.json", function(err, data) {
     }
     avatarItems = JSON.parse(data)
     console.log("Got Avatar Items!")
+})
+// Level Map
+readFile("./config/level_mapping.json", function(err, data) {
+    if (err) {
+        console.log("Unable to read Level Map JSON!")
+        return;
+    }
+    levelMapping = JSON.parse(data)
+    console.log("Got Level Map!")
+})
+// XP Map
+readFile("./config/xp_mapping.json", function(err, data) {
+    if (err) {
+        console.log("Unable to read XP Map JSON!")
+        return;
+    }
+    xpMapping = JSON.parse(data)
+    console.log("Got XP Map!")
 })
 
 /*fs.readFile("./data/config.json", function(err, data) {
@@ -63,4 +83,10 @@ export async function GetDefaultAv() {
 }
 export async function GetAvatarItems() {
     return avatarItems
+}
+export async function LevelMap() {
+    return levelMapping
+}
+export async function XPMap() {
+    return xpMapping
 }

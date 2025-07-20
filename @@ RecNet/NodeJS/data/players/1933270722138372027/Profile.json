@@ -4,6 +4,7 @@
    "DisplayName": "pingvin",
    "XP": 0,
    "Level": 69,
+   "XpRequiredToLevelUp": 0,
    "Reputation": 0,
    "Verified": true,
    "Developer": true

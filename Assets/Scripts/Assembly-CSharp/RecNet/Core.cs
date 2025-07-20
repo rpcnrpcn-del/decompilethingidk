@@ -137,13 +137,15 @@ namespace RecNet
 						return;
 					}
 				}
+				Debug.Log($"[RecNet Core] (1) Connecting to WebSocket... ({REC_NET_WEBSOCKET_URL})");
 				socket = new WebSocket(REC_NET_WEBSOCKET_URL + "api/notification/v2");
 				socket.SetCredentials("recroom@againstgrav.com", "recnet87", true);
 				socket.OnOpen += DispatchOnUnityThread(OnOpen);
 				socket.OnClose += DispatchOnUnityThread<CloseEventArgs>(OnClose);
 				socket.OnError += DispatchOnUnityThread<ErrorEventArgs>(OnError);
 				socket.OnMessage += DispatchOnUnityThread<MessageEventArgs>(OnMessage);
-				state = State.Connecting;
+                Debug.Log($"[RecNet Core] (2) Connecting to WebSocket... ({REC_NET_WEBSOCKET_URL})");
+                state = State.Connecting;
 				socket.ConnectAsync();
 			}
 
@@ -285,7 +287,7 @@ namespace RecNet
 
 		private static readonly string REC_NET_HTTP_URL = "http://" + REC_NET_HOST + "/";
 
-		private static readonly string REC_NET_WEBSOCKET_URL = "wss://" + REC_NET_HOST + "/";
+		private static readonly string REC_NET_WEBSOCKET_URL = "ws://" + WS_REC_NET_HOST + "/";
 
 		private const string REC_NET_USERNAME = "recroom@againstgrav.com";
 
@@ -330,9 +332,37 @@ namespace RecNet
 				}
 				return PlayerPrefs.GetString("RecNet_Host", "127.0.0.1:25565");
 			}
-		}
+        }
+        public static string WS_REC_NET_HOST
+        {
+            get
+            {
+                /*if (_RecNetHost == null)
+				{
+					string[] commandLineArgs = Environment.GetCommandLineArgs();
+					foreach (string text in commandLineArgs)
+					{
+						if (text.StartsWith("+RecNetHostOverride:"))
+						{
+							_RecNetHost = text.Substring("+RecNetHostOverride:".Length);
+							break;
+						}
+					}
+					if (string.IsNullOrEmpty(_RecNetHost))
+					{
+						_RecNetHost = "recroom.azurewebsites.net";
+					}
+				}
+				return _RecNetHost;*/
+                if (!PlayerPrefs.HasKey("WS_Host"))
+                {
+                    PlayerPrefs.SetString("WS_Host", "127.0.0.1:7777");
+                }
+                return PlayerPrefs.GetString("WS_Host", "127.0.0.1:7777");
+            }
+        }
 
-		public static long SessionId { get; private set; }
+        public static long SessionId { get; private set; }
 
 		public static IEnumerator Get(string requestUri, RawApiCallback callback = null)
 		{

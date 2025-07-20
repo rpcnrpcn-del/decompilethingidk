@@ -4,6 +4,7 @@
    "DisplayName": "Sun",
    "XP": 0,
    "Level": 999,
+   "XpRequiredToLevelUp": 0,
    "Reputation": 0,
    "Verified": true,
    "Developer": true

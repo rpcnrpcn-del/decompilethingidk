@@ -13,7 +13,9 @@ const apiPlayers = require("./api/players")
 const apiAvatar = require("./api/avatar")
 const apiConfig = require("./api/rr_config")
 const apiImage = require("./api/images")
+const apiRelationship = require('./api/relationship')
 const { RemovePreference, SetPreference } = require('./playerData')
+const { CompleteObjective } = require('./api/objectives')
 
 const HostPort = 28960
 
@@ -28,6 +30,15 @@ app.use(express.json({ type: ['application/json', 'text/json'] }))
 app.listen(HostPort, () => {
     console.log(`Listening on port ${HostPort}...`)
 })
+// Friending
+async function AddFriend(PlayerId, OtherPlayer) {
+    console.log("Adding Friend...")
+    // vars
+    var RelationshipType = "3"
+    // add friend
+    var GottenData = await apiRelationship.Router_SetRelationship(PlayerId, OtherPlayer, RelationshipType)
+    return GottenData
+}
 // Test
 app.post('/api/test', upload.none(), async (req, res) => {
     res.send(req.body)
@@ -155,6 +166,113 @@ app.get("/api/settings/v2/", upload.none(), async (req, res) => {
         res.send(Settings)
     }
 })
+// Relationship
+app.get("/api/relationships/v2/blockplayer", async (req, res) => {
+    console.log("Blocking Player...")
+    // vars
+    var PlayerId = req.headers["x-rec-room-profile"]
+    var OtherPlayer = req.query["id"]
+    // add friend
+    var GottenData = await apiRelationship.Router_SetRelationship(PlayerId, OtherPlayer, "4")
+    if (GottenData == null || GottenData == false) {
+        res.send(500)
+    } else {
+        res.send("done")
+    }
+})
+app.get("/api/relationships/v2/unblockplayer", async (req, res) => {
+    console.log("Unblocking Player...")
+    // vars
+    var PlayerId = req.headers["x-rec-room-profile"]
+    var OtherPlayer = req.query["id"]
+    // add friend
+    var GottenData = await apiRelationship.Router_SetRelationship(PlayerId, OtherPlayer, "0")
+    if (GottenData == null || GottenData == false) {
+        res.send(500)
+    } else {
+        res.send("done")
+    }
+})
+app.get("/api/relationships/v2/sendfriendrequest", async (req, res) => {
+    console.log("Sending Friend Request...")
+    // vars
+    var PlayerId = req.headers["x-rec-room-profile"]
+    var OtherPlayer = req.query["id"]
+    // add friend
+    var GottenData = await apiRelationship.Router_SetRelationship(PlayerId, OtherPlayer, "1")
+    if (GottenData == null || GottenData == false) {
+        res.send(500)
+    } else {
+        res.send("done")
+    }
+})
+app.get("/api/relationships/v2/acceptfriendrequest", async (req, res) => {
+    console.log("Accepting Friend Request...")
+    // vars
+    var PlayerId = req.headers["x-rec-room-profile"]
+    var OtherPlayer = req.query["id"]
+    // add friend
+    var GottenData = AddFriend(PlayerId, OtherPlayer)
+    if (GottenData == null || GottenData == false) {
+        res.send(500)
+    } else {
+        res.send("done")
+    }
+})
+app.get("/api/relationships/v2/removefriend", async (req, res) => {
+    console.log("Removing Friend...")
+    // vars
+    var PlayerId = req.headers["x-rec-room-profile"]
+    var OtherPlayer = req.query["id"]
+    // add friend
+    var GottenData = await apiRelationship.Router_RemoveRelationship(PlayerId, OtherPlayer)
+    if (GottenData == null || GottenData == false) {
+        res.send(500)
+    } else {
+        res.send("done")
+    }
+})
+app.get("/api/relationships/v2/addfriend", async (req, res) => {
+    // vars
+    var PlayerId = req.headers["x-rec-room-profile"]
+    var OtherPlayer = req.query["id"]
+    // add friend
+    var GottenData = AddFriend(PlayerId, OtherPlayer)
+    if (GottenData == null || GottenData == false) {
+        res.send(500)
+    } else {
+        res.send("done")
+    }
+
+    /*console.log("Adding Friend...")
+    // vars
+    var PlayerId = req.headers["x-rec-room-profile"]
+    var OtherPlayer = req.params["PlayerID"]
+    var RelationshipType = "3"
+    // add friend
+    var GottenData = await apiRelationship.Router_SetRelationship(PlayerId, OtherPlayer, RelationshipType)
+    if (GottenData == null || GottenData == false) {
+        res.send(500)
+    } else {
+        res.send("done")
+    }*/
+})
+app.get("/api/relationships/v2/get", async (req, res) => {
+    console.log("Getting Relationships...")
+    // vars
+    var PlayerId = req.headers["x-rec-room-profile"]
+    // get relationship status of my ex-wife
+    var GottenData = await apiRelationship.Router_GetRelationship(PlayerId)
+    if (GottenData == null || GottenData == false) {
+        res.send(500)
+    } else {
+        res.send(GottenData)
+    }
+})
+// messages
+app.get("/api/messages/v2/get", async (req, res) => {
+    res.send([]) // we have no messages to send at the moment.
+})
 // placeholders
 app.post("/api/settings/v2/set", upload.none(), async (req, res) => {
     console.log("Setting Preference...")
@@ -181,13 +299,15 @@ app.post("/api/settings/v2/remove", upload.none(), async (req, res) => {
 // Objectives
 app.post("/api/players/v2/objective", upload.none(), async (req, res) => {
     console.log("Completing Objective...")
+    console.log(req.body)
     // vars
     var PlayerId = req.headers["x-rec-room-profile"]
     var objectiveType = req.body["objectiveType"]
     var additionalXp = req.body["additionalXp"]
     var inParty = req.body["inParty"]
     // bleh
-    res.send("placeholder, implement later.")
+    var GottenData = await CompleteObjective(PlayerId, objectiveType, additionalXp, inParty)
+    res.send(GottenData)
 })
 // Images
 app.post("/api/images/v2/profile", upload.single('image'), async (req, res) => {
@@ -211,7 +331,7 @@ app.get("/api/images/v1/profile/:PlayerId", async (req, res) => {
     res.sendFile(ProfileImage)
 })
 // Presence
-app.get("/api/presence/v1/list", async (req, res) => {
+app.post("/api/presence/v1/list", async (req, res) => {
     var presences = []
     req.body.forEach(element => {
         presences.push(activeSession["Presence"][element])

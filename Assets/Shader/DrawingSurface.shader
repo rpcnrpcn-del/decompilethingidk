@@ -8,7 +8,6 @@ Shader "DrawingSurface" {
 		Pass {
 			Name "FORWARD"
 			Tags { "LIGHTMODE" = "ForwardBase" "RenderType" = "Opaque" "SHADOWSUPPORT" = "true" }
-			ZClip Off
 			GpuProgramID 24916
 			CGPROGRAM
 			#pragma vertex vert
@@ -102,7 +101,6 @@ Shader "DrawingSurface" {
 			Name "FORWARD"
 			Tags { "LIGHTMODE" = "ForwardAdd" "RenderType" = "Opaque" }
 			Blend One One, One One
-			ZClip Off
 			ZWrite Off
 			GpuProgramID 118636
 			CGPROGRAM
@@ -190,7 +188,6 @@ Shader "DrawingSurface" {
 		Pass {
 			Name "PREPASS"
 			Tags { "LIGHTMODE" = "PrePassBase" "RenderType" = "Opaque" }
-			ZClip Off
 			GpuProgramID 151173
 			CGPROGRAM
 			#pragma vertex vert
@@ -248,7 +245,6 @@ Shader "DrawingSurface" {
 		Pass {
 			Name "PREPASS"
 			Tags { "LIGHTMODE" = "PrePassFinal" "RenderType" = "Opaque" }
-			ZClip Off
 			ZWrite Off
 			GpuProgramID 232917
 			CGPROGRAM
@@ -346,7 +342,6 @@ Shader "DrawingSurface" {
 		Pass {
 			Name "DEFERRED"
 			Tags { "LIGHTMODE" = "Deferred" "RenderType" = "Opaque" }
-			ZClip Off
 			GpuProgramID 281660
 			CGPROGRAM
 			#pragma vertex vert
@@ -444,7 +439,6 @@ Shader "DrawingSurface" {
 		Pass {
 			Name "META"
 			Tags { "LIGHTMODE" = "Meta" "RenderType" = "Opaque" }
-			ZClip Off
 			Cull Off
 			GpuProgramID 387035
 			CGPROGRAM

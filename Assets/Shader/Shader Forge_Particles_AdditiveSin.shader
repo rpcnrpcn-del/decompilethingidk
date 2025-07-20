@@ -12,7 +12,6 @@ Shader "Shader Forge/Particles/AdditiveSin" {
 			Name "FORWARD"
 			Tags { "IGNOREPROJECTOR" = "true" "LIGHTMODE" = "ForwardBase" "QUEUE" = "Transparent" "RenderType" = "Transparent" "SHADOWSUPPORT" = "true" }
 			Blend One One, One One
-			ZClip Off
 			ZWrite Off
 			GpuProgramID 28207
 			CGPROGRAM

@@ -1,0 +1,95 @@
+{
+    "0": {
+        "requiredXp": 0
+    },
+    "1": {
+        "requiredXp": 100
+    },
+    "2": {
+        "requiredXp": 200
+    },
+    "3": {
+        "requiredXp": 300
+    },
+    "4": {
+        "requiredXp": 400
+    },
+    "5": {
+        "requiredXp": 500
+    },
+    "6": {
+        "requiredXp": 600
+    },
+    "7": {
+        "requiredXp": 700
+    },
+    "8": {
+        "requiredXp": 800
+    },
+    "9": {
+        "requiredXp": 900
+    },
+    "10": {
+        "requiredXp": 1000
+    },
+    "11": {
+        "requiredXp": 1100
+    },
+    "12": {
+        "requiredXp": 1200
+    },
+    "13": {
+        "requiredXp": 1300
+    },
+    "14": {
+        "requiredXp": 1400
+    },
+    "15": {
+        "requiredXp": 1500
+    },
+    "16": {
+        "requiredXp": 1600
+    },
+    "17": {
+        "requiredXp": 1700
+    },
+    "18": {
+        "requiredXp": 1800
+    },
+    "19": {
+        "requiredXp": 1900
+    },
+    "20": {
+        "requiredXp": 2000
+    },
+    "21": {
+        "requiredXp": 2100
+    },
+    "22": {
+        "requiredXp": 2200
+    },
+    "23": {
+        "requiredXp": 2300
+    },
+    "24": {
+        "requiredXp": 2400
+    },
+    "25": {
+        "requiredXp": 2500
+    },
+    "26": {
+        "requiredXp": 2600
+    },
+    "27": {
+        "requiredXp": 2700
+    },
+    "28": {
+        "requiredXp": 2800
+    },
+    "29": {
+        "requiredXp": 2900
+    },
+    "30": {
+        "requiredXp": 3000
+    }
+}
