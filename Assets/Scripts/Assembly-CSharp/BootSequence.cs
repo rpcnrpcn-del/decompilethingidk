@@ -9,8 +9,9 @@ using UnityEngine.VR;
 public class BootSequence : UnityEngine.MonoBehaviour
 {
 	private string error;
+	public const bool ForceVR = false;
 
-	private bool success
+    private bool success
 	{
 		get
 		{
@@ -25,8 +26,6 @@ public class BootSequence : UnityEngine.MonoBehaviour
 
 	private IEnumerator Start()
 	{
-		bool ForceVR = false;
-
 		GameObject[] rootGameObjects = SceneManager.GetActiveScene().GetRootGameObjects();
 		foreach (GameObject target in rootGameObjects)
 		{

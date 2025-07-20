@@ -248,13 +248,14 @@ namespace AmplitudeAnalytics
 
 		private void StandaloneApplicationQuit()
 		{
-			if (quitState == QuitState.Running)
+			// wtf rec room why you cancel my quitting
+			/*if (quitState == QuitState.Running)
 			{
 				AmplitudeAnalyticsEvent analyticsEvent = new AmplitudeAnalyticsEvent("session_end", SessionId, SequenceNumber, userId);
 				LogEventAsync(analyticsEvent);
 				Application.CancelQuit();
 				StartCoroutine(WaitForFlushAndQuit());
-			}
+			}*/
 		}
 
 		private IEnumerator WaitForFlushAndQuit()

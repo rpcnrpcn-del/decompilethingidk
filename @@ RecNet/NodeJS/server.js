@@ -22,8 +22,8 @@ var activeSession = {
 app.use(bodyParser.urlencoded({extended:true}))*/
 app.use(express.json({ type: ['application/json', 'text/json'] }))
 
-app.listen(25565, () => {
-    console.log("Listening on port 25565...")
+app.listen(28960, () => {
+    console.log("Listening on port 28960...")
 })
 // Test
 app.post('/api/test', upload.none(), async (req, res) => {
@@ -114,6 +114,21 @@ app.get("/api/avatar/v2", async (req, res) => {
     else
         res.status(500)
 })
+app.post("/api/avatar/v2/set", async (req, res) => {
+    console.log("Setting Avatar...")
+    // vars
+    var PlayerId = req.headers["x-rec-room-profile"]
+    var OutfitSelections = req.body["OutfitSelections"]
+    var SkinColor = req.body["SkinColor"]
+    var HairColor = req.body["HairColor"]
+    // set avatar
+    var HasSetAvatar = await apiAvatar.RouterSetAvatar(PlayerId, OutfitSelections, SkinColor, HairColor)
+    if (HasSetAvatar == null || HasSetAvatar == false) {
+        res.status(500)
+    } else {
+        res.send("done")
+    }
+})
 app.get("/api/avatar/v3/items", async (req, res) => {
     var unlockedItems = await apiConfig.DummyAvatarItems()
     res.send(unlockedItems)
@@ -183,15 +198,15 @@ app.get("/api/presence/v1/:profileId", async (req, res) => {
     var ProfileId = req.params["profileId"]
     res.send(activeSession["Presence"][ProfileId])
 })
-app.post("/api/presence/v2", async (req, res) => {
-    var PlayerId = req.fields["PlayerId"]
-    var GameSessionId = req.fields["GameSessionId"]
-    var AppVersion = req.fields["AppVersion"]
-    var LastUpdateTime = req.fields["LastUpdateTime"]
-    var Activity = req.fields["Activity"]
-    var Private = req.fields["Private"]
-    var AvailableSpace = req.fields["AvailableSpace"]
-    var GameInProgress = req.fields["GameInProgress"]
+app.post("/api/presence/v2", upload.none(), async (req, res) => {
+    var PlayerId = req.body["PlayerId"]
+    var GameSessionId = req.body["GameSessionId"]
+    var AppVersion = req.body["AppVersion"]
+    var LastUpdateTime = req.body["LastUpdateTime"]
+    var Activity = req.body["Activity"]
+    var Private = req.body["Private"]
+    var AvailableSpace = req.body["AvailableSpace"]
+    var GameInProgress = req.body["GameInProgress"]
     activeSession["Presence"][PlayerId] = {
         "PlayerId": PlayerId,
         "GameSessionId": GameSessionId,

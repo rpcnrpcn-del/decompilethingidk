@@ -1,8 +1,20 @@
-const socket = new WebSocket("wss://127.0.0.1:25565")
-socket.addEventListener('open', event => {
-    console.log("Opened WebSocket! (wss://127.0.0.1:25565)")
-    socket.send("Open")
+const HostPort = 7777
+// path
+const path = require("path")
+// http
+const http = require("http")
+// express
+const express = require('express')
+const app = express()
+// socket.io
+const server = http.createServer(app)
+const { Server } = require("socket.io")
+const io = new Server(server)
+// Log if we're successful
+server.listen(HostPort, () => {
+    console.log("Listening on port " + HostPort.toString() + "...")
 })
-socket.addEventListener('message', event => {
-    console.log("Received Data!\n" + event.data)
+// websocket
+io.on("connection", (socket) => {
+    console.log("A user connected.")
 })

@@ -45,8 +45,11 @@ public class DebugCameraControl : MonoBehaviour
 		{
 			Object.Destroy(this);
 		}*/
-		if (!Application.isEditor || VRDevice.isPresent)
-			Destroy(this);
+		if (BootSequence.ForceVR)
+		{
+			if (!Application.isEditor || VRDevice.isPresent)
+				Destroy(this);
+		}
 	}
 
 	private void Update()

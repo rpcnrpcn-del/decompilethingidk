@@ -1,4 +1,4 @@
-import {PlayerJSON} from "../playerData.js";
+import {PlayerAvatar, SetAvatar} from "../playerData.js";
 
 // Gifts
 export async function CreateGift(Id, AvaterItemDesc, Xp) {
@@ -12,12 +12,12 @@ export async function UnlockedItems(Player) {
     console.log("Todo: Get Unlocked Items")
 }
 // Avatar
-export async function SetAvatar(Player, OutfitSelections, SkinColor, HairColor) {
-    console.log("Todo: Set Avatar")
+export async function RouterSetAvatar(Player, OutfitSelections, SkinColor, HairColor) {
+    var HasSet = await SetAvatar(Player, OutfitSelections, SkinColor, HairColor)
+    return HasSet
 }
 export async function GetAvatar(Player) {
     if (Player == null) return;
-    var playerData = await PlayerJSON(Player)
-    var playerAvatar = playerData["Avatar"]
-    return playerAvatar
+    var playerData = await PlayerAvatar(Player)
+    return playerData
 }

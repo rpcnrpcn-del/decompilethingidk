@@ -143,6 +143,15 @@ export async function PlayerSettings(PlayerId) {
     settingsData = JSON.parse(settingsData)
     return settingsData
 }
+export async function PlayerAvatar(PlayerId) {
+    if (PlayerId == null) return;
+    const ProfilePath = path.join(rootDir, 'data', 'players', `${PlayerId}`, 'Avatar.json');
+    if (!existsSync(ProfilePath)) return;
+    // Read settings & return it.
+    var gottenData = await readFile(ProfilePath, 'utf8')
+    gottenData = JSON.parse(gottenData)
+    return gottenData
+}
 export async function DoesProfileExist(PlayerId) {
     if (PlayerId == null) return;
     const ProfilePath = path.join(rootDir, 'data', 'players', `${PlayerId}`, 'Profile.json');
@@ -153,9 +162,27 @@ export async function DoesProfileExist(PlayerId) {
         return false;
     }
 }
+// avatar
+export async function SetAvatar(PlayerId, OutfitSelections, SkinColor, HairColor) { 
+    if (PlayerId == null || OutfitSelections == null || SkinColor == null || HairColor == null) return;
+    // get path
+    const ProfilePath = path.join(rootDir, 'data', 'players', `${PlayerId}`, "Avatar.json");
+    // get settings & set setting
+    var Avatar = await PlayerAvatar(PlayerId)
+
+    Avatar["OutfitSelections"] = OutfitSelections
+    Avatar["SkinColor"] = SkinColor
+    Avatar["HairColor"] = HairColor
+
+    // write settings file
+    await writeFile(ProfilePath, JSON.stringify(Avatar, null, 3))
+    return true
+}
+// todo
 export async function PlayerPresence(PlayerId) {
     
 }
+// Preferences
 export async function RemovePreference(PlayerId, Key) {
     if (PlayerId == null || Key == null || Value == null) return;
     // get path
