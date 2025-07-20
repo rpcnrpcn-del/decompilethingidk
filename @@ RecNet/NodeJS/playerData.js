@@ -223,3 +223,36 @@ export async function SetPreference(PlayerId, Key, Value) {
     await writeFile(ProfilePath, JSON.stringify(Settings, null, 3))
     return true
 }
+// pfp
+export async function GetPFP(PlayerId) {
+    if (PlayerId == null) return;
+    // get path
+    const ProfilePath = path.join(rootDir, 'data', 'players', `${PlayerId}`, "pfp.png");
+    const DefaultPath = path.join(rootDir, "data", "pfp", "default.png")
+    if (existsSync(ProfilePath)) {
+        var readImage = await readFile(ProfilePath, 'binary')
+        return readImage
+    } else {
+        var readImage = await readFile(DefaultPath, 'binary')
+        return readImage
+    }
+}
+export async function GetPFP_Path(PlayerId) {
+    // get path
+    const ProfilePath = path.join(rootDir, 'data', 'players', `${PlayerId}`, "pfp.png");
+    const DefaultPath = path.join(rootDir, "data", "pfp", "default.png")
+    // return path
+    if (existsSync(ProfilePath)) {
+        return ProfilePath
+    } else {
+        return DefaultPath
+    }
+}
+export async function SetPFP(PlayerId, Image) {
+    if (PlayerId == null || Image == null) return;
+    // get path
+    const ProfilePath = path.join(rootDir, 'data', 'players', `${PlayerId}`, "pfp.png");
+    // write pfp file
+    await writeFile(ProfilePath, Image.buffer)
+    return true
+}

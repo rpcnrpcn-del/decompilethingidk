@@ -3,7 +3,8 @@ import { readFile } from 'node:fs'
 var configJson = {
     "debug": true,
     "version": "20170118_EA",
-    "messageOfTheDay": "Balls.",
+    "serverversion": "Build: January 18th 2017 | Server: 200720252236",
+    "messageOfTheDay": "This is running on PingNet 200720252236. Yipee!",
     "DailyObjectives": null,
 }
 var defaultAvatar = null

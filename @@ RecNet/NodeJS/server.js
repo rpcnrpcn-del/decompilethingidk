@@ -12,7 +12,10 @@ const apiVersion = require('./api/version')
 const apiPlayers = require("./api/players")
 const apiAvatar = require("./api/avatar")
 const apiConfig = require("./api/rr_config")
+const apiImage = require("./api/images")
 const { RemovePreference, SetPreference } = require('./playerData')
+
+const HostPort = 28960
 
 var activeSession = {
     "Presence": {}
@@ -22,8 +25,8 @@ var activeSession = {
 app.use(bodyParser.urlencoded({extended:true}))*/
 app.use(express.json({ type: ['application/json', 'text/json'] }))
 
-app.listen(28960, () => {
-    console.log("Listening on port 28960...")
+app.listen(HostPort, () => {
+    console.log(`Listening on port ${HostPort}...`)
 })
 // Test
 app.post('/api/test', upload.none(), async (req, res) => {
@@ -185,6 +188,27 @@ app.post("/api/players/v2/objective", upload.none(), async (req, res) => {
     var inParty = req.body["inParty"]
     // bleh
     res.send("placeholder, implement later.")
+})
+// Images
+app.post("/api/images/v2/profile", upload.single('image'), async (req, res) => {
+    console.log("Setting Profile Picture...")
+    // vars
+    var PlayerId = req.headers["x-rec-room-profile"]
+    var ProfileImage = req.file
+    // set pfp
+    var DidSet = await apiImage.ProfileImage_Set(PlayerId, ProfileImage)
+    if (DidSet) {
+        res.send("done")
+    } else {
+        res.status(500)
+    }
+})
+app.get("/api/images/v1/profile/:PlayerId", async (req, res) => {
+    // vars
+    var PlayerId = req.params["PlayerId"]
+    // get pfp
+    var ProfileImage = await apiImage.ProfileImage_Get(PlayerId)
+    res.sendFile(ProfileImage)
 })
 // Presence
 app.get("/api/presence/v1/list", async (req, res) => {
