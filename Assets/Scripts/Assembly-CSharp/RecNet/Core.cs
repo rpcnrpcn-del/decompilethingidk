@@ -324,7 +324,11 @@ namespace RecNet
 					}
 				}
 				return _RecNetHost;*/
-				return "127.0.0.1:25565";
+				if (!PlayerPrefs.HasKey("RecNet_Host"))
+				{
+					PlayerPrefs.SetString("RecNet_Host", "127.0.0.1:25565");
+				}
+				return PlayerPrefs.GetString("RecNet_Host", "127.0.0.1:25565");
 			}
 		}
 

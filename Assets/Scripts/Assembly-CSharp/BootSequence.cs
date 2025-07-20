@@ -25,15 +25,20 @@ public class BootSequence : UnityEngine.MonoBehaviour
 
 	private IEnumerator Start()
 	{
+		bool ForceVR = false;
+
 		GameObject[] rootGameObjects = SceneManager.GetActiveScene().GetRootGameObjects();
 		foreach (GameObject target in rootGameObjects)
 		{
 			Object.DontDestroyOnLoad(target);
 		}
-		if (!CheckForVRDevice() && !SessionManager.IsDeveloper && !Application.isEditor)
+		if (ForceVR)
 		{
-			SceneManager.LoadScene("vr_device_required");
-			yield break;
+			if (!CheckForVRDevice() && !SessionManager.IsDeveloper && !Application.isEditor)
+			{
+				SceneManager.LoadScene("vr_device_required");
+				yield break;
+			}
 		}
 		yield return LoadSplashScreen();
 		PhotonNetwork.SendMonoMessageTargetType = typeof(Photon.MonoBehaviour);
