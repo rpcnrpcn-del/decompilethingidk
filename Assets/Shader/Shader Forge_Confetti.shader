@@ -9,7 +9,6 @@ Shader "Shader Forge/Confetti" {
 			Name "FORWARD"
 			Tags { "IGNOREPROJECTOR" = "true" "LIGHTMODE" = "ForwardBase" "QUEUE" = "Transparent" "RenderType" = "Transparent" "SHADOWSUPPORT" = "true" }
 			Blend SrcAlpha OneMinusSrcAlpha, SrcAlpha OneMinusSrcAlpha
-			ZClip Off
 			ZWrite Off
 			Cull Off
 			GpuProgramID 63909
@@ -70,7 +69,6 @@ Shader "Shader Forge/Confetti" {
 		Pass {
 			Name "SHADOWCASTER"
 			Tags { "IGNOREPROJECTOR" = "true" "LIGHTMODE" = "SHADOWCASTER" "QUEUE" = "Transparent" "RenderType" = "Transparent" "SHADOWSUPPORT" = "true" }
-			ZClip Off
 			Offset 1, 1
 			GpuProgramID 91115
 			CGPROGRAM

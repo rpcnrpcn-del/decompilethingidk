@@ -3,7 +3,7 @@ import { readFile } from 'node:fs'
 var configJson = {
     "debug": true,
     "version": "20170118_EA",
-    "serverversion": "Build: January 18th 2017 | Server: 200720252236",
+    "serverversion": "Build: January 18th 2017 | Server: 200720252314",
     "messageOfTheDay": "This is running on PingNet 200720252236. Yipee!",
     "DailyObjectives": null,
 }

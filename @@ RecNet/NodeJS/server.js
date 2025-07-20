@@ -35,8 +35,8 @@ app.post('/api/test', upload.none(), async (req, res) => {
 // Analytics
 app.post('/api/analytics/v1/session/event', async (req, res) => {
     console.log("Sending Event...")
-    var returnVal = await apiAnalytics.SessionEvent(req.fields["SessionId"], req.fields["Category"], req.fields["Action"])
-    res.send(returnVal)
+    //var returnVal = await apiAnalytics.SessionEvent(req.fields["SessionId"], req.fields["Category"], req.fields["Action"])
+    res.send("Received!")
 })
 // Version
 app.get('/api/versioncheck/v1', async (req, res) => {
