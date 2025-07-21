@@ -28,11 +28,11 @@ app.use(bodyParser.urlencoded({extended:true}))*/
 app.use(express.json({ type: ['application/json', 'text/json'] }))
 
 app.listen(HostPort, () => {
-    console.log(`Listening on port ${HostPort}...`)
+    //console.log(`Listening on port ${HostPort}...`)
 })
 // Friending
 async function AddFriend(PlayerId, OtherPlayer) {
-    console.log("Adding Friend...")
+    //console.log("Adding Friend...")
     // vars
     var RelationshipType = "3"
     // add friend
@@ -45,13 +45,13 @@ app.post('/api/test', upload.none(), async (req, res) => {
 })
 // Analytics
 app.post('/api/analytics/v1/session/event', async (req, res) => {
-    console.log("Sending Event...")
+    //console.log("Sending Event...")
     //var returnVal = await apiAnalytics.SessionEvent(req.fields["SessionId"], req.fields["Category"], req.fields["Action"])
     res.send("Received!")
 })
 // Version
 app.get('/api/versioncheck/v1', async (req, res) => {
-    console.log("Checking Version...")
+    //console.log("Checking Version...")
     var returnVal = await apiVersion.VersionCheck(req.headers["X-Rec-Room-Version"])
     if (returnVal == 1) {
         res.sendStatus(200)
@@ -61,7 +61,7 @@ app.get('/api/versioncheck/v1', async (req, res) => {
 })
 // Player
 app.post("/api/players/v1/getorcreate", bodyParser.urlencoded({extended:true}), async (req, res) => {
-    console.log("Getting/Creating Player...")
+    //console.log("Getting/Creating Player...")
     // Fields
     var Platform = req.body["Platform"]
     var PlatformId = req.body["PlatformId"]
@@ -104,7 +104,7 @@ app.post("/api/players/v1/getorcreate", bodyParser.urlencoded({extended:true}), 
     res.send("Error.")
 })
 app.get("/api/players/v1/:PlayerId", async (req, res) => {
-    console.log("Getting Player...")
+    //console.log("Getting Player...")
     var PlayerId = req.params["PlayerId"]
     var GottenProfile = await apiPlayers.DownloadProfile(PlayerId)
     // error :(
@@ -120,7 +120,7 @@ app.get("/api/players/v1/:PlayerId", async (req, res) => {
 })
 // Avatar
 app.get("/api/avatar/v2", async (req, res) => {
-    console.log("Getting Avatar...")
+    //console.log("Getting Avatar...")
     var PlayerId = req.headers["x-rec-room-profile"]
     var GottenAvatar = await apiAvatar.GetAvatar(PlayerId)
     if (GottenAvatar != null)
@@ -129,7 +129,7 @@ app.get("/api/avatar/v2", async (req, res) => {
         res.status(500)
 })
 app.post("/api/avatar/v2/set", async (req, res) => {
-    console.log("Setting Avatar...")
+    //console.log("Setting Avatar...")
     // vars
     var PlayerId = req.headers["x-rec-room-profile"]
     var OutfitSelections = req.body["OutfitSelections"]
@@ -157,7 +157,7 @@ app.get("/api/config/v2", async (req, res) => {
     res.send(rrConfig)
 })
 app.get("/api/settings/v2/", upload.none(), async (req, res) => {
-    console.log("Getting Preferences.")
+    //console.log("Getting Preferences.")
     var PlayerId = req.headers["x-rec-room-profile"]
     var Settings = await apiPlayers.DownloadPreferences(PlayerId)
     if (Settings == null || Settings == 0) {
@@ -168,7 +168,7 @@ app.get("/api/settings/v2/", upload.none(), async (req, res) => {
 })
 // Relationship
 app.get("/api/relationships/v2/blockplayer", async (req, res) => {
-    console.log("Blocking Player...")
+    //console.log("Blocking Player...")
     // vars
     var PlayerId = req.headers["x-rec-room-profile"]
     var OtherPlayer = req.query["id"]
@@ -181,7 +181,7 @@ app.get("/api/relationships/v2/blockplayer", async (req, res) => {
     }
 })
 app.get("/api/relationships/v2/unblockplayer", async (req, res) => {
-    console.log("Unblocking Player...")
+    //console.log("Unblocking Player...")
     // vars
     var PlayerId = req.headers["x-rec-room-profile"]
     var OtherPlayer = req.query["id"]
@@ -194,7 +194,7 @@ app.get("/api/relationships/v2/unblockplayer", async (req, res) => {
     }
 })
 app.get("/api/relationships/v2/sendfriendrequest", async (req, res) => {
-    console.log("Sending Friend Request...")
+    //console.log("Sending Friend Request...")
     // vars
     var PlayerId = req.headers["x-rec-room-profile"]
     var OtherPlayer = req.query["id"]
@@ -207,7 +207,7 @@ app.get("/api/relationships/v2/sendfriendrequest", async (req, res) => {
     }
 })
 app.get("/api/relationships/v2/acceptfriendrequest", async (req, res) => {
-    console.log("Accepting Friend Request...")
+    //console.log("Accepting Friend Request...")
     // vars
     var PlayerId = req.headers["x-rec-room-profile"]
     var OtherPlayer = req.query["id"]
@@ -220,7 +220,7 @@ app.get("/api/relationships/v2/acceptfriendrequest", async (req, res) => {
     }
 })
 app.get("/api/relationships/v2/removefriend", async (req, res) => {
-    console.log("Removing Friend...")
+    //console.log("Removing Friend...")
     // vars
     var PlayerId = req.headers["x-rec-room-profile"]
     var OtherPlayer = req.query["id"]
@@ -244,7 +244,7 @@ app.get("/api/relationships/v2/addfriend", async (req, res) => {
         res.send("done")
     }
 
-    /*console.log("Adding Friend...")
+    /*//console.log("Adding Friend...")
     // vars
     var PlayerId = req.headers["x-rec-room-profile"]
     var OtherPlayer = req.params["PlayerID"]
@@ -258,7 +258,7 @@ app.get("/api/relationships/v2/addfriend", async (req, res) => {
     }*/
 })
 app.get("/api/relationships/v2/get", async (req, res) => {
-    console.log("Getting Relationships...")
+    //console.log("Getting Relationships...")
     // vars
     var PlayerId = req.headers["x-rec-room-profile"]
     // get relationship status of my ex-wife
@@ -275,7 +275,7 @@ app.get("/api/messages/v2/get", async (req, res) => {
 })
 // placeholders
 app.post("/api/settings/v2/set", upload.none(), async (req, res) => {
-    console.log("Setting Preference...")
+    //console.log("Setting Preference...")
     // vars
     var PlayerId = req.headers["x-rec-room-profile"]
     var DidWeSucceed = await SetPreference(PlayerId, req.body["Key"], req.body["Value"])
@@ -286,7 +286,7 @@ app.post("/api/settings/v2/set", upload.none(), async (req, res) => {
     res.send("done")
 })
 app.post("/api/settings/v2/remove", upload.none(), async (req, res) => {
-    console.log("Removing Preference...")
+    //console.log("Removing Preference...")
     // vars
     var PlayerId = req.headers["x-rec-room-profile"]
     var DidWeSucceed = await RemovePreference(PlayerId, req.body["Key"])
@@ -298,8 +298,8 @@ app.post("/api/settings/v2/remove", upload.none(), async (req, res) => {
 })
 // Objectives
 app.post("/api/players/v2/objective", bodyParser.urlencoded({extended:true}), async (req, res) => {
-    console.log("Completing Objective...")
-    console.log(req.body)
+    //console.log("Completing Objective...")
+    //console.log(req.body)
     // vars
     var PlayerId = req.headers["x-rec-room-profile"]
     var objectiveType = req.body["objectiveType"]
@@ -311,7 +311,7 @@ app.post("/api/players/v2/objective", bodyParser.urlencoded({extended:true}), as
 })
 // Images
 app.post("/api/images/v2/profile", upload.single('image'), async (req, res) => {
-    console.log("Setting Profile Picture...")
+    //console.log("Setting Profile Picture...")
     // vars
     var PlayerId = req.headers["x-rec-room-profile"]
     var ProfileImage = req.file
@@ -333,11 +333,11 @@ app.get("/api/images/v1/profile/:PlayerId", async (req, res) => {
 // Presence
 app.post("/api/presence/v1/list", async (req, res) => {
     var presences = []
-    console.log("Body")
-    console.log(req.body)
-    console.log("Active Session")
-    console.log(activeSession["Presence"])
-    
+    //console.log("Body")
+    //console.log(req.body)
+    //console.log("Active Session")
+    //console.log(activeSession["Presence"])
+
     /*req.body.forEach(element => {
         activeSession["Presence"].forEach(session => {
             if (session["PlayerId"] == element) {
@@ -356,8 +356,8 @@ app.post("/api/presence/v1/list", async (req, res) => {
         }
     })
 
-    console.log("Got:")
-    console.log(presences)
+    //console.log("Got:")
+    //console.log(presences)
     res.send(presences)
 })
 app.get("/api/presence/v1/:profileId", async (req, res) => {
@@ -373,7 +373,7 @@ app.get("/api/presence/v1/:profileId", async (req, res) => {
     res.send(presence)
 })
 app.post("/api/presence/v2", upload.none(), async (req, res) => {
-    console.log("Setting Presence...")
+    //console.log("Setting Presence...")
     var PlayerId = req.body["PlayerId"]
     var GameSessionId = req.body["GameSessionId"]
     var AppVersion = req.body["AppVersion"]

@@ -120,6 +120,8 @@ internal class SteamPlatformManager : PlatformManager
 		result += UnityEngine.Random.Range(0, int.MaxValue).ToString();
 		result += UnityEngine.Random.Range(0, int.MaxValue).ToString();
 
+		result.Replace(".", "");
+
         return ulong.Parse(result);
     }
 
