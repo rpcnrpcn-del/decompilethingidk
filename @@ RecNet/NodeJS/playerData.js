@@ -114,6 +114,16 @@ export async function GetProfile(PlayerId) {
     var textProfile = JSON.stringify(jsonProfile)
     return textProfile
 }
+export async function ProfileJson(PlayerId) {
+    if (PlayerId == null) return;
+    const ProfilePath = path.join(rootDir, 'data', 'players', `${PlayerId}`, 'Profile.json');
+    if (!existsSync(ProfilePath)) return;
+    // Read settings & return it.
+    var jsonData = await readFile(ProfilePath, 'utf8')
+    jsonData = JSON.parse(jsonData)
+    console.log(jsonData)
+    return jsonData
+}
 // JSON Utils
 export async function PlayerJSON(PlayerId) {
     if (PlayerId == null) return;

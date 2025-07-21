@@ -1,4 +1,4 @@
-import {CreateProfile, DoesProfileExist, GetProfile, PlayerJSON} from "../playerData.js";
+import {CreateProfile, DoesProfileExist, ProfileJson, GetProfile, PlayerJSON, PlayerSettings} from "../playerData.js";
 
 export async function GetOrCreate(Platform, PlatformPlayerId, Name) {
     if (Platform == null || PlatformPlayerId == null || Name == null) return 2;
@@ -16,11 +16,11 @@ export async function GetOrCreate(Platform, PlatformPlayerId, Name) {
 }
 export async function DownloadProfile(PlayerId) {
     if (PlayerId == null) return 0;
-    var gottenProfile = await GetProfile(PlayerId);
+    var gottenProfile = await ProfileJson(PlayerId);
     return gottenProfile;
 }
 export async function DownloadPreferences(PlayerId) {
     if (PlayerId == null) return 0;
-    var gottenJson = await PlayerJSON(PlayerId)
-    return gottenJson["Settings"]
+    var gottenJson = await PlayerSettings(PlayerId)
+    return gottenJson
 }

@@ -41,7 +41,7 @@
    },
    {
       "Key": "PlayerSessionCount",
-      "Value": "34"
+      "Value": "76"
    },
    {
       "Key": "DAILY_LOGIN_DATE",
@@ -61,11 +61,11 @@
    },
    {
       "Key": "OBJECTIVE_PROGRESS1",
-      "Value": "1"
+      "Value": "0"
    },
    {
       "Key": "OBJECTIVE_COMPLETED1",
-      "Value": "1"
+      "Value": "0"
    },
    {
       "Key": "OBJECTIVE_PROGRESS2",
@@ -77,6 +77,6 @@
    },
    {
       "Key": "Recroom.OOBE",
-      "Value": "20"
+      "Value": "100"
    }
 ]

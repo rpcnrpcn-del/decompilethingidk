@@ -5,7 +5,20 @@ var configJson = {
     "version": "20170118_EA",
     "serverversion": "Build: January 18th 2017 | Server: 200720250134",
     "messageOfTheDay": "This is running on PingNet 200720252236. Yipee!",
-    "DailyObjectives": null,
+    "DailyObjectives": [
+        {
+            "type": "401",
+            "score": "6"
+        },
+        {
+            "type": "300",
+            "score": "3"
+        },
+        {
+            "type": "800",
+            "score": "3"
+        }
+    ],
 }
 var defaultAvatar = null
 var avatarItems = null
@@ -13,7 +26,7 @@ var levelMapping = null
 var xpMapping = null
 
 // Default Avatar
-readFile("./config/DefaultAvatar.json", function(err, data) {
+readFile("./config/DefaultAvatar.json", 'utf8', function(err, data) {
     if (err) {
         console.log("Unable to read Default Avatar JSON!")
         return;
@@ -22,7 +35,7 @@ readFile("./config/DefaultAvatar.json", function(err, data) {
     console.log("Got Default Avatar!")
 })
 // Avatar Items
-readFile("./config/AvatarItems.json", function(err, data) {
+readFile("./config/AvatarItems.json", 'utf8', function(err, data) {
     if (err) {
         console.log("Unable to read Avatar Items JSON!")
         return;
@@ -31,21 +44,23 @@ readFile("./config/AvatarItems.json", function(err, data) {
     console.log("Got Avatar Items!")
 })
 // Level Map
-readFile("./config/level_mapping.json", function(err, data) {
+readFile("./config/lvl_map.json", 'utf8', function(err, data) {
     if (err) {
         console.log("Unable to read Level Map JSON!")
         return;
     }
     levelMapping = JSON.parse(data)
+    console.log(levelMapping)
     console.log("Got Level Map!")
 })
 // XP Map
-readFile("./config/xp_mapping.json", function(err, data) {
+readFile("./config/xp_map.json", 'utf8', function(err, data) {
     if (err) {
         console.log("Unable to read XP Map JSON!")
         return;
     }
     xpMapping = JSON.parse(data)
+    console.log(xpMapping)
     console.log("Got XP Map!")
 })
 

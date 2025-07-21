@@ -749,19 +749,21 @@ public class PUNNetworkManager : Photon.MonoBehaviour
 	}
 
 	private void OnCreatedRoom()
-	{
-		string levelName = (string)PhotonNetwork.room.customProperties["C1"];
+    {
+        Debug.Log("[PUNNetworkManager] Created Room!");
+        string levelName = (string)PhotonNetwork.room.customProperties["C1"];
 		PhotonNetwork.LoadLevel(levelName);
 	}
 
 	private void OnJoinedRoom()
 	{
+		Debug.Log("[PUNNetworkManager] Joined Room!");
 		if (!PhotonNetwork.offlineMode)
 		{
 			PhotonVoiceNetwork.Connect();
 		}
 		DelayedClearExpectedUsers();
-		UpdateRichPresenceJoin();
+		// UpdateRichPresenceJoin();
 		UpdatePresence();
 		StartCoroutine(RunWaitForRecroomPlayerCreated(PhotonNetwork.player));
 		StartCoroutine(ZombieRoomDetector());
@@ -783,14 +785,16 @@ public class PUNNetworkManager : Photon.MonoBehaviour
 	}
 
 	private void OnLeftRoom()
-	{
-		UpdateRichPresenceJoin();
+    {
+        Debug.Log("[PUNNetworkManager] Left Room!");
+        UpdateRichPresenceJoin();
 		UpdatePresence();
 	}
 
 	private void OnPhotonPlayerConnected(PhotonPlayer newPlayer)
-	{
-		UpdateRoomPlayerCount();
+    {
+        Debug.Log("[PUNNetworkManager] Player Connected");
+        UpdateRoomPlayerCount();
 		DelayedClearExpectedUsers();
 		StartCoroutine(RunWaitForRecroomPlayerCreated(newPlayer));
 	}
@@ -854,6 +858,7 @@ public class PUNNetworkManager : Photon.MonoBehaviour
 
 	private void UpdatePresence()
 	{
+		Debug.Log("[PUNNetworkManager] Updating Presence...");
 		PlayerPresence playerPresence = new PlayerPresence();
 		playerPresence.PlayerId = Profiles.LocalProfile.Id;
 		playerPresence.AppVersion = PhotonNetwork.gameVersion;

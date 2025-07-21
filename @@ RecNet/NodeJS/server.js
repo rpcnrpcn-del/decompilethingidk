@@ -20,7 +20,7 @@ const { CompleteObjective } = require('./api/objectives')
 const HostPort = 28960
 
 var activeSession = {
-    "Presence": {}
+    "Presence": []
 }
 
 /*app.use(bodyParser.json({extended:true}))
@@ -297,7 +297,7 @@ app.post("/api/settings/v2/remove", upload.none(), async (req, res) => {
     res.send("done")
 })
 // Objectives
-app.post("/api/players/v2/objective", upload.none(), async (req, res) => {
+app.post("/api/players/v2/objective", bodyParser.urlencoded({extended:true}), async (req, res) => {
     console.log("Completing Objective...")
     console.log(req.body)
     // vars
@@ -333,16 +333,35 @@ app.get("/api/images/v1/profile/:PlayerId", async (req, res) => {
 // Presence
 app.post("/api/presence/v1/list", async (req, res) => {
     var presences = []
+    console.log("Body")
+    console.log(req.body)
+    console.log("Active Session")
+    console.log(activeSession["Presence"])
     req.body.forEach(element => {
-        presences.push(activeSession["Presence"][element])
+        activeSession["Presence"].forEach(session => {
+            if (session["PlayerId"] == element) {
+                presences.push(activeSession["Presence"][element])
+            }
+        })
     });
+    console.log("Got:")
+    console.log(presences)
     res.send(presences)
 })
 app.get("/api/presence/v1/:profileId", async (req, res) => {
     var ProfileId = req.params["profileId"]
-    res.send(activeSession["Presence"][ProfileId])
+
+    var presence = null
+    activeSession["Presence"].forEach(session => {
+        if (session["PlayerId"] == ProfileId) {
+            presence = session
+        }
+    })
+
+    res.send(presence)
 })
 app.post("/api/presence/v2", upload.none(), async (req, res) => {
+    console.log("Setting Presence...")
     var PlayerId = req.body["PlayerId"]
     var GameSessionId = req.body["GameSessionId"]
     var AppVersion = req.body["AppVersion"]
@@ -351,7 +370,7 @@ app.post("/api/presence/v2", upload.none(), async (req, res) => {
     var Private = req.body["Private"]
     var AvailableSpace = req.body["AvailableSpace"]
     var GameInProgress = req.body["GameInProgress"]
-    activeSession["Presence"][PlayerId] = {
+    activeSession["Presence"].push({
         "PlayerId": PlayerId,
         "GameSessionId": GameSessionId,
         "AppVersion": AppVersion,
@@ -360,6 +379,6 @@ app.post("/api/presence/v2", upload.none(), async (req, res) => {
         "Private": Private,
         "AvailableSpace": AvailableSpace,
         "GameInProgress": GameInProgress
-    }
+    })
     res.send("OK")
 })
