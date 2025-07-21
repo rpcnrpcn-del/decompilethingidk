@@ -5,7 +5,7 @@
    },
    {
       "Key": "VoiceChat",
-      "Value": "0"
+      "Value": "1"
    },
    {
       "Key": "ShowNames",
@@ -37,11 +37,11 @@
    },
    {
       "Key": "google_analytics_clientid_pref_key",
-      "Value": "EIIGPFEY9f3696fe25ae73a1ab02cd179a24e9e44fd9da0d"
+      "Value": "AVBNELOXab1c460238c9e450efdc79803fc06de07e3399b4"
    },
    {
       "Key": "PlayerSessionCount",
-      "Value": "8"
+      "Value": "2"
    },
    {
       "Key": "DAILY_LOGIN_DATE",
@@ -53,7 +53,7 @@
    },
    {
       "Key": "OBJECTIVE_PROGRESS0",
-      "Value": "0"
+      "Value": "2"
    },
    {
       "Key": "OBJECTIVE_COMPLETED0",
@@ -61,11 +61,11 @@
    },
    {
       "Key": "OBJECTIVE_PROGRESS1",
-      "Value": "0"
+      "Value": "3"
    },
    {
       "Key": "OBJECTIVE_COMPLETED1",
-      "Value": "0"
+      "Value": "1"
    },
    {
       "Key": "OBJECTIVE_PROGRESS2",
@@ -78,5 +78,29 @@
    {
       "Key": "Recroom.OOBE",
       "Value": "100"
+   },
+   {
+      "Key": "SFX_VOLUME_PERCENT_PREF",
+      "Value": "0.6511693"
+   },
+   {
+      "Key": "MUSIC_VOLUME_PERCENT_PREF",
+      "Value": "0"
+   },
+   {
+      "Key": "H.264 plugin",
+      "Value": "1"
+   },
+   {
+      "Key": "VOICE_VOLUME_PERCENT_PREF",
+      "Value": "0.778502"
+   },
+   {
+      "Key": "TeleportBuffer",
+      "Value": "2"
+   },
+   {
+      "Key": "ROTATE_IN_PLACE_ENABLED",
+      "Value": "1"
    }
 ]

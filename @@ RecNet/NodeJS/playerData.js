@@ -183,7 +183,7 @@ export async function PlayerRelationship(PlayerId) {
 }
 export async function DoesProfileExist(PlayerId) {
     if (PlayerId == null) return;
-    const ProfilePath = path.join(rootDir, 'data', 'players', `${PlayerId}`, 'Profile.json');
+    const ProfilePath = /*rootDir + "\\data\\players\\" + PlayerId + "\\"*/ path.join(rootDir, 'data', 'players', `${PlayerId}`);
     // Does the profile already exist?
     if (existsSync(ProfilePath)) {
         return true;

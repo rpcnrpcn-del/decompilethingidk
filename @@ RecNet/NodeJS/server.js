@@ -14,13 +14,16 @@ const apiAvatar = require("./api/avatar")
 const apiConfig = require("./api/rr_config")
 const apiImage = require("./api/images")
 const apiRelationship = require('./api/relationship')
+const apiSessions = require('./api/gamesession')
 const { RemovePreference, SetPreference } = require('./playerData')
 const { CompleteObjective } = require('./api/objectives')
 
 const HostPort = 28960
 
 var activeSession = {
-    "Presence": []
+    "Presence": [],
+    "Sessions": [],
+    "LocalSessions": {}
 }
 
 /*app.use(bodyParser.json({extended:true}))
@@ -28,7 +31,7 @@ app.use(bodyParser.urlencoded({extended:true}))*/
 app.use(express.json({ type: ['application/json', 'text/json'] }))
 
 app.listen(HostPort, () => {
-    //console.log(`Listening on port ${HostPort}...`)
+    console.log(`Listening on port ${HostPort}...`)
 })
 // Friending
 async function AddFriend(PlayerId, OtherPlayer) {
@@ -404,16 +407,33 @@ app.post("/api/presence/v2", upload.none(), async (req, res) => {
     }
     if (!weHavePresence)
         activeSession["Presence"].push({NewPresence})
+    
+    SetLocalSession(PlayerId, apiSessions.CreateGameSession(GameSessionId, AppVersion, Activity, Private, AvailableSpace, GameInProgress, [PlayerId]))
 
-    /*activeSession["Presence"].push({
-        "PlayerId": PlayerId,
-        "GameSessionId": GameSessionId,
-        "AppVersion": AppVersion,
-        "LastUpdateTime": LastUpdateTime,
-        "Activity": Activity,
-        "Private": Private,
-        "AvailableSpace": AvailableSpace,
-        "GameInProgress": GameInProgress
+    /*activeSession["LocalSessions"].forEach(LocalSession => {
+        for (var j = 0; j < activeSession["Sessions"]; j++) {
+            var Session = activeSession["Sessions"][i]
+            if (Session["GameSessionId"] == GameSessionId) {
+                var isPlayerInActivity = false
+                activeSession["Sessions"][i].PlayerIds.push(PlayerId)
+            }
+        }
     })*/
+
     res.send("OK")
+})
+// Game Session
+async function SetLocalSession(PlayerId, newSession) {
+    activeSession["LocalSessions"][PlayerId] = newSession
+}
+/*app.use("/api/gamesessions/v1/:BuildVersion", upload.none(), async (req, res) => {
+    // vars
+    var CurrentVersion = req.headers["X-Rec-Room-Version"]
+    var GameVersion = req.params["BuildVersion"]
+    var Session = activeSession["Sessions"]
+    var Sessions = await apiSessions.GetAllGameSessions(activeSession, GameVersion)
+    res.send(Sessions)
+})*/
+app.use("/api/gamesessions/v1/", upload.none(), async (req, res) => {
+    res.send("[]")
 })
