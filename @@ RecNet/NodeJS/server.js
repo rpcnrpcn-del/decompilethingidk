@@ -337,13 +337,25 @@ app.post("/api/presence/v1/list", async (req, res) => {
     console.log(req.body)
     console.log("Active Session")
     console.log(activeSession["Presence"])
-    req.body.forEach(element => {
+    
+    /*req.body.forEach(element => {
         activeSession["Presence"].forEach(session => {
             if (session["PlayerId"] == element) {
                 presences.push(activeSession["Presence"][element])
             }
         })
-    });
+    });*/
+
+    req.body.forEach(element => {
+        for (var i = 0; i < activeSession["Presence"].length; i++) {
+            if (activeSession["Presence"].PlayerId != element) {
+                continue;
+            } else {
+                presences.push(activeSession["Presence"][i])
+            }
+        }
+    })
+
     console.log("Got:")
     console.log(presences)
     res.send(presences)
@@ -370,7 +382,7 @@ app.post("/api/presence/v2", upload.none(), async (req, res) => {
     var Private = req.body["Private"]
     var AvailableSpace = req.body["AvailableSpace"]
     var GameInProgress = req.body["GameInProgress"]
-    activeSession["Presence"].push({
+    var NewPresence = {
         "PlayerId": PlayerId,
         "GameSessionId": GameSessionId,
         "AppVersion": AppVersion,
@@ -379,6 +391,29 @@ app.post("/api/presence/v2", upload.none(), async (req, res) => {
         "Private": Private,
         "AvailableSpace": AvailableSpace,
         "GameInProgress": GameInProgress
-    })
+    }
+
+    var weHavePresence = false
+    for (var i = 0; i < activeSession["Presence"].length; i++) {
+        if (activeSession["Presence"][i].PlayerId != PlayerId) {
+            continue;
+        } else {
+            activeSession["Presence"][i] = NewPresence
+            weHavePresence = true
+        }
+    }
+    if (!weHavePresence)
+        activeSession["Presence"].push({NewPresence})
+
+    /*activeSession["Presence"].push({
+        "PlayerId": PlayerId,
+        "GameSessionId": GameSessionId,
+        "AppVersion": AppVersion,
+        "LastUpdateTime": LastUpdateTime,
+        "Activity": Activity,
+        "Private": Private,
+        "AvailableSpace": AvailableSpace,
+        "GameInProgress": GameInProgress
+    })*/
     res.send("OK")
 })

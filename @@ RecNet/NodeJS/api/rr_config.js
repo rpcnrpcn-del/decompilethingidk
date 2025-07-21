@@ -19,23 +19,9 @@ export async function MessageOfTheDay() {
     return motd
 }
 export async function Dummy_DailyObjectives() {
-    var dailyObjectives = [
-        [
-            {
-                "type": -1,
-                "score": -1
-            },
-            {
-                "type": -1,
-                "score": -1
-            },
-            {
-                "type": -1,
-                "score": -1
-            }
-        ]
-    ]
-    return dailyObjectives
+    var conf = await GetConfig()
+    var daily = conf["DailyObjectives"]
+    return daily
 }
 export async function Dummy_MatchmakingParams() {
     var matchmakingParams = {

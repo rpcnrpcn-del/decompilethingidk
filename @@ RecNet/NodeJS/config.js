@@ -6,20 +6,44 @@ var configJson = {
     "serverversion": "Build: January 18th 2017 | Server: 200720250134",
     "messageOfTheDay": "This is running on PingNet 200720252236. Yipee!",
     "DailyObjectives": [
-        {
-            "type": "401",
-            "score": "6"
-        },
-        {
-            "type": "300",
-            "score": "3"
-        },
-        {
-            "type": "800",
-            "score": "3"
-        }
-    ],
+        [
+            { "type": "401", "score": "6" },
+            { "type": "300", "score": "3" },
+            { "type": "800", "score": "3" }
+        ],
+        [
+            { "type": "401", "score": "6" },
+            { "type": "300", "score": "3" },
+            { "type": "800", "score": "3" }
+        ],
+        [
+            { "type": "401", "score": "6" },
+            { "type": "300", "score": "3" },
+            { "type": "800", "score": "3" }
+        ],
+        [
+            { "type": "401", "score": "6" },
+            { "type": "300", "score": "3" },
+            { "type": "800", "score": "3" }
+        ],
+        [
+            { "type": "401", "score": "6" },
+            { "type": "300", "score": "3" },
+            { "type": "800", "score": "3" }
+        ],
+        [
+            { "type": "401", "score": "6" },
+            { "type": "300", "score": "3" },
+            { "type": "800", "score": "3" }
+        ],
+        [
+            { "type": "401", "score": "6" },
+            { "type": "300", "score": "3" },
+            { "type": "800", "score": "3" }
+        ]
+    ]
 }
+
 var defaultAvatar = null
 var avatarItems = null
 var levelMapping = null

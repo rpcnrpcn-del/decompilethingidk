@@ -29,9 +29,11 @@ export async function CompleteObjective(PlayerId, ObjectiveType, additonalXp, in
     // get profile
     var profileJson = await ProfileJson(PlayerId)
     // more vars
-    var NextLevel = profileJson["Level"] + 1
+    var NextLevel = parseInt(profileJson["Level"]) + 1
     var XpRequiredToLevelUp = 0
-    var OldXP = profileJson["XP"]
+    var OldXP = parseInt(profileJson["XP"])
+    var NewXP = parseInt(profileJson["XP"])
+    var NewLevel = parseInt(profileJson["Level"])
     // logging
     console.log("Level:")
     console.log(profileJson["Level"])
@@ -46,16 +48,18 @@ export async function CompleteObjective(PlayerId, ObjectiveType, additonalXp, in
     console.log("XP Map: %d", xpMapping[ObjectiveType])
     console.log("EX XP Map: %d", additonalXp)
     // stuff i dont understand
-    profileJson["XP"] += xpMapping[ObjectiveType] + additonalXp
-    if (profileJson["Level"] < HardLevelLimit) {
-        XpRequiredToLevelUp = profileJson["XP"] - levelMapping[NextLevel]["requiredXp"]
-        if (profileJson["XP"] >= levelMapping[NextLevel]["requiredXp"]) {
-            profileJson["Level"] += 1
+    NewXP += parseInt(xpMapping[ObjectiveType]) + parseInt(additonalXp)
+    if (NewLevel < HardLevelLimit) {
+        XpRequiredToLevelUp = levelMapping[NextLevel]["requiredXp"] - NewXP
+        if (NewXP >= levelMapping[NextLevel]["requiredXp"]) {
+            NewLevel += 1
         }
     }
-    var deltaXp = profileJson["XP"] - OldXP
+    var deltaXp = NewXP - OldXP
     profileJson["XpRequiredToLevelUp"] = XpRequiredToLevelUp
     // write xp n level stuff
+    profileJson.Level = NewLevel
+    profileJson.XP = NewXP
     await writeFile(ProfilePath, JSON.stringify(profileJson, null, 3))
-    return {"xpRequiredToLevelUp": XpRequiredToLevelUp, "currentXp": profileJson["XP"], "currentLevel": profileJson["Level"], "deltaXp": deltaXp}
+    return {"xpRequiredToLevelUp": XpRequiredToLevelUp, "currentXp": NewXP, "currentLevel": NewLevel, "deltaXp": deltaXp}
 }
