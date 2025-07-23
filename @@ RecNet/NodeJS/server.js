@@ -62,6 +62,12 @@ app.get('/api/versioncheck/v1', async (req, res) => {
         res.sendStatus(403)
     }
 })
+// Handle Quitting
+app.post("/api/ws/handlequit", upload.none(), async (req, res) => {
+    var PlayerId = req.body["ws-user-id"]
+    if (PlayerId)
+        await PlayerQuit(PlayerId)
+})
 // Player
 app.post("/api/players/v1/getorcreate", bodyParser.urlencoded({extended:true}), async (req, res) => {
     //console.log("Getting/Creating Player...")
@@ -407,33 +413,89 @@ app.post("/api/presence/v2", upload.none(), async (req, res) => {
     }
     if (!weHavePresence)
         activeSession["Presence"].push({NewPresence})
-    
-    SetLocalSession(PlayerId, apiSessions.CreateGameSession(GameSessionId, AppVersion, Activity, Private, AvailableSpace, GameInProgress, [PlayerId]))
 
-    /*activeSession["LocalSessions"].forEach(LocalSession => {
-        for (var j = 0; j < activeSession["Sessions"]; j++) {
-            var Session = activeSession["Sessions"][i]
-            if (Session["GameSessionId"] == GameSessionId) {
-                var isPlayerInActivity = false
-                activeSession["Sessions"][i].PlayerIds.push(PlayerId)
-            }
-        }
-    })*/
+    var CreatedSession = apiSessions.CreateGameSession(GameSessionId, AppVersion, Activity, Private, AvailableSpace, GameInProgress, [])
+    await UpdateGlobalSession(PlayerId, CreatedSession)
 
     res.send("OK")
 })
-// Game Session
-async function SetLocalSession(PlayerId, newSession) {
-    activeSession["LocalSessions"][PlayerId] = newSession
+// Game Session (apparently its better use "const"?)
+// keep in mind i had to get some help for this 💀💀
+async function UpdateGlobalSession(PlayerId, newSession) {
+    // get session stuff
+    const GameSessionId = newSession["Id"]
+    // VV not needed as of now VV
+    /*const AppVersion = newSession["AppVersion"]
+    const Activity = newSession["Activity"]
+    const Private = newSession["Private"]
+    const AvailableSpace = newSession["AvailableSpace"]
+    const GameInProgress = newSession["GameInProgress"]
+    const PlayerIds = newSession["PlayerIds"]*/
+    // set session stuff
+    const PreviousSessionId = activeSession["LocalSessions"][PlayerId]
+    const PreviousSession = activeSession["Sessions"][PreviousSessionId]
+
+    if (!GameSessionId) {
+        console.log("A valid game session id hasn't been given.")
+        return;
+    } else {
+        console.log("Got Game Session ID: " + GameSessionId)
+    }
+
+    // update previous session
+    if (PreviousSession != null) {
+        if (PreviousSession.GameSessionId != undefined) { // <---- guess why i added this lol
+            if (PreviousSession.GameSessionId != GameSessionId) {
+                // remove player from list
+                PreviousSession.PlayerIds = PreviousSession.PlayerIds.filter(id => id !== PlayerId);
+                // delete if noone is in the room anymore
+                if (PreviousSession.PlayerIds.length == 0) {
+                    console.log("Deleted Session: " + PreviousSession.GameSessionId)
+                    delete activeSession["Sessions"][PreviousSessionId][PlayerId]
+                }
+            }
+        }
+    }
+    // add/update session
+    if (!activeSession["Sessions"][GameSessionId]) {
+        console.log("Created Session: " + GameSessionId)
+        activeSession["Sessions"][GameSessionId] = newSession
+        activeSession["Sessions"][GameSessionId].PlayerIds.push(PlayerId)
+    } else {
+        console.log("Updated Session: " + GameSessionId)
+        if (!activeSession["Sessions"][GameSessionId].PlayerIds.includes(PlayerId)) {
+            activeSession["Sessions"][GameSessionId].PlayerIds.push(PlayerId)
+        }
+    }
+    activeSession["LocalSessions"][PlayerId] = GameSessionId
 }
-/*app.use("/api/gamesessions/v1/:BuildVersion", upload.none(), async (req, res) => {
+async function PlayerQuit(PlayerId) {
+    const PreviousSessionId = activeSession["LocalSessions"][PlayerId]
+    const PreviousSession = activeSession["Sessions"][PreviousSessionId]
+    // update previous session
+    if (PreviousSession != null) {
+        if (PreviousSession.GameSessionId != GameSessionId) {
+            // remove player from list
+            PreviousSession.PlayerIds = PreviousSession.PlayerIds.filter(id => id !== PlayerId);
+            // delete if noone is in the room anymore
+            if (PreviousSession.PlayerIds.length == 0) {
+                console.log("Deleted Session: " + PreviousSession.GameSessionId)
+                delete activeSession["Sessions"][PreviousSessionId][PlayerId]
+            }
+        }
+    }
+    // delete all traces of a body being found
+    if (activeSession["Presence"][PlayerId])
+        delete activeSession["Presence"][PlayerId]
+    if (activeSession["LocalSessions"][PlayerId])
+        delete activeSession["LocalSessions"][PlayerId]
+}
+app.use("/api/gamesessions/v1/:BuildVersion", upload.none(), async (req, res) => {
     // vars
-    var CurrentVersion = req.headers["X-Rec-Room-Version"]
     var GameVersion = req.params["BuildVersion"]
-    var Session = activeSession["Sessions"]
     var Sessions = await apiSessions.GetAllGameSessions(activeSession, GameVersion)
     res.send(Sessions)
-})*/
+})
 app.use("/api/gamesessions/v1/", upload.none(), async (req, res) => {
     res.send("[]")
 })
