@@ -444,13 +444,13 @@ async function UpdateGlobalSession(PlayerId, newSession) {
 
     // update previous session
     if (PreviousSession != null) {
-        if (PreviousSession.GameSessionId != undefined) { // <---- guess why i added this lol
-            if (PreviousSession.GameSessionId != GameSessionId) {
+        if (PreviousSession.Id != undefined) { // <---- guess why i added this lol
+            if (PreviousSession.Id != GameSessionId) {
                 // remove player from list
                 PreviousSession.PlayerIds = PreviousSession.PlayerIds.filter(id => id !== PlayerId);
                 // delete if noone is in the room anymore
                 if (PreviousSession.PlayerIds.length == 0) {
-                    console.log("Deleted Session: " + PreviousSession.GameSessionId)
+                    console.log("Deleted Session: " + PreviousSession.Id)
                     delete activeSession["Sessions"][PreviousSessionId][PlayerId]
                 }
             }
@@ -470,6 +470,8 @@ async function UpdateGlobalSession(PlayerId, newSession) {
     activeSession["LocalSessions"][PlayerId] = GameSessionId
 }
 async function PlayerQuit(PlayerId) {
+    console.log("Handling Game Quit for: " + PlayerId)
+
     const PreviousSessionId = activeSession["LocalSessions"][PlayerId]
     const PreviousSession = activeSession["Sessions"][PreviousSessionId]
     // update previous session
@@ -484,11 +486,14 @@ async function PlayerQuit(PlayerId) {
             }
         }
     }
+    console.log("[" + PlayerId + "] Old Game Sessions Cleared")
     // delete all traces of a body being found
     if (activeSession["Presence"][PlayerId])
         delete activeSession["Presence"][PlayerId]
     if (activeSession["LocalSessions"][PlayerId])
         delete activeSession["LocalSessions"][PlayerId]
+    console.log("[" + PlayerId + "] Presence Cleared")
+    console.log("[" + PlayerId + "] Local Game Session Cleared")
 }
 app.use("/api/gamesessions/v1/:BuildVersion", upload.none(), async (req, res) => {
     // vars
@@ -497,5 +502,8 @@ app.use("/api/gamesessions/v1/:BuildVersion", upload.none(), async (req, res) =>
     res.send(Sessions)
 })
 app.use("/api/gamesessions/v1/", upload.none(), async (req, res) => {
-    res.send("[]")
+    // vars
+    var GameVersion = req.headers["X-Rec-Room-Version"]
+    var Sessions = await apiSessions.GetAllGameSessions(activeSession, GameVersion)
+    res.send(JSON.stringify(Sessions))
 })
