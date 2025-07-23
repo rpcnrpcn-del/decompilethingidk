@@ -21,16 +21,13 @@ export function CreateGameSession(Id, AppVersion, Activity, Private, AvailableSp
     }
     return newSession
 }
-export async function GetAllGameSessions(ActiveServerSession, BuildVersion) {
-    if (ActiveServerSession == null || BuildVersion == null) return;
-    if (ActiveServerSession["Sessions"] == null) return;
+export async function GetAllGameSessions(ServerSessions, BuildVersion) {
+    if (ServerSessions == null) return "No Game Sessions?";
     // retrieve game sessions
     var Sessions = []
-    ActiveServerSession["Sessions"].forEach(element => {
+    ServerSessions.forEach(element => {
         if (element != undefined) {
-            if (element["AppVersion"] == BuildVersion) {
-                Sessions.push(element)
-            }
+           Sessions.push(element)
         }
     });
     // return sessions

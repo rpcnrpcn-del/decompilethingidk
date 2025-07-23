@@ -31,8 +31,9 @@ wss.on('connection', function connection(ws) {
         // its a really quick and lazy implementation but it should hopefully work
         if (GottenProfile) {
             if (GottenProfile["PlayerId"]) {
+                console.log("Trying to handle game quit from " + GottenProfile["PlayerId"])
                 var fetchBody = JSON.stringify({"ws-user-id":GottenProfile["PlayerId"]})
-                await fetch("http://localhost:" + APIHostPort + "/api/ws/handlequit", {body:fetchBody})
+                await fetch("http://localhost:" + APIHostPort + "/api/ws/handlequit", {method:"POST",headers:{'User-Agent':'rr-websocket'}, body:fetchBody})
             }
         }
         console.log("Client disconnected")

@@ -22,7 +22,7 @@ const HostPort = 28960
 
 var activeSession = {
     "Presence": [],
-    "Sessions": [],
+    "Sessions": {},
     "LocalSessions": {}
 }
 
@@ -495,15 +495,39 @@ async function PlayerQuit(PlayerId) {
     console.log("[" + PlayerId + "] Presence Cleared")
     console.log("[" + PlayerId + "] Local Game Session Cleared")
 }
-app.use("/api/gamesessions/v1/:BuildVersion", upload.none(), async (req, res) => {
+app.get("/api/gamesessions/v1/:BuildVersion", upload.none(), async (req, res) => {
     // vars
     var GameVersion = req.params["BuildVersion"]
-    var Sessions = await apiSessions.GetAllGameSessions(activeSession, GameVersion)
-    res.send(Sessions)
+    
+    console.log("Got Sessions:")
+    console.log(activeSession["Sessions"])
+
+    res.send(activeSession["Sessions"])
 })
-app.use("/api/gamesessions/v1/", upload.none(), async (req, res) => {
-    // vars
-    var GameVersion = req.headers["X-Rec-Room-Version"]
-    var Sessions = await apiSessions.GetAllGameSessions(activeSession, GameVersion)
-    res.send(JSON.stringify(Sessions))
+app.get("/api/gamesessions/v1/:SessionId", async (req, res) => {
+    var GetSessionFromId = req.params["SessionId"]
+    var FoundSession = activeSession["Sessions"][GetSessionFromId]
+    FoundSession = JSON.stringify(FoundSession)
+
+    console.log("Got Sessions (ID Specified):")
+    console.log(FoundSession)
+
+    res.send(FoundSession)
+})
+app.get("/api/gamesessions/v1/", async (req, res) => {
+    var SpecifiedVersion = req.params["v"]
+
+    FoundSessions = []
+    
+    for (var session in activeSession["Sessions"]) {
+        if (session != undefined)
+            FoundSessions.push(activeSession["Sessions"][session])
+    }
+    
+    FoundSessions = JSON.stringify(FoundSessions)
+
+    console.log("Got Sessions (All):")
+    console.log(FoundSessions)
+
+    res.send(FoundSessions)
 })

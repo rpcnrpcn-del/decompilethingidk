@@ -82,7 +82,15 @@ public class DebugGameSessionsController : MenuController
 		if (list != null && list.Count > 0)
 		{
 			foreach (GameSession item in list)
-			{
+            {
+                Debug.Log(item.Id);
+                Debug.Log(item.PlayerIds);
+				Debug.Log(item.AvailableSpace);
+				Debug.Log(item.AppVersion);
+				Debug.Log(item.GameInProgress);
+				Debug.Log(item.Activity);
+				Debug.Log(item.AppVersion);
+				Debug.Log(item.AvailableSpace);
 				if (string.IsNullOrEmpty(item.Activity) || item.PlayerIds.Count == 0)
 				{
 					continue;
