@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114879366714470408}
   - component: {fileID: 114382987353997156}
   m_Layer: 0
-  m_Name: '[SceneSpawnPoint]'
+  m_Name: '[HybridSpawnPoint]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,13 +36,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1244477932679674}
-  m_LocalRotation: {x: -5.2524857e-10, y: -0.12232386, z: 0.000000003434046, w: -0.99249023}
-  m_LocalPosition: {x: -6.13, y: 0.001, z: -12.98}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0.000000011958941, y: -14.052477, z: 0.0000003950163}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &114382987353997156
 MonoBehaviour:
   m_ObjectHideFlags: 1

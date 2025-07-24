@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 114784773958135448}
   - component: {fileID: 114088320409482256}
   m_Layer: 10
-  m_Name: '[PaintballGun]'
+  m_Name: '[PaintballGun](Clone)'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
