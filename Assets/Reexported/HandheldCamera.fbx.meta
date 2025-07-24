@@ -1,0 +1,132 @@
+fileFormatVersion: 2
+guid: f821810286bda8f40857c15f6f4b01e4
+timeCreated: 1753320611
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Armature
+    100002: BackScreen
+    100004: BodyCollider
+    100006: ExportingFeedback
+    100008: FeedbackCanvas
+    100010: FrontScreen
+    100012: Gif_Camera_New
+    100014: //RootNode
+    100016: HandleCollider
+    100018: HeadCollider
+    100020: LensTransform
+    100022: RecordingFeedback
+    100024: RecordingProgressFeedback
+    100026: Root.jnt
+    100028: SavedFeedback
+    100030: Screen
+    100032: Screen 1
+    100034: Screen.jnt
+    100036: Screen.jnt_end
+    100038: ScreenCollider
+    100040: Trigger.jnt
+    100042: Trigger.jnt_end
+    400000: Armature
+    400002: BackScreen
+    400004: BodyCollider
+    400006: ExportingFeedback
+    400008: FeedbackCanvas
+    400010: FrontScreen
+    400012: Gif_Camera_New
+    400014: //RootNode
+    400016: HandleCollider
+    400018: HeadCollider
+    400020: LensTransform
+    400022: RecordingFeedback
+    400024: RecordingProgressFeedback
+    400026: Root.jnt
+    400028: SavedFeedback
+    400030: Screen
+    400032: Screen 1
+    400034: Screen.jnt
+    400036: Screen.jnt_end
+    400038: ScreenCollider
+    400040: Trigger.jnt
+    400042: Trigger.jnt_end
+    2300000: Screen
+    2300002: Screen 1
+    3300000: Screen
+    3300002: Screen 1
+    4300000: Screen
+    4300002: Screen
+    4300004: Gif_Camera_New
+    7400000: HandheldCameraScreenClosed
+    7400002: HandheldCameraScreenOpen
+    7400004: HandheldCameraTriggerClosed
+    7400006: HandheldCameraTriggerOpen
+    9500000: //RootNode
+    13700000: Gif_Camera_New
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: Root.jnt
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
