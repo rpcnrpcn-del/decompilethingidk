@@ -56,11 +56,15 @@ public class QuestRoom : Photon.MonoBehaviour
 	{
 		get
 		{
+			if (Doors == null)
+				return false;
 			return Doors != null && Doors[0].IsLocked;
 		}
 		set
-		{
-			for (int i = 0; i < Doors.Length; i++)
+        {
+            if (Doors == null)
+                return;
+            for (int i = 0; i < Doors.Length; i++)
 			{
 				Doors[i].IsLocked = value;
 			}
@@ -115,20 +119,25 @@ public class QuestRoom : Photon.MonoBehaviour
 		}
 		OnSpawnPointEnabledUpdated();
 		doorTrigger = GetComponentInChildren<QuestRoomDoorTrigger>();
-		doorTrigger.LocalPlayerTriggerEnterEvent += OnLocalPlayerTriggerDoor;
-		DoorTriggerActive = false;
-		Doors = base.transform.GetComponentsInChildren<QuestDoor>(true);
-		DoorsLocked = true;
+		if (doorTrigger)
+		{
+			doorTrigger.LocalPlayerTriggerEnterEvent += OnLocalPlayerTriggerDoor;
+			DoorTriggerActive = false;
+			Doors = base.transform.GetComponentsInChildren<QuestDoor>(true);
+			DoorsLocked = true;
+		}
 	}
 
 	protected override void OnDestroy()
 	{
 		base.OnDestroy();
-		doorTrigger.LocalPlayerTriggerEnterEvent -= OnLocalPlayerTriggerDoor;
+		if (doorTrigger)
+			doorTrigger.LocalPlayerTriggerEnterEvent -= OnLocalPlayerTriggerDoor;
 	}
 
 	public bool AllPlayersInDoorTrigger(PhotonPlayer[] players)
 	{
+		if (!doorTrigger) return false;
 		bool result = true;
 		foreach (PhotonPlayer photonPlayer in players)
 		{

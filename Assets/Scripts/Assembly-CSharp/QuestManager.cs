@@ -101,7 +101,7 @@ public class QuestManager : GameManager
 		}
 		set
 		{
-			_currentRoomId.ForceSet((!(value != null)) ? (-1) : value.photonView.viewID);
+			_currentRoomId.ForceSet((value == null) ? (-1) : value.photonView.viewID);
 		}
 	}
 
