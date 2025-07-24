@@ -215,8 +215,8 @@ public abstract class Enemy : Photon.MonoBehaviour
 	protected void RpcOnTookDamage(PhotonPlayer damagingPlayer, int damage)
 	{
         OnTookDamage(damage, damagingPlayer);
-		VFX_Damage();
-
+		if (damage > 0 && damage < this.maxHealth) // prevent the nuking of ears n stuff
+			VFX_Damage();
     }
 
 	private void VFX_Damage()
