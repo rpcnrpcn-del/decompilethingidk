@@ -497,4 +497,12 @@ public class PhotonView : MonoBehaviour
 	{
 		return string.Format("View ({3}){0} on {1} {2}", viewID, (!(base.gameObject != null)) ? "GO==null" : base.gameObject.name, (!isSceneView) ? string.Empty : "(scene)", prefix);
 	}
+
+#if UNITY_EDITOR
+    // Suppressing compiler warning "this variable is never used". Only used in the CustomEditor, only in Editor
+#pragma warning disable 0414
+    [SerializeField]
+    bool ObservedComponentsFoldoutOpen = true;
+#pragma warning restore 0414
+#endif
 }

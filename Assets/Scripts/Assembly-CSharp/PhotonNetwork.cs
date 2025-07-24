@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using ExitGames.Client.Photon;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Debug = UnityEngine.Debug;
 
 public static class PhotonNetwork
 {
@@ -1775,4 +1778,146 @@ public static class PhotonNetwork
 	{
 		return networkingPeer.WebRpc(name, parameters);
 	}
+#if UNITY_EDITOR
+
+
+    /// <summary>
+    /// Finds the asset path base on its name or search query: https://docs.unity3d.com/ScriptReference/AssetDatabase.FindAssets.html
+    /// </summary>
+    /// <returns>The asset path.</returns>
+    /// <param name="asset">Asset.</param>
+    public static string FindAssetPath(string asset)
+    {
+        string[] guids = AssetDatabase.FindAssets(asset, null);
+        if (guids.Length != 1)
+        {
+            return string.Empty;
+        }
+        else
+        {
+            return AssetDatabase.GUIDToAssetPath(guids[0]);
+        }
+    }
+
+
+    /// <summary>
+    /// Finds the pun asset folder. Something like Assets/Photon Unity Networking/Resources/
+    /// </summary>
+    /// <returns>The pun asset folder.</returns>
+    public static string FindPunAssetFolder()
+    {
+        string _thisPath = FindAssetPath("PhotonClasses");
+        string _PunFolderPath = string.Empty;
+
+        _PunFolderPath = GetParent(_thisPath, "Photon Unity Networking");
+
+        if (_PunFolderPath != null)
+        {
+            return "Assets" + _PunFolderPath.Substring(Application.dataPath.Length) + "/";
+        }
+
+        return "Assets/Photon Unity Networking/";
+    }
+
+    /// <summary>
+    /// Gets the parent directory of a path. Recursive Function, will return null if parentName not found
+    /// </summary>
+    /// <returns>The parent directory</returns>
+    /// <param name="path">Path.</param>
+    /// <param name="parentName">Parent name.</param>
+    public static string GetParent(string path, string parentName)
+    {
+        var dir = new DirectoryInfo(path);
+
+        if (dir.Parent == null)
+        {
+            return null;
+        }
+
+        if (string.IsNullOrEmpty(parentName))
+        {
+            return dir.Parent.FullName;
+        }
+
+        if (dir.Parent.Name == parentName)
+        {
+            return dir.Parent.FullName;
+        }
+
+        return GetParent(dir.Parent.FullName, parentName);
+    }
+
+
+    [Conditional("UNITY_EDITOR")]
+    public static void CreateSettings()
+    {
+        PhotonNetwork.PhotonServerSettings = (ServerSettings)Resources.Load(PhotonNetwork.serverSettingsAssetFile, typeof(ServerSettings));
+        if (PhotonNetwork.PhotonServerSettings != null)
+        {
+            return;
+        }
+
+        // find out if ServerSettings can be instantiated (existing script check)
+        ScriptableObject serverSettingTest = ScriptableObject.CreateInstance("ServerSettings");
+        if (serverSettingTest == null)
+        {
+            Debug.LogError("missing settings script");
+            return;
+        }
+        UnityEngine.Object.DestroyImmediate(serverSettingTest);
+
+
+        // if still not loaded, create one
+        if (PhotonNetwork.PhotonServerSettings == null)
+        {
+            string _PunResourcesPath = PhotonNetwork.FindPunAssetFolder();
+
+            _PunResourcesPath += "Resources/";
+
+
+            string serverSettingsAssetPath = _PunResourcesPath + PhotonNetwork.serverSettingsAssetFile + ".asset";
+            string settingsPath = Path.GetDirectoryName(serverSettingsAssetPath);
+            if (!Directory.Exists(settingsPath))
+            {
+                Directory.CreateDirectory(settingsPath);
+                AssetDatabase.ImportAsset(settingsPath);
+            }
+
+            PhotonNetwork.PhotonServerSettings = (ServerSettings)ScriptableObject.CreateInstance("ServerSettings");
+            if (PhotonNetwork.PhotonServerSettings != null)
+            {
+                AssetDatabase.CreateAsset(PhotonNetwork.PhotonServerSettings, serverSettingsAssetPath);
+            }
+            else
+            {
+                Debug.LogError("PUN failed creating a settings file. ScriptableObject.CreateInstance(\"ServerSettings\") returned null. Will try again later.");
+            }
+        }
+    }
+
+
+    /// <summary>
+    /// Internally used by Editor scripts, called on Hierarchy change (includes scene save) to remove surplus hidden PhotonHandlers.
+    /// </summary>
+    public static void InternalCleanPhotonMonoFromSceneIfStuck()
+    {
+        PhotonHandler[] photonHandlers = GameObject.FindObjectsOfType(typeof(PhotonHandler)) as PhotonHandler[];
+        if (photonHandlers != null && photonHandlers.Length > 0)
+        {
+            Debug.Log("Cleaning up hidden PhotonHandler instances in scene. Please save it. This is not an issue.");
+            foreach (PhotonHandler photonHandler in photonHandlers)
+            {
+                // Debug.Log("Removing Handler: " + photonHandler + " photonHandler.gameObject: " + photonHandler.gameObject);
+                photonHandler.gameObject.hideFlags = 0;
+
+                if (photonHandler.gameObject != null && photonHandler.gameObject.name == "PhotonMono")
+                {
+                    GameObject.DestroyImmediate(photonHandler.gameObject);
+                }
+
+                Component.DestroyImmediate(photonHandler);
+            }
+        }
+    }
+#endif
 }
