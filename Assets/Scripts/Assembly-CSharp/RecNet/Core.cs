@@ -473,15 +473,12 @@ namespace RecNet
 		}
 
 		public static IEnumerator Post(string requestUri, string json, RawApiCallback callback = null)
-		{
-			return CallApi(requestUri, delegate(string url)
+        {
+            return CallApi(requestUri, delegate(string url)
 			{
 				UnityWebRequest unityWebRequest = new UnityWebRequest(url, "POST");
 				unityWebRequest.downloadHandler = new DownloadHandlerBuffer();
-				unityWebRequest.uploadHandler = new UploadHandlerRaw(Encoding.UTF8.GetBytes(json))
-				{
-					contentType = "text/json"
-				};
+				unityWebRequest.uploadHandler = new UploadHandlerRaw(Encoding.UTF8.GetBytes(json));
 				unityWebRequest.disposeDownloadHandlerOnDispose = true;
 				unityWebRequest.disposeUploadHandlerOnDispose = true;
 				unityWebRequest.SetRequestHeader("Content-Type", "text/json");
@@ -500,8 +497,8 @@ namespace RecNet
 		}
 
 		public static IEnumerator Post<T>(string requestUri, string json, ApiCallback<List<T>> callback) where T : IRecNetObject, new()
-		{
-			return Post(requestUri, json, ParseMultipleCallback(callback));
+        {
+            return Post(requestUri, json, ParseMultipleCallback(callback));
 		}
 
 		public static IEnumerator InitializePushNotificationChannel(ApiCallback callback)
@@ -620,7 +617,7 @@ namespace RecNet
 					{
 						www.Dispose();
 					}
-					www = CreateRequest(apiCall);
+                    www = CreateRequest(apiCall);
 					yield return www.Send();
 					if (www.isError || www.responseCode == 429 || (www.responseCode >= 500 && www.responseCode < 600))
 					{

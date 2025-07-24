@@ -103,6 +103,7 @@ export async function CreateProfile(PlayerId, Name) {
     await writeFile(ProfilePath + "Avatar.json", JSON.stringify(PlayerJson["Avatar"], null, 3))
     await writeFile(ProfilePath + "Settings.json", JSON.stringify(PlayerJson["Settings"], null, 3))
     await writeFile(ProfilePath + "Misc.json", JSON.stringify(PlayerJson["Misc"], null, 3))
+    await writeFile(ProfilePath + "Relationship.json", JSON.stringify(PlayerJson["Relationship"], null, 3))
 }
 export async function GetProfile(PlayerId) {
     if (PlayerId == null) return;

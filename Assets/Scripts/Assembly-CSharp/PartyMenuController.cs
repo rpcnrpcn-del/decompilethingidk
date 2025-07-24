@@ -3,6 +3,7 @@ using System.Linq;
 using System.Text;
 using RecNet;
 using UnityEngine;
+using UnityEngine.Profiling;
 using UnityEngine.UI;
 
 public class PartyMenuController : MenuController
@@ -33,6 +34,8 @@ public class PartyMenuController : MenuController
 	private List<ulong> localPlayerIds;
 
 	private bool friendListResortRequested;
+
+	int oldPlayerCount = 0;
 
 	public override void Initialize(PlayerMenu playerMenu)
 	{
@@ -80,6 +83,8 @@ public class PartyMenuController : MenuController
 
 	public override void Refresh()
 	{
+		Debug.Log("[PartyMenuController] Refreshing...");
+
 		base.Refresh();
 		if (base.Owner != null)
 		{
@@ -89,27 +94,37 @@ public class PartyMenuController : MenuController
 	}
 
 	private void RefreshLocalSessionPlayers()
-	{
-		localPlayerIds = (from x in PhotonNetwork.otherPlayers
+    {
+        Debug.Log($"[PartyMenuController] Finding Players");
+        localPlayerIds = (from x in PhotonNetwork.otherPlayers
 			where x.ToPlayer() != null
 			select x.ToPlayer().PlayerId).ToList();
-		foreach (ulong item in localPlayerPanels.Keys.ToList())
+
+        Debug.Log($"[PartyMenuController] Refreshing Cached Profiles");
+        Profiles.RefreshCachedProfiles(localPlayerIds);
+        Debug.Log($"[PartyMenuController] Refreshing Cached Presences");
+        PlayerPresenceManager.RefreshCachedPlayerPresences(friendIds);
+        Debug.Log($"[PartyMenuController] Getting Profiles from Players...");
+        foreach (ulong localPlayerId in localPlayerIds)
+        {
+            Debug.Log($"[PartyMenuController] Getting Image for {localPlayerId}");
+            Images.RefreshCachedProfileImage(localPlayerId);
+            Debug.Log($"[PartyMenuController] Getting Profile for {localPlayerId}");
+            Profile profileFromCache = Profiles.GetProfileFromCache(localPlayerId);
+            if (profileFromCache != null)
+            {
+                Debug.Log($"[PartyMenuController] Refreshing Panel for {localPlayerId}");
+                RefreshLocalPlayerPanel(profileFromCache);
+            }
+        }
+
+        foreach (ulong item in localPlayerPanels.Keys.ToList())
 		{
 			if (!localPlayerIds.Contains(item))
-			{
-				Object.Destroy(localPlayerPanels[item].gameObject);
+            {
+                Debug.Log($"[PartyMenuController] Destroying Panel for: {item} (no id)");
+                Object.Destroy(localPlayerPanels[item].gameObject);
 				localPlayerPanels.Remove(item);
-			}
-		}
-		Profiles.RefreshCachedProfiles(localPlayerIds);
-		PlayerPresenceManager.RefreshCachedPlayerPresences(friendIds);
-		foreach (ulong localPlayerId in localPlayerIds)
-		{
-			Images.RefreshCachedProfileImage(localPlayerId);
-			Profile profileFromCache = Profiles.GetProfileFromCache(localPlayerId);
-			if (profileFromCache != null)
-			{
-				RefreshLocalPlayerPanel(profileFromCache);
 			}
 		}
 		noLocalPlayersPanel.gameObject.SetActive(localPlayerPanels.Count == 0);
@@ -170,23 +185,27 @@ public class PartyMenuController : MenuController
 		friendIds = (from r in Relationships.RelationshipList
 			where r.Type == Relationship.RelationshipType.Friend
 			select r.PlayerID).ToList();
-		foreach (ulong item in remoteFriendPanels.Keys.ToList())
+
+        Profiles.RefreshCachedProfiles(friendIds);
+        PlayerPresenceManager.RefreshCachedPlayerPresences(friendIds);
+        foreach (ulong friendId in friendIds)
+        {
+            Images.RefreshCachedProfileImage(friendId);
+            Profile profileFromCache = Profiles.GetProfileFromCache(friendId);
+            if (profileFromCache != null)
+            {
+                RefreshFriendPanel(profileFromCache);
+            }
+        }
+
+        foreach (ulong item in remoteFriendPanels.Keys.ToList())
 		{
 			if (!friendIds.Contains(item))
-			{
-				Object.Destroy(remoteFriendPanels[item].gameObject);
+            {
+                Debug.Log($"[PartyMenuController] Destroying Panel for: {item} (F, no id)");
+
+                Object.Destroy(remoteFriendPanels[item].gameObject);
 				remoteFriendPanels.Remove(item);
-			}
-		}
-		Profiles.RefreshCachedProfiles(friendIds);
-		PlayerPresenceManager.RefreshCachedPlayerPresences(friendIds);
-		foreach (ulong friendId in friendIds)
-		{
-			Images.RefreshCachedProfileImage(friendId);
-			Profile profileFromCache = Profiles.GetProfileFromCache(friendId);
-			if (profileFromCache != null)
-			{
-				RefreshFriendPanel(profileFromCache);
 			}
 		}
 		noFriendsPanel.gameObject.SetActive(remoteFriendPanels.Count == 0);
@@ -217,6 +236,11 @@ public class PartyMenuController : MenuController
 			friendListResortRequested = false;
 			ResortFriendsList();
 		}
+		if (oldPlayerCount != PhotonNetwork.countOfPlayers)
+		{
+            oldPlayerCount = PhotonNetwork.countOfPlayers;
+			this.Refresh();
+        }
 	}
 
 	private void OnProfileUpdated(ulong id, Profile profile)
@@ -238,8 +262,10 @@ public class PartyMenuController : MenuController
 	{
 		UIPlayerPanel value;
 		if (!remoteFriendPanels.TryGetValue(profile.Id, out value))
-		{
-			value = Object.Instantiate(playerPanelPrefab);
+        {
+            Debug.Log($"[PartyMenuController] Creating Panel for: {profile.Id} (F)");
+
+            value = Object.Instantiate(playerPanelPrefab);
 			value.transform.SetParent(friendList, false);
 			value.gameObject.SetActive(true);
 			value.setPlayerId(profile.Id);
@@ -270,6 +296,8 @@ public class PartyMenuController : MenuController
 		UIPlayerPanel value;
 		if (!localPlayerPanels.TryGetValue(profile.Id, out value))
 		{
+			Debug.Log($"[PartyMenuController] Creating Panel for: {profile.Id}");
+
 			value = Object.Instantiate(playerPanelPrefab);
 			value.transform.SetParent(localPlayerList, false);
 			value.gameObject.SetActive(true);
@@ -286,8 +314,10 @@ public class PartyMenuController : MenuController
 			}
 		}
 		if (player == null)
-		{
-			Object.Destroy(value.gameObject);
+        {
+            Debug.Log($"[PartyMenuController] Destroying Panel for: {profile.Id} (no player)");
+
+            Object.Destroy(value.gameObject);
 			localPlayerPanels.Remove(profile.Id);
 			localPlayerIds.Remove(profile.Id);
 			return;

@@ -172,6 +172,18 @@ namespace RecNet
 		{
 			string requestUri = string.Format("{0}v1/list", "api/players/");
 			string json = Json.Serialize(ids);
+
+			/*string workaroundJson = "";
+			foreach (ulong id in ids)
+			{
+				workaroundJson += $"{id},";
+			}
+			if (workaroundJson.EndsWith(","))
+				workaroundJson.Remove(workaroundJson.Length - 1);
+            Dictionary<string, string> dictionary = new Dictionary<string, string>();
+			dictionary["ids"] = workaroundJson;
+            string json = Json.Serialize(dictionary);*/
+
 			return Core.Post(requestUri, json, callback);
 		}
 
