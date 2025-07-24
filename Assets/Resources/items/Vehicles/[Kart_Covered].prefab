@@ -4033,9 +4033,10 @@ MonoBehaviour:
   ownershipTransfer: 1
   ObservedComponents:
   - {fileID: 114009624836433826}
-  viewIdField: 19
-  instantiationId: 19
+  viewIdField: 0
+  instantiationId: -1
   isRuntimeInstantiated: 0
+  ObservedComponentsFoldoutOpen: 1
 --- !u!114 &114745501160878308
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4072,9 +4073,10 @@ MonoBehaviour:
   ownershipTransfer: 1
   ObservedComponents:
   - {fileID: 0}
-  viewIdField: 48
-  instantiationId: 48
+  viewIdField: 0
+  instantiationId: -1
   isRuntimeInstantiated: 0
+  ObservedComponentsFoldoutOpen: 1
 --- !u!114 &114836793079107102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4138,9 +4140,10 @@ MonoBehaviour:
   ownershipTransfer: 1
   ObservedComponents:
   - {fileID: 114156727662652806}
-  viewIdField: 5
-  instantiationId: 5
+  viewIdField: 0
+  instantiationId: -1
   isRuntimeInstantiated: 0
+  ObservedComponentsFoldoutOpen: 1
 --- !u!114 &114910149971252892
 MonoBehaviour:
   m_ObjectHideFlags: 1
