@@ -63,10 +63,10 @@ Material:
       second: 0
     - first:
         name: _NumPixelsX
-      second: 128
+      second: 512
     - first:
         name: _NumPixelsY
-      second: 128
+      second: 512
     - first:
         name: _OcclusionStrength
       second: 1
