@@ -1,0 +1,205 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1662612057779844}
+  m_IsPrefabParent: 1
+--- !u!1 &1662612057779844
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4086018838869396}
+  - component: {fileID: 114802475859139736}
+  - component: {fileID: 114368070728499718}
+  - component: {fileID: 114984031347752800}
+  m_Layer: 0
+  m_Name: '[QuestManager]'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4086018838869396
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1662612057779844}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114368070728499718
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1662612057779844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56f1b2327ea50705114e1b253c7730b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114802475859139736
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1662612057779844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbc57f5a7a2407cb7f003832c688bfd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  observed: {fileID: 0}
+  synchronization: 0
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 3
+  instantiationId: 3
+  isRuntimeInstantiated: 0
+--- !u!114 &114984031347752800
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1662612057779844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 612c646a23373a730b310974c70965d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  supportsJoinGameInProgress: 1
+  automaticallyJoinInProgress: 1
+  afkSettings:
+    supportsCustomAfkSettings: 0
+    afkKickToIntroTimeout: 10
+    afkWarningStartTimeout: 10
+    supportsGhosting: 1
+  fxManager:
+    customAudioClips: []
+    customVFXs: []
+    loadingGameMusic:
+      audioClip: {fileID: 0}
+      volume: 1
+      pitchVariation: 0
+    playingGameMusic:
+      audioClip: {fileID: 8300000, guid: 11464bfea7e6fe64c95e9701a6da5f59, type: 3}
+      volume: 0.45
+      pitchVariation: 0
+  configManager:
+    configs: []
+  gameTimerManager:
+    supportsGameTimer: 0
+    gameDuration: 0
+  combatManager:
+    defaultHealth: 1
+    autoRespawnWhenDead: 0
+    respawnDelay: 3
+  modeManager:
+    modes:
+    - Mode: 0
+      Name: Epic Quest
+      Default: 1
+      ScoreName: Rooms
+      HasScoreWinCondition: 0
+      ScoreToWin: 5
+  presenceSettings:
+    customRichPresenceString: 0
+    richPresenceString: 
+    customLocalPlayerStatus: 0
+    localPlayerStatus: 
+  spawnManager:
+    spawnPointSelectionMethod: 0
+    spawnPointTags: []
+    EnemyProximityScoreSettings:
+      MinThreshold: 0
+      MaxThreshold: 0
+      MinScore: 0
+      MaxScore: 0
+      UseCurve: 0
+      DistanceScoreCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+    TeammateProximityScoreSettings:
+      MinThreshold: 0
+      MaxThreshold: 0
+      MinScore: 0
+      MaxScore: 0
+      UseCurve: 0
+      DistanceScoreCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+  statsManager:
+    supportsScore: 0
+    scoringMode: 2
+    stats:
+    - Stat: 0
+      Name: Gold
+  teamManager:
+    GameStartTeamRequirement: 8
+    teamConfigs:
+    - Team: 0
+      MaxTeamSize: 8
+    teamSelectionMethod: 0
+    supportsTeamOutfits: 0
+    useTeamNamesInFeedback: 1
+    customTeamNames: []
+  teleportManager:
+    customTeleportCooldowns:
+    - cooldownType: 0
+      customTeleportCooldown: 1
+    defaultCooldownType: 0
+    supportsCustomTeleportBufferDistance: 0
+    customTeleportBufferDistance: 0.5
+    teleportRegionTags: []
+  runFlowRooms:
+  - Name: Starting Room
+    RoomType: 0
+  - Name: Hallway 1
+    RoomType: 1
+  - Name: Hallway 2
+    RoomType: 2
+  - Name: Hallway 3
+    RoomType: 4
+  - Name: Midboss
+    RoomType: 3
+  - Name: Hallway 4
+    RoomType: 2
+  - Name: Hallway 5
+    RoomType: 4
+  - Name: Hallway 6
+    RoomType: 1
+  - Name: Final Boss
+    RoomType: 3
+  invincibilityAfterHit: 2
+  healthBarPrefab: {fileID: 114600806939941438, guid: b6fd5895c3027974ab88a244ba2694b6,
+    type: 2}
+  monochromeTimeOnHit: 1
+  reviveGesture: 0
+  roomClearedDuration: 4
