@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
 using System.Collections;
 
@@ -204,7 +205,7 @@ public class PhotonGUI
     {
         ReorderableListResources.DrawTexture( position, ReorderableListResources.texItemSplitter );
     }
-
+#if UNITY_EDITOR
     public static void DrawGizmoOptions(
         Rect position,
         string label,
@@ -240,7 +241,8 @@ public class PhotonGUI
         GUI.enabled = oldGUIEnabled;
     }
 
-    #endregion
+#endif
+#endregion
 
     #region Implementation
     static Rect DoContainerBody( float height )
@@ -295,3 +297,5 @@ public class PhotonGUI
     }
     #endregion
 }
+
+#endif

@@ -15,12 +15,16 @@
 #pragma warning disable 618 
 
 using System;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 using Photon;
 using Photon.Pun;
 using ExitGames.Client.Photon;
+
+#if UNITY_EDITOR
 
 [CustomEditor(typeof (PhotonView))]
 public class PhotonViewInspector : Editor
@@ -276,3 +280,4 @@ public class PhotonViewInspector : Editor
         #endif
     }
 }
+#endif

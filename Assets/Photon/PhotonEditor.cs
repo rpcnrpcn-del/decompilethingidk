@@ -14,8 +14,10 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using ExitGames.Client.Photon;
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEditorInternal;
+#endif
 using UnityEngine;
 
 
@@ -78,6 +80,7 @@ public class PunWizardText
     public string WizardMainWindowInfo = "This window should help you find important settings for PUN, as well as documentation.";
 }
 
+#if UNITY_EDITOR
 
 [InitializeOnLoad]
 public class PhotonEditor : EditorWindow
@@ -811,3 +814,4 @@ public class PhotonEditor : EditorWindow
     #endregion
 
 }
+#endif

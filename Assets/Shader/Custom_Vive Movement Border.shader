@@ -45,10 +45,10 @@ Shader "Custom/Vive Movement Border" {
                 float4 tmp0;
                 o.texcoord.xy = v.texcoord.xy;
                 o.texcoord1.xy = v.texcoord1.xy;
-                tmp0 = v.vertex.yyyy * glstate_matrix_mvp._m01_m11_m21_m31;
-                tmp0 = glstate_matrix_mvp._m00_m10_m20_m30 * v.vertex.xxxx + tmp0;
-                tmp0 = glstate_matrix_mvp._m02_m12_m22_m32 * v.vertex.zzzz + tmp0;
-                o.position = glstate_matrix_mvp._m03_m13_m23_m33 * v.vertex.wwww + tmp0;
+                tmp0 = v.vertex.yyyy * UNITY_MATRIX_MVP._m01_m11_m21_m31;
+                tmp0 = UNITY_MATRIX_MVP._m00_m10_m20_m30 * v.vertex.xxxx + tmp0;
+                tmp0 = UNITY_MATRIX_MVP._m02_m12_m22_m32 * v.vertex.zzzz + tmp0;
+                o.position = UNITY_MATRIX_MVP._m03_m13_m23_m33 * v.vertex.wwww + tmp0;
                 return o;
 			}
 			// Keywords: 

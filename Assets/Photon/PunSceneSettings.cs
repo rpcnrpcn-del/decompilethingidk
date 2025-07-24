@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 [Serializable]
@@ -54,13 +56,14 @@ public class PunSceneSettings : ScriptableObject
             {
                 return instanceField;
             }
-
+#if UNITY_EDITOR
             instanceField = (PunSceneSettings)AssetDatabase.LoadAssetAtPath(PunSceneSettingsCsPath, typeof(PunSceneSettings));
             if (instanceField == null)
             {
                 instanceField = ScriptableObject.CreateInstance<PunSceneSettings>();
                 AssetDatabase.CreateAsset(instanceField, PunSceneSettingsCsPath);
             }
+#endif
 
             return instanceField;
         }

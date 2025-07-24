@@ -132,24 +132,24 @@ internal class SteamPlatformManager : PlatformManager
 		{
 			Application.Quit();
 			yield break;
-		}
+		}*/
 		if (!SteamAPI.Init())
 		{
 			callback("Failed to initialize Steam Platform");
 			yield break;
-		}*/
+		}
 		initialized = true;
 		/*warningMessageHook = SteamAPIDebugTextHook;
 		SteamClient.SetWarningMessageHook(warningMessageHook);
 		gameRichPresenceJoinRequested = Callback<GameRichPresenceJoinRequested_t>.Create(OnGameRichPresenceJoinRequested);*/
 		PUNNetworkManager.Instance.OnRecRoomPlayerConnected += OnRecRoomPlayerConnected;
 
-		/*CSteamID steamID = SteamUser.GetSteamID();
+		CSteamID steamID = SteamUser.GetSteamID();
 		base.PlatformProfileId = (ulong)steamID;
-		base.PlatformProfileName = SteamFriends.GetPersonaName();*/
+		base.PlatformProfileName = SteamFriends.GetPersonaName();
 
 		// Steam ID workaround
-		ulong expectedId = ulong.Parse(PlayerPrefs.GetString("AssignedPlayerId", "0"));
+		/*ulong expectedId = ulong.Parse(PlayerPrefs.GetString("AssignedPlayerId", "0"));
 		if (!PlayerPrefs.HasKey("AssignedPlayerId"))
 		{
 			ulong newId = LongRandom();
@@ -161,7 +161,7 @@ internal class SteamPlatformManager : PlatformManager
         }
 
         base.PlatformProfileId = expectedId;
-        base.PlatformProfileName = "Guest " + expectedId.ToString();
+        base.PlatformProfileName = "Guest " + expectedId.ToString();*/
 
         Player.SetPlatformPlayerId(CurrentPlatform, base.PlatformProfileId);
 		callback(null);
@@ -169,7 +169,8 @@ internal class SteamPlatformManager : PlatformManager
 		yield break;
 	}
 
-	public Texture2D LoadAvatarForPlayer(CSteamID steamID)
+
+    public Texture2D LoadAvatarForPlayer(CSteamID steamID)
 	{
 		/*int mediumFriendAvatar = SteamFriends.GetMediumFriendAvatar(steamID);
 		uint pnWidth;

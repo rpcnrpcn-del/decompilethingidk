@@ -41,7 +41,7 @@
    },
    {
       "Key": "PlayerSessionCount",
-      "Value": "22"
+      "Value": "24"
    },
    {
       "Key": "DAILY_LOGIN_DATE",
@@ -81,10 +81,26 @@
    },
    {
       "Key": "MUSIC_VOLUME_PERCENT_PREF",
-      "Value": "0.5694177"
+      "Value": "0.7213838"
    },
    {
       "Key": "SFX_VOLUME_PERCENT_PREF",
-      "Value": "0.5394391"
+      "Value": "0.6821823"
+   },
+   {
+      "Key": "ROTATE_IN_PLACE_ENABLED",
+      "Value": "0"
+   },
+   {
+      "Key": "VOICE_VOLUME_PERCENT_PREF",
+      "Value": "0.8170739"
+   },
+   {
+      "Key": "TeleportBuffer",
+      "Value": "0"
+   },
+   {
+      "Key": "VIGNETTED_TELEPORT_ENABLED",
+      "Value": "1"
    }
 ]

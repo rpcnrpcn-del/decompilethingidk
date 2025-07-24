@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using ExitGames.Client.Photon;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Debug = UnityEngine.Debug;
@@ -1788,6 +1790,7 @@ public static class PhotonNetwork
     /// <param name="asset">Asset.</param>
     public static string FindAssetPath(string asset)
     {
+#if UNITY_EDITOR
         string[] guids = AssetDatabase.FindAssets(asset, null);
         if (guids.Length != 1)
         {
@@ -1797,7 +1800,10 @@ public static class PhotonNetwork
         {
             return AssetDatabase.GUIDToAssetPath(guids[0]);
         }
-    }
+#else
+		return "";
+#endif
+	}
 
 
     /// <summary>
@@ -1868,6 +1874,7 @@ public static class PhotonNetwork
 
 
         // if still not loaded, create one
+#if UNITY_EDITOR
         if (PhotonNetwork.PhotonServerSettings == null)
         {
             string _PunResourcesPath = PhotonNetwork.FindPunAssetFolder();
@@ -1892,7 +1899,8 @@ public static class PhotonNetwork
             {
                 Debug.LogError("PUN failed creating a settings file. ScriptableObject.CreateInstance(\"ServerSettings\") returned null. Will try again later.");
             }
-        }
+#endif
+		}
     }
 
 
@@ -1920,4 +1928,4 @@ public static class PhotonNetwork
         }
     }
 #endif
-}
+	}

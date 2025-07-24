@@ -2,6 +2,8 @@
 #define UNITY_MIN_5_3
 #endif
 
+#if UNITY_EDITOR
+
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -11,6 +13,7 @@ using System.Collections;
 using Debug = UnityEngine.Debug;
 using UnityEditor.SceneManagement;
 using ExitGames.Client.Photon;
+
 
 [InitializeOnLoad]
 public class PhotonViewHandler : EditorWindow
@@ -198,3 +201,5 @@ public class PhotonViewHandler : EditorWindow
         Debug.Log("Corrected scene views where needed.");
     }
 }
+
+#endif

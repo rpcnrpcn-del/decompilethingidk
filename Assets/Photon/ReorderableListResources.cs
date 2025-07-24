@@ -3,7 +3,9 @@
 // found in the LICENSE file.
 
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 using System;
 
@@ -129,11 +131,13 @@ namespace Photon.Pun
         /// </summary>
         private static void GenerateSpecialTextures()
         {
+#if UNITY_EDITOR
             var splitterColor = EditorGUIUtility.isProSkin
                 ? new Color( 1f, 1f, 1f, 0.14f )
                 : new Color( 0.59f, 0.59f, 0.59f, 0.55f )
                 ;
             texItemSplitter = CreatePixelTexture( "(Generated) Item Splitter", splitterColor );
+#endif
         }
 
         /// <summary>
@@ -167,6 +171,7 @@ namespace Photon.Pun
         /// </summary>
         private static void LoadResourceAssets()
         {
+#if UNITY_EDITOR
             var skin = EditorGUIUtility.isProSkin ? s_DarkSkin : s_LightSkin;
             s_Cached = new Texture2D[ skin.Length ];
 
@@ -191,6 +196,7 @@ namespace Photon.Pun
 
             s_LightSkin = null;
             s_DarkSkin = null;
+#endif
         }
 
         /// <summary>

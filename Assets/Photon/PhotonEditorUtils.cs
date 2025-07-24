@@ -13,10 +13,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 using System.Text;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 using UnityEngine.Networking;
-
+#if UNITY_EDITOR
 
 namespace ExitGames.Client.Photon
 {
@@ -185,3 +187,5 @@ namespace ExitGames.Client.Photon
         }
     }
 }
+
+#endif
