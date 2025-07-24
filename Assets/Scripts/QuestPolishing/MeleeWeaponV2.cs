@@ -1,18 +1,15 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using SwingState = MeleeWeapon.SwingState;
 
-public class MeleeWeapon : Weapon
+public class MeleeWeaponV2 : Weapon
 {
-	public enum SwingState
-	{
-		NOT_SWINGING = 0,
-		PREPARING_TO_SWING = 1,
-		SWINGING = 2,
-		DISABLED = 3
-	}
+	[Header("VFX")]
+	[SerializeField] private PooledParticle ImpactVFX;
+    [SerializeField] private ParticleSystem trail;
 
-	[Header("Physics")]
+    [Header("Physics")]
 	[SerializeField]
 	private float swingingImpactMass = 0.1f;
 
@@ -41,8 +38,6 @@ public class MeleeWeapon : Weapon
 
 	private MeleeWeaponCollider[] meleeColliders;
 
-	private MeleeWeaponTrail trail;
-
 	private TrackedVelocity swingTrackedVelocity;
 
 	private Dictionary<Enemy, float> enemyLastHitTimes = new Dictionary<Enemy, float>();
@@ -52,6 +47,9 @@ public class MeleeWeapon : Weapon
 	private Dictionary<Tool, float> toolLastHitTimes = new Dictionary<Tool, float>();
 
 	private float otherLastHitTime;
+
+	float TrailOriginalTime;
+	bool TrailStopNow;
 
 	protected bool IsSwinging
 	{
@@ -75,8 +73,11 @@ public class MeleeWeapon : Weapon
 		swingTrackedVelocity = pickupTransform.gameObject.AddComponent<TrackedVelocity>();
 		TrackedVelocity trackedVelocity = swingTrackedVelocity;
 		trackedVelocity.UpdateEvent = (Action<TrackedVelocity>)Delegate.Combine(trackedVelocity.UpdateEvent, new Action<TrackedVelocity>(UpdateSwing));
-		trail = GetComponentInChildren<MeleeWeaponTrail>();
-		meleeColliders = GetComponentsInChildren<MeleeWeaponCollider>();
+
+		if (!trail)
+			trail = GetComponentInChildren<ParticleSystem>();
+
+        meleeColliders = GetComponentsInChildren<MeleeWeaponCollider>();
 		for (int i = 0; i < meleeColliders.Length; i++)
 		{
 			meleeColliders[i].weaponRigidbody = base.Rigidbody;
@@ -184,8 +185,14 @@ public class MeleeWeapon : Weapon
 			}
 			break;
 		}
-		trail.CanAddPoints = swingState == SwingState.SWINGING;
-		previousSwingSpeed = magnitude;
+
+		if (swingState == SwingState.SWINGING)
+			if (!trail.isPlaying)
+				trail.enableEmission = true;
+            else
+                trail.enableEmission = false;
+
+        previousSwingSpeed = magnitude;
 		previousSwingDisplacement = num;
 	}
 
@@ -198,13 +205,16 @@ public class MeleeWeapon : Weapon
 
 	private void OnAccentColorUpdate()
 	{
-		trail.Color = base.ToolRenderer.AccentColor;
-	}
+		trail.startColor = base.ToolRenderer.AccentColor;
+    }
 
 	private void OnVisibilityChange()
 	{
-		trail.enabled = base.ToolRenderer.Visible;
-	}
+		if (base.ToolRenderer.Visible)
+			trail.gameObject.active = true;
+        else
+            trail.gameObject.active = false;
+    }
 
 	private bool PlayerHitOnCooldown(Player player)
 	{
@@ -273,10 +283,11 @@ public class MeleeWeapon : Weapon
 			{
 				damage = GetEnemyImpactDamage(hitEnemy.EnemyType, 1f);
 				num = swingingImpactMass;
-			}
-			PlayImpactAudio(impactPoint);
+            }
+            PlayImpactVFX(impactPoint);
+            PlayImpactAudio(impactPoint);
 			PlayImpactHaptics();
-			Vector3 collisionForce = impactVelocity * num / Time.fixedDeltaTime;
+			Vector3 collisionForce = (impactVelocity * num / Time.fixedDeltaTime) / 10;
 			OnEnemyImpact(base.Owner, hitEnemy, damage, collisionForce, hitGameObject, impactPoint, Vector3.zero, surfaceNormal);
 		}
 		UpdateLastEnemyHitTime(hitEnemy);
@@ -309,7 +320,7 @@ public class MeleeWeapon : Weapon
 	{
 		if (this != hitTool && !ToolHitOnCooldown(hitTool))
 		{
-			PlayImpactAudio(impactPoint);
+            PlayImpactAudio(impactPoint);
 			PlayImpactHaptics();
 			float num = ((!IsSwinging) ? defaultImpactMass : swingingImpactMass);
 			Vector3 collisionForce = impactVelocity * num / Time.fixedDeltaTime;
@@ -344,6 +355,20 @@ public class MeleeWeapon : Weapon
 		if (IsSwinging)
 		{
 			base.HolderHand.Vibrate(0.2f);
+		}
+	}
+
+	private void PlayImpactVFX(Vector3 hitPos)
+	{
+		if (IsSwinging && ImpactVFX != null)
+		{
+			PooledParticle pooledParticle = ObjectPool.Instance.Acquire(ImpactVFX);
+            if (pooledParticle != null)
+			{
+				pooledParticle.transform.position = hitPos;
+				pooledParticle.transform.rotation = Quaternion.identity;
+				pooledParticle.Play();
+			}
 		}
 	}
 

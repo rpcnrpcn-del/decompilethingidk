@@ -1335,6 +1335,7 @@ MonoBehaviour:
   viewIdField: 0
   instantiationId: -1
   isRuntimeInstantiated: 0
+  ObservedComponentsFoldoutOpen: 1
 --- !u!114 &114573194749539450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1459,6 +1460,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: 1
   maxHealth: 100
+  DamageVFX: {fileID: 114103509416114634, guid: c6ccc3e7b50e9344bbc1cb506cf91f80,
+    type: 2}
   targetSearchRadius: 20
   recoilDuration: 2
   deathDuration: 3

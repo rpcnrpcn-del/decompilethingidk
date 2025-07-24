@@ -18,6 +18,9 @@ public abstract class Enemy : Photon.MonoBehaviour
 	[SerializeField]
 	private int maxHealth = 100;
 
+	[Header("VFX")]
+	[SerializeField] PooledParticle DamageVFX;
+
 	protected Rigidbody rigidbody;
 
 	protected RigidbodySteering steering;
@@ -211,6 +214,22 @@ public abstract class Enemy : Photon.MonoBehaviour
 	[PunRPC]
 	protected void RpcOnTookDamage(PhotonPlayer damagingPlayer, int damage)
 	{
-		OnTookDamage(damage, damagingPlayer);
-	}
+        OnTookDamage(damage, damagingPlayer);
+		if (damage > 0 && damage < this.maxHealth) // prevent the nuking of ears n stuff
+			VFX_Damage();
+    }
+
+	private void VFX_Damage()
+	{
+        if (DamageVFX)
+		{
+			PooledParticle pooledParticle = ObjectPool.Instance.Acquire(DamageVFX);
+			if (pooledParticle != null)
+			{
+				pooledParticle.transform.position = this.transform.position + (Vector3.up/2);
+				pooledParticle.transform.rotation = Quaternion.identity;
+				pooledParticle.Play();
+			}
+		}
+    }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -158,19 +159,34 @@ public class Bullet : MonoBehaviour
 	private void OnRaycastCollisionEnter(Vector3 collisionForce, RaycastHit raycastCollision)
 	{
 		GameObject hitGameObject = ((!(raycastCollision.rigidbody != null)) ? raycastCollision.collider.gameObject : raycastCollision.rigidbody.gameObject);
-		Player player = null;
-		Enemy enemy = null;
-		Tool tool = null;
 		Player.BodyPart bodyPart;
-		if ((player = raycastCollision.collider.GetColliderPlayer(out bodyPart)) != null)
+		Player player = raycastCollision.collider.GetColliderPlayer(out bodyPart);
+		Enemy enemy = raycastCollision.collider.GetColliderEnemy();
+		Tool tool = raycastCollision.collider.GetColliderTool();
+
+		/*MeleeWeapon meleeV1 = hitGameObject.GetComponent<MeleeWeapon>();
+		MeleeWeaponV2 meleeV2 = hitGameObject.GetComponent<MeleeWeaponV2>();
+
+        if (meleeV1 || meleeV2)
+		{
+			TrackedVelocity trackedVel = (meleeV1) ? meleeV1.TrackedVelocity : meleeV2.TrackedVelocity;
+			Debug.LogFormat("Velocity: {0} | Magnitude: {1}", trackedVel.RecentLinearVelocity, trackedVel.RecentLinearVelocity.magnitude);
+            if (trackedVel.RecentLinearVelocity.magnitude > 0.1f)
+			{
+				velocity *= -1;
+				return;
+			}
+		}*/
+
+		if (player)
 		{
 			OnPlayerHit(player, bodyPart, chargeAmount, hitGameObject, raycastCollision.point, raycastCollision.normal);
 		}
-		else if ((enemy = raycastCollision.collider.GetColliderEnemy()) != null)
+		else if (enemy)
 		{
 			OnEnemyHit(enemy, chargeAmount, collisionForce, hitGameObject, raycastCollision.point, raycastCollision.normal);
 		}
-		else if ((tool = raycastCollision.collider.GetColliderTool()) != null)
+		else if (tool)
 		{
 			OnToolHit(tool, chargeAmount, collisionForce, hitGameObject, raycastCollision.point, raycastCollision.normal);
 		}
