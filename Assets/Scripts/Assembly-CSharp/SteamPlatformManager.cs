@@ -83,7 +83,7 @@ internal class SteamPlatformManager : PlatformManager
 
 	private bool ShouldRestart()
 	{
-		/*if (!Packsize.Test())
+		if (!Packsize.Test())
 		{
 			Debug.LogError("[Steamworks.NET] Packsize Test returned false, the wrong version of Steamworks.NET is being run in this platform.", this);
 			return true;
@@ -104,7 +104,7 @@ internal class SteamPlatformManager : PlatformManager
 		{
 			Debug.LogError("[Steamworks.NET] Could not load [lib]steam_api.dll/so/dylib. It's likely not in the correct location. Refer to the README for more details.\n" + ex, this);
 			return true;
-		}*/
+		}
 		return false;
 	}
 
@@ -121,6 +121,11 @@ internal class SteamPlatformManager : PlatformManager
 		result += UnityEngine.Random.Range(0, int.MaxValue).ToString();
 
 		result.Replace(".", "");
+		result.Replace("/", "");
+		result.Replace("?", "");
+		result.Replace("-", "");
+		result.Replace(":", "");
+		result.Replace("_", "");
 
         return ulong.Parse(result);
     }
@@ -132,24 +137,24 @@ internal class SteamPlatformManager : PlatformManager
 		{
 			Application.Quit();
 			yield break;
-		}*/
+		}
 		if (!SteamAPI.Init())
 		{
 			callback("Failed to initialize Steam Platform");
 			yield break;
-		}
+		}*/
 		initialized = true;
 		/*warningMessageHook = SteamAPIDebugTextHook;
 		SteamClient.SetWarningMessageHook(warningMessageHook);
 		gameRichPresenceJoinRequested = Callback<GameRichPresenceJoinRequested_t>.Create(OnGameRichPresenceJoinRequested);*/
 		PUNNetworkManager.Instance.OnRecRoomPlayerConnected += OnRecRoomPlayerConnected;
 
-		CSteamID steamID = SteamUser.GetSteamID();
+		/*CSteamID steamID = SteamUser.GetSteamID();
 		base.PlatformProfileId = (ulong)steamID;
-		base.PlatformProfileName = SteamFriends.GetPersonaName();
+		base.PlatformProfileName = SteamFriends.GetPersonaName();*/
 
 		// Steam ID workaround
-		/*ulong expectedId = ulong.Parse(PlayerPrefs.GetString("AssignedPlayerId", "0"));
+		ulong expectedId = ulong.Parse(PlayerPrefs.GetString("AssignedPlayerId", "0"));
 		if (!PlayerPrefs.HasKey("AssignedPlayerId"))
 		{
 			ulong newId = LongRandom();
@@ -161,7 +166,7 @@ internal class SteamPlatformManager : PlatformManager
         }
 
         base.PlatformProfileId = expectedId;
-        base.PlatformProfileName = "Guest " + expectedId.ToString();*/
+        base.PlatformProfileName = "Guest " + expectedId.ToString();
 
         Player.SetPlatformPlayerId(CurrentPlatform, base.PlatformProfileId);
 		callback(null);

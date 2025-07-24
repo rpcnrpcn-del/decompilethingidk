@@ -2,10 +2,10 @@
    "Id": "0",
    "Username": "Guest 0",
    "DisplayName": "Guest 0",
-   "XP": 14,
+   "XP": null,
    "Level": 1,
    "Reputation": 0,
    "Verified": true,
-   "Developer": false,
-   "XpRequiredToLevelUp": 186
+   "Developer": true,
+   "XpRequiredToLevelUp": null
 }

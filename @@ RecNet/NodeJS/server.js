@@ -296,7 +296,7 @@ app.get("/api/relationships/v2/get", async (req, res) => {
     if (GottenData == null || GottenData == false) {
         res.send(500)
     } else {
-        internalBus.emit("msg", {"PlayerId":PlayerId,"Type":"relationship"}) // tell the websocket we got someone new
+        //internalBus.emit("msg", {"PlayerId":PlayerId,"Type":"relationship"}) // tell the websocket we got someone new
         res.send(GottenData)
     }
 })

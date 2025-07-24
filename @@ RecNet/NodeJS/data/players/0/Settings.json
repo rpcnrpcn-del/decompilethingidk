@@ -41,7 +41,7 @@
    },
    {
       "Key": "PlayerSessionCount",
-      "Value": "9"
+      "Value": "11"
    },
    {
       "Key": "DAILY_LOGIN_DATE",
@@ -78,5 +78,9 @@
    {
       "Key": "Recroom.OOBE",
       "Value": "100"
+   },
+   {
+      "Key": "VIGNETTED_TELEPORT_ENABLED",
+      "Value": "1"
    }
 ]

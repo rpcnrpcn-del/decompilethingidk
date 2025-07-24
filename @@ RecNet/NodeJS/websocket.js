@@ -57,7 +57,7 @@ wss.on('connection', function connection(ws) {
             var playerId = parsedData["PlayerId"]
             var messageType = parsedData["Type"]
             // i have no idea if events are global or not
-            if (playerId == GottenProfile["PlayerId"]) {
+            /*if (playerId == GottenProfile["PlayerId"]) {
                 switch (messageType) {
                     case "relationship":
                         var AllRelationships = await ApiRelationship.Router_GetRelationship(playerId)
@@ -65,7 +65,7 @@ wss.on('connection', function connection(ws) {
                         ws.send(ResponseToSend)
                     break;
                 }
-            }
+            }*/
         }
     });
     ws.on('close', async function onclose() {

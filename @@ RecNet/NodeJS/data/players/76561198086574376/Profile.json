@@ -2,10 +2,10 @@
    "Id": "76561198086574376",
    "Username": "pingvin",
    "DisplayName": "pingvin",
-   "XP": 191,
+   "XP": 192,
    "Level": 2,
-   "XpRequiredToLevelUp": 109,
+   "XpRequiredToLevelUp": 108,
    "Reputation": 0,
    "Verified": true,
-   "Developer": false
+   "Developer": true
 }
