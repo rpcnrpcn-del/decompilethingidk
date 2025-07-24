@@ -12,7 +12,6 @@ Shader "Shader Forge/Props/LensRender" {
 		Pass {
 			Name "FORWARD"
 			Tags { "LIGHTMODE" = "ForwardBase" "RenderType" = "Opaque" "SHADOWSUPPORT" = "true" }
-			ZClip Off
 			GpuProgramID 26160
 			CGPROGRAM
 			#pragma vertex vert
@@ -304,7 +303,6 @@ Shader "Shader Forge/Props/LensRender" {
 			Name "FORWARD_DELTA"
 			Tags { "LIGHTMODE" = "ForwardAdd" "RenderType" = "Opaque" "SHADOWSUPPORT" = "true" }
 			Blend One One, One One
-			ZClip Off
 			GpuProgramID 107991
 			CGPROGRAM
 			#pragma vertex vert
@@ -504,7 +502,6 @@ Shader "Shader Forge/Props/LensRender" {
 		Pass {
 			Name "META"
 			Tags { "LIGHTMODE" = "Meta" "RenderType" = "Opaque" "SHADOWSUPPORT" = "true" }
-			ZClip Off
 			Cull Off
 			GpuProgramID 187427
 			CGPROGRAM

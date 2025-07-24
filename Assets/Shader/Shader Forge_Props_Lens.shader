@@ -12,7 +12,6 @@ Shader "Shader Forge/Props/Lens" {
 			Name "FORWARD"
 			Tags { "IGNOREPROJECTOR" = "true" "LIGHTMODE" = "ForwardBase" "QUEUE" = "Transparent" "RenderType" = "Transparent" "SHADOWSUPPORT" = "true" }
 			Blend One One, One One
-			ZClip Off
 			ZWrite Off
 			GpuProgramID 42026
 			CGPROGRAM
@@ -311,7 +310,6 @@ Shader "Shader Forge/Props/Lens" {
 			Name "FORWARD_DELTA"
 			Tags { "IGNOREPROJECTOR" = "true" "LIGHTMODE" = "ForwardAdd" "QUEUE" = "Transparent" "RenderType" = "Transparent" }
 			Blend One One, One One
-			ZClip Off
 			ZWrite Off
 			GpuProgramID 114014
 			CGPROGRAM
@@ -515,7 +513,6 @@ Shader "Shader Forge/Props/Lens" {
 		Pass {
 			Name "META"
 			Tags { "IGNOREPROJECTOR" = "true" "LIGHTMODE" = "Meta" "QUEUE" = "Transparent" "RenderType" = "Transparent" "SHADOWSUPPORT" = "true" }
-			ZClip Off
 			Cull Off
 			GpuProgramID 147790
 			CGPROGRAM
