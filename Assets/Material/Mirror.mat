@@ -7,10 +7,10 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Mirror
-  m_Shader: {fileID: 4800000, guid: 80408abdb413c5f41acdf45302a92263, type: 3}
+  m_Shader: {fileID: 4800000, guid: 906347cbf96b2964c911335204b63516, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
-  m_CustomRenderQueue: 2000
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
