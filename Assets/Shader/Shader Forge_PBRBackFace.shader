@@ -13,7 +13,6 @@ Shader "Shader Forge/PBRBackFace" {
 			Name "FORWARD"
 			Tags { "IGNOREPROJECTOR" = "true" "LIGHTMODE" = "ForwardBase" "QUEUE" = "Transparent" "RenderType" = "Transparent" "SHADOWSUPPORT" = "true" }
 			Blend SrcAlpha OneMinusSrcAlpha, SrcAlpha OneMinusSrcAlpha
-			ZClip Off
 			ZWrite Off
 			Cull Off
 			GpuProgramID 24720
@@ -306,7 +305,6 @@ Shader "Shader Forge/PBRBackFace" {
 			Name "FORWARD_DELTA"
 			Tags { "IGNOREPROJECTOR" = "true" "LIGHTMODE" = "ForwardAdd" "QUEUE" = "Transparent" "RenderType" = "Transparent" }
 			Blend One One, One One
-			ZClip Off
 			ZWrite Off
 			Cull Off
 			GpuProgramID 101807
@@ -507,7 +505,6 @@ Shader "Shader Forge/PBRBackFace" {
 		Pass {
 			Name "META"
 			Tags { "IGNOREPROJECTOR" = "true" "LIGHTMODE" = "Meta" "QUEUE" = "Transparent" "RenderType" = "Transparent" "SHADOWSUPPORT" = "true" }
-			ZClip Off
 			Cull Off
 			GpuProgramID 131327
 			CGPROGRAM
