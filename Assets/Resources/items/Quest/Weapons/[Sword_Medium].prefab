@@ -1380,9 +1380,10 @@ MonoBehaviour:
   ownershipTransfer: 1
   ObservedComponents:
   - {fileID: 114922729670602178}
-  viewIdField: 21
-  instantiationId: 21
+  viewIdField: 0
+  instantiationId: -1
   isRuntimeInstantiated: 0
+  ObservedComponentsFoldoutOpen: 1
 --- !u!114 &114387852939242558
 MonoBehaviour:
   m_ObjectHideFlags: 1
