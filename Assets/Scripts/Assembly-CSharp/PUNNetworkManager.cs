@@ -953,10 +953,10 @@ public class PUNNetworkManager : Photon.MonoBehaviour
 
 	private void UpdateRichPresenceJoin()
 	{
-		if (PlatformManager.Instance.CurrentPlatform == PlatformManager.PlatformType.STEAM)
+		/*if (PlatformManager.Instance.CurrentPlatform == PlatformManager.PlatformType.STEAM)
 		{
 			SteamFriends.SetRichPresence("connect", (!IsJoinable()) ? null : RichJoinCommand);
-		}
+		}*/
 	}
 
 	public void ProcessRichJoinCommand(string connectCommand)
