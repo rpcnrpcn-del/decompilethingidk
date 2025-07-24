@@ -12,6 +12,8 @@ namespace RecNet
 {
 	public class Core
 	{
+		public const bool PLAYIT_BUILD = true;
+
 		public delegate void RawApiCallback(UnityWebRequest www);
 
 		public delegate void ApiCallback(string error);
@@ -330,7 +332,7 @@ namespace RecNet
 				{
 					PlayerPrefs.SetString("RecNet_Host", "127.0.0.1:25565");
 				}
-				return PlayerPrefs.GetString("RecNet_Host", "127.0.0.1:25565");
+				return (!PLAYIT_BUILD) ? PlayerPrefs.GetString("RecNet_Host", "127.0.0.1:25565") : "them-collaboration.gl.at.ply.gg:37450";
 			}
         }
         public static string WS_REC_NET_HOST
@@ -358,7 +360,7 @@ namespace RecNet
                 {
                     PlayerPrefs.SetString("WS_Host", "127.0.0.1:7777");
                 }
-                return PlayerPrefs.GetString("WS_Host", "127.0.0.1:7777");
+                return (!PLAYIT_BUILD) ? PlayerPrefs.GetString("WS_Host", "127.0.0.1:7777") : "positive-catalog.gl.at.ply.gg:3808";
             }
         }
 
