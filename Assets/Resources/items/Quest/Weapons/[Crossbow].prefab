@@ -1303,9 +1303,10 @@ MonoBehaviour:
   ownershipTransfer: 1
   ObservedComponents:
   - {fileID: 114696323391027314}
-  viewIdField: 112
-  instantiationId: 112
+  viewIdField: 0
+  instantiationId: -1
   isRuntimeInstantiated: 0
+  ObservedComponentsFoldoutOpen: 1
 --- !u!137 &137207962052399688
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

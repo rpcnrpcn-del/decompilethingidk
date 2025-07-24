@@ -1,16 +1,12 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using SwingState = MeleeWeapon.SwingState;
 
-public class MeleeWeapon : Weapon
+public class MeleeWeaponV2 : Weapon
 {
-	public enum SwingState
-	{
-		NOT_SWINGING = 0,
-		PREPARING_TO_SWING = 1,
-		SWINGING = 2,
-		DISABLED = 3
-	}
+	[Header("")]
+	[SerializeField] private PooledParticle ImpactVFX;
 
 	[Header("Physics")]
 	[SerializeField]
@@ -41,7 +37,7 @@ public class MeleeWeapon : Weapon
 
 	private MeleeWeaponCollider[] meleeColliders;
 
-	private MeleeWeaponTrail trail;
+	private TrailRenderer trail;
 
 	private TrackedVelocity swingTrackedVelocity;
 
@@ -52,6 +48,9 @@ public class MeleeWeapon : Weapon
 	private Dictionary<Tool, float> toolLastHitTimes = new Dictionary<Tool, float>();
 
 	private float otherLastHitTime;
+
+	float TrailOriginalTime;
+	bool TrailStopNow;
 
 	protected bool IsSwinging
 	{
@@ -75,8 +74,12 @@ public class MeleeWeapon : Weapon
 		swingTrackedVelocity = pickupTransform.gameObject.AddComponent<TrackedVelocity>();
 		TrackedVelocity trackedVelocity = swingTrackedVelocity;
 		trackedVelocity.UpdateEvent = (Action<TrackedVelocity>)Delegate.Combine(trackedVelocity.UpdateEvent, new Action<TrackedVelocity>(UpdateSwing));
-		trail = GetComponentInChildren<MeleeWeaponTrail>();
-		meleeColliders = GetComponentsInChildren<MeleeWeaponCollider>();
+
+		trail = GetComponentInChildren<TrailRenderer>();
+		TrailOriginalTime = trail.time;
+		TrailStopNow = true;
+
+        meleeColliders = GetComponentsInChildren<MeleeWeaponCollider>();
 		for (int i = 0; i < meleeColliders.Length; i++)
 		{
 			meleeColliders[i].weaponRigidbody = base.Rigidbody;
@@ -184,7 +187,7 @@ public class MeleeWeapon : Weapon
 			}
 			break;
 		}
-		trail.CanAddPoints = swingState == SwingState.SWINGING;
+		TrailStopNow = swingState != SwingState.SWINGING;
 		previousSwingSpeed = magnitude;
 		previousSwingDisplacement = num;
 	}
@@ -198,7 +201,8 @@ public class MeleeWeapon : Weapon
 
 	private void OnAccentColorUpdate()
 	{
-		trail.Color = base.ToolRenderer.AccentColor;
+		trail.startColor = base.ToolRenderer.AccentColor;
+		trail.endColor = base.ToolRenderer.AccentColor * new Color(1,1,1,0);
 	}
 
 	private void OnVisibilityChange()
@@ -309,7 +313,8 @@ public class MeleeWeapon : Weapon
 	{
 		if (this != hitTool && !ToolHitOnCooldown(hitTool))
 		{
-			PlayImpactAudio(impactPoint);
+			PlayImpactVFX(impactPoint);
+            PlayImpactAudio(impactPoint);
 			PlayImpactHaptics();
 			float num = ((!IsSwinging) ? defaultImpactMass : swingingImpactMass);
 			Vector3 collisionForce = impactVelocity * num / Time.fixedDeltaTime;
@@ -347,6 +352,20 @@ public class MeleeWeapon : Weapon
 		}
 	}
 
+	private void PlayImpactVFX(Vector3 hitPos)
+	{
+		if (IsSwinging && ImpactVFX != null)
+		{
+			PooledParticle pooledParticle = ObjectPool.Instance.Acquire<PooledParticle>(ImpactVFX);
+			if (pooledParticle != null)
+			{
+				pooledParticle.transform.position = hitPos;
+				pooledParticle.transform.rotation = Quaternion.identity;
+				pooledParticle.Play();
+			}
+		}
+	}
+
 	private void PlayImpactAudio(Vector3 impactPoint)
 	{
 		if (IsSwinging)
@@ -354,4 +373,12 @@ public class MeleeWeapon : Weapon
 			meleeWeaponAudio.OnHit(impactPoint);
 		}
 	}
+
+	private void LateUpdate()
+	{
+		if (TrailStopNow)
+			trail.time = Mathf.Lerp(trail.time, 0, Time.deltaTime * 25);
+        else
+            trail.time = TrailOriginalTime;
+    }
 }
