@@ -285,6 +285,8 @@ GameObject:
   - component: {fileID: 114114014723292232}
   - component: {fileID: 114249409434939206}
   - component: {fileID: 114773671648736296}
+  - component: {fileID: 114714170773326240}
+  - component: {fileID: 114825691691792798}
   m_Layer: 27
   m_Name: '[Sword_Medium]'
   m_TagString: Untagged
@@ -1490,6 +1492,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 0.1
+--- !u!114 &114714170773326240
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1638332395023582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1f84c70a44fbb14f92ab17e15ba8378, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enabledOnReset: 1
+  enableOnPoolSpawn: 0
 --- !u!114 &114723017756324408
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1661,6 +1676,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 0.1
+--- !u!114 &114825691691792798
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1638332395023582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d163971fb53cf781a702df5ac70849e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ExcludeFromCleanup: 0
+  MinDisplacementBeforeCleanup: 0.25
+  MinPlayerDistanceBeforeCleanup: 0
+  DelayUntilCleanup: 15
+  TestRigidbody: 0
+  TestRotation: 0
+  MinRotationAngleBeforeCleanup: 30
 --- !u!114 &114922729670602178
 MonoBehaviour:
   m_ObjectHideFlags: 1
