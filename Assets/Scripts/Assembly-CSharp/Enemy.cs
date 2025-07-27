@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(RigidbodySteering))]
 public abstract class Enemy : Photon.MonoBehaviour
 {
-	public delegate void PlayerHitEventHandler(Weapon weapon, Enemy enemy, Player hitPlayer, Player.BodyPart hitBodyPart, Vector3 impactPoint);
+	public delegate void PlayerHitEventHandler(Enemy enemy, Player hitPlayer, Player.BodyPart hitBodyPart, Vector3 impactPoint);
 
 	public delegate void Death(Enemy thisEnemy);
 
@@ -182,18 +182,19 @@ public abstract class Enemy : Photon.MonoBehaviour
 			hitPlayer.RightHand.Vibrate(50, 1000);
 			break;
 		}
-		PlayerHit(null, this, hitPlayer, bodyPart, point);
+		PlayerHit(this, hitPlayer, bodyPart, point);
 	}
 
-	protected void PlayerHit(Weapon weapon, Enemy enemy, Player hitPlayer, Player.BodyPart hitBodyPart, Vector3 impactPoint)
+	protected void PlayerHit(Enemy enemy, Player hitPlayer, Player.BodyPart hitBodyPart, Vector3 impactPoint)
 	{
-		if (this.PlayerHitEvent != null)
+		if (this.PlayerHitEvent != null && this.Health > 0 && this.IsAlive)
 		{
-			this.PlayerHitEvent(weapon, enemy, hitPlayer, hitBodyPart, impactPoint);
+			this.PlayerHitEvent(enemy, hitPlayer, hitBodyPart, impactPoint);
 		}
 	}
 
-	private void OnTriggerEnter(Collider collider)
+
+    private void OnTriggerEnter(Collider collider)
 	{
 		Killzone colliderKillzone = collider.GetColliderKillzone();
 		if (colliderKillzone != null)
