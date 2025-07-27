@@ -49,15 +49,7 @@ public abstract class QuestEnemy : Enemy
 
 	protected const RigidbodyConstraints RECOIL_RIGIDBODY_CONSTRAINTS = (RigidbodyConstraints)80;
 
-    protected MeleeWeaponCollider[] meleeColliders;
-
-    protected RagdollBodyPart[] ragdollBodyParts;
-	
-	protected QuestEnemyAudio enemyAudio;
-
-	protected Animator animator;
-
-    protected float MovementSpeedVarietyScalar
+	protected float MovementSpeedVarietyScalar
 	{
 		get
 		{
@@ -96,35 +88,20 @@ public abstract class QuestEnemy : Enemy
 	protected override void Awake()
 	{
 		base.Awake();
-
 		_movementSpeedVarietyScalar = new SynchronizedField<float>(this, "SPEED", 1f, SetterPermissionMode.AUTHORITY);
 		_targetPlayerId = new SynchronizedField<int>(this, "PLAYER_TARGET_ID", -1, SetterPermissionMode.AUTHORITY);
 		_lastAttackerId = new SynchronizedField<int>(this, "LAST_ATTACKER_ID", -1, SetterPermissionMode.AUTHORITY);
-
-        meleeColliders = base.GetComponentsInChildren<MeleeWeaponCollider>();
-        for (int i = 0; i < this.meleeColliders.Length; i++)
-        {
-            this.meleeColliders[i].weaponRigidbody = this.rigidbody;
-            this.meleeColliders[i].PlayerImpactEvent += this.OnMeleeColliderPlayerImpact;
-            this.meleeColliders[i].enabled = true;
-        }
-
-        behaviorStateMachine.AddState(0, null, null, null);
+		behaviorStateMachine.AddState(0, null, null, null);
 		behaviorStateMachine.AddState(1, OnEnterAliveState, OnExitAliveState, OnUpdateAliveState);
 		behaviorStateMachine.AddState(2, OnEnterRecoilState, OnExitRecoilState, OnUpdateRecoilState);
 		behaviorStateMachine.AddState(3, OnEnterDeadState, null, OnUpdateDeadState);
-
 		navMeshPath = new NavMeshPath();
 		pathNodes = new Vector3[16];
 		pathNodeIndex = 0;
 		pathNodeCount = 0;
-
 		damageInstancesReceived = new List<PhotonPlayer>();
 		lootDrops = GetComponent<LootDropper>();
-        enemyAudio = base.GetComponent<QuestEnemyAudio>();
-        ragdollBodyParts = base.GetComponentsInChildren<RagdollBodyPart>();
-        animator = base.GetComponentInChildren<Animator>();
-    }
+	}
 
 	protected virtual void Start()
 	{
@@ -405,25 +382,5 @@ public abstract class QuestEnemy : Enemy
 				Gizmos.DrawLine(pathNodes[i], pathNodes[i + 1]);
 			}
 		}
-    }
-    protected virtual void OnMeleeColliderPlayerImpact(MeleeWeaponCollider collider, Player hitPlayer, Player.BodyPart hitBodyPart, GameObject hitGameObject, Vector3 impactPoint, Vector3 surfaceNormal)
-    {
-        base.PlayerHit(this, hitPlayer, hitBodyPart, impactPoint);
-    }
-    protected void ShatterRagdoll(Vector3 impulseDirection)
-    {
-        if (this.animator != null)
-        {
-            this.animator.enabled = false;
-        }
-        if (this.ragdollBodyParts != null)
-        {
-            Vector3 worldCenterOfMass = this.rigidbody.worldCenterOfMass;
-            foreach (RagdollBodyPart ragdollBodyPart in this.ragdollBodyParts)
-            {
-                Vector3 normalized = Vector3.Lerp(global::UnityEngine.Random.onUnitSphere, impulseDirection, 0.25f).normalized;
-                ragdollBodyPart.ApplyForce(normalized * this.ragdollShatterSpeed);
-            }
-        }
-    }
+	}
 }

@@ -48,15 +48,7 @@ public class RigidbodySteering : Photon.MonoBehaviour
 
 	public float MaxLinearSpeed { get; set; }
 
-    public Vector3 CurrentVelocity
-    {
-        get
-        {
-            return this.velocity;
-        }
-    }
-
-    protected override void Awake()
+	protected override void Awake()
 	{
 		base.Awake();
 		MaxLinearSpeed = maxLinearSpeed;
