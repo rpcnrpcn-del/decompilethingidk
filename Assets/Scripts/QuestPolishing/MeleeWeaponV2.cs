@@ -7,7 +7,7 @@ public class MeleeWeaponV2 : Weapon
 {
 	[Header("VFX")]
 	[SerializeField] private PooledParticle ImpactVFX;
-    [SerializeField] private ParticleSystem trail;
+    [SerializeField] private TrailRenderer trail;
 
     [Header("Physics")]
 	[SerializeField]
@@ -75,7 +75,7 @@ public class MeleeWeaponV2 : Weapon
 		trackedVelocity.UpdateEvent = (Action<TrackedVelocity>)Delegate.Combine(trackedVelocity.UpdateEvent, new Action<TrackedVelocity>(UpdateSwing));
 
 		if (!trail)
-			trail = GetComponentInChildren<ParticleSystem>();
+			trail = GetComponentInChildren<TrailRenderer>();
 
         meleeColliders = GetComponentsInChildren<MeleeWeaponCollider>();
 		for (int i = 0; i < meleeColliders.Length; i++)
@@ -186,14 +186,23 @@ public class MeleeWeaponV2 : Weapon
 			break;
 		}
 
-		if (swingState == SwingState.SWINGING)
-			if (!trail.isPlaying)
-				trail.enableEmission = true;
-            else
-                trail.enableEmission = false;
+		TrailStopNow = (swingState != SwingState.SWINGING);
 
         previousSwingSpeed = magnitude;
 		previousSwingDisplacement = num;
+	}
+
+	private void LateUpdate()
+	{
+		if (TrailStopNow)
+		{
+			trail.startColor = Color.Lerp(trail.startColor, base.ToolRenderer.AccentColor * new Color(1, 1, 1, 0), Time.deltaTime * 4);
+			trail.endColor = Color.Lerp(trail.endColor, base.ToolRenderer.AccentColor * new Color(1, 1, 1, 0), Time.deltaTime * 4);
+		} else
+		{
+			trail.startColor = base.ToolRenderer.AccentColor;
+			trail.endColor = base.ToolRenderer.AccentColor * new Color(1,1,1,0);
+        }
 	}
 
 	private void TemporarilyDisableSwing(float duration)
@@ -206,6 +215,7 @@ public class MeleeWeaponV2 : Weapon
 	private void OnAccentColorUpdate()
 	{
 		trail.startColor = base.ToolRenderer.AccentColor;
+		trail.endColor = base.ToolRenderer.AccentColor * new Color(1,1,1,0);
     }
 
 	private void OnVisibilityChange()

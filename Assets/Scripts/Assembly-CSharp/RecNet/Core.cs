@@ -12,7 +12,7 @@ namespace RecNet
 {
 	public class Core
 	{
-		public const bool PLAYIT_BUILD = true;
+		public const bool PLAYIT_BUILD = false;
 
 		public delegate void RawApiCallback(UnityWebRequest www);
 
