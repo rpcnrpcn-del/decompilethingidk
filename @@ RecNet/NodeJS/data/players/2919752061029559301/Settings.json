@@ -5,7 +5,7 @@
    },
    {
       "Key": "VoiceChat",
-      "Value": "0"
+      "Value": "2"
    },
    {
       "Key": "ShowNames",
@@ -13,7 +13,7 @@
    },
    {
       "Key": "ShowRoomCenter",
-      "Value": "0"
+      "Value": "1"
    },
    {
       "Key": "ROTATION_INCREMENT",
@@ -37,11 +37,11 @@
    },
    {
       "Key": "google_analytics_clientid_pref_key",
-      "Value": "DAFOOCBTca650229e1f4a03fde783aed3ac5fa38296e3f21"
+      "Value": "QZSFZWYD35063306ff1062c226285e9d494a5bf3a717bfa7"
    },
    {
       "Key": "PlayerSessionCount",
-      "Value": "168"
+      "Value": "2"
    },
    {
       "Key": "DAILY_LOGIN_DATE",
@@ -78,9 +78,5 @@
    {
       "Key": "Recroom.OOBE",
       "Value": "100"
-   },
-   {
-      "Key": "VIGNETTED_TELEPORT_ENABLED",
-      "Value": "1"
    }
 ]
