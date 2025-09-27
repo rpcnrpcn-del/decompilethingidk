@@ -97,7 +97,7 @@ export async function CreateProfile(PlayerId, Name) {
     PlayerJson.Misc = MiscTemplate
     PlayerJson.Relationship = RelationshipTemplate
 
-    mkdir(ProfilePath)
+    await mkdir(ProfilePath)
 
     await writeFile(ProfilePath + "Profile.json", JSON.stringify(PlayerJson["Profile"], null, 3))
     await writeFile(ProfilePath + "Avatar.json", JSON.stringify(PlayerJson["Avatar"], null, 3))
