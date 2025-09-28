@@ -1,4 +1,4 @@
-Shader "Shader Forge/Leaf (Transparent)"
+Shader "Shader Forge/Leaf (Alpha Cutout)"
 {
     Properties
     {
@@ -10,19 +10,20 @@ Shader "Shader Forge/Leaf (Transparent)"
         _Occlusion ("Occlusion", Range(0,1)) = 1.0
         _EmissionMap ("Emission Map", 2D) = "black" {}
         _EmissionColor ("Emission Color", Color) = (0,0,0,1)
+        _Cutoff ("Alpha Cutoff", Range(0,1)) = 0.5
     }
 
     SubShader
     {
-        Tags { "Queue"="Transparent" "RenderType"="Transparent" }
+        Tags { "Queue"="AlphaTest" "RenderType"="TransparentCutout" }
         LOD 200
 
-        Blend SrcAlpha OneMinusSrcAlpha
         Cull Off
-        ZWrite Off
+        ZWrite On
+        AlphaTest Greater [_Cutoff]
 
         CGPROGRAM
-        #pragma surface surf Standard fullforwardshadows alpha:fade
+        #pragma surface surf Standard fullforwardshadows alphatest:_Cutoff
         #pragma target 3.0
 
         sampler2D _MainTex;
@@ -55,11 +56,10 @@ Shader "Shader Forge/Leaf (Transparent)"
             o.Occlusion = _Occlusion;
             o.Emission = emit * _EmissionColor.rgb;
 
-            // Use texture alpha as transparency
             o.Alpha = albedo.a;
         }
         ENDCG
     }
 
-    FallBack "Transparent/Diffuse"
+    FallBack "Transparent/Cutout/VertexLit"
 }
