@@ -1,5 +1,0 @@
-console.clear()
-console.log("Starting Server...")
-const APIServer = require('./server')
-console.log("Starting WebSocket...")
-const WSSServer = require("./websocket")
