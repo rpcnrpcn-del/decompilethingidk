@@ -287,9 +287,9 @@ namespace RecNet
 
 		private static string _RecNetHost = null;
 
-		private static readonly string REC_NET_HTTP_URL = "http://" + REC_NET_HOST + "/";
+		private static readonly string REC_NET_HTTP_URL = "http://localhost/2056";
 
-		private static readonly string REC_NET_WEBSOCKET_URL = "ws://" + WS_REC_NET_HOST + "/";
+		private static readonly string REC_NET_WEBSOCKET_URL = "ws://localhost2057/";
 
 		private const string REC_NET_USERNAME = "recroom@againstgrav.com";
 
