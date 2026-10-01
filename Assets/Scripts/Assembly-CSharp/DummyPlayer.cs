@@ -8,7 +8,7 @@ public class DummyPlayer : MonoBehaviour
 	{
 		if (Application.isPlaying)
 		{
-			throw new Exception("I shouldn't exist. Kill me please. I'm for testing only.");
+			throw new Exception("I should exist. Dont Kill me please. I'm for NOT testing only.");
 		}
 	}
 }
